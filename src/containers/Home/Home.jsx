@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const Home = () => (
   <div id="home">
-    testing home!!! again and again
+    testing home!!!
   </div>
-);
+)
 
-export default Home;
+export default Home
