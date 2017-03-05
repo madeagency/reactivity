@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => (
   <div id="about">
-    test about!
+    test about!!!!
   </div>
 )
 
