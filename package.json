@@ -8,17 +8,18 @@
 		"babel-loader": "^6.3.2",
 		"babel-preset-env": "^1.2.0",
 		"babel-preset-react": "^6.23.0",
-		"start-server-webpack-plugin": "^2.1.2",
 		"npm-run-all": "^4.0.2",
+		"start-server-webpack-plugin": "^2.1.2",
 		"webpack": "^2.2.1",
-		"webpack-node-externals": "^1.5.4",
-		"webpack-dev-server": "^2.4.1"
+		"webpack-dev-server": "^2.4.1",
+		"webpack-node-externals": "^1.5.4"
 	},
 	"dependencies": {
 		"express": "^4.15.0",
 		"react": "^15.4.2",
 		"react-dom": "^15.4.2",
-		"react-hot-loader": "next"
+		"react-hot-loader": "next",
+		"react-router": "4.0.0-alpha.6"
 	},
 	"scripts": {
 		"start:server": "rm -rf ./build && webpack --config  webpack.config.server.js",
