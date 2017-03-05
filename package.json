@@ -32,8 +32,6 @@
   "scripts": {
     "start:server": "rm -rf ./build && webpack --config  webpack.config.server.js",
     "start:client": "webpack-dev-server --config webpack.config.client.js",
-    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
-    "build": "webpack --config webpack.config.prod.js",
-    "server": "node ./bin/server.js"
+    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client"
   }
 }
