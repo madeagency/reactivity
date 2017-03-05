@@ -1,7 +1,11 @@
 {
   "name": "react-universal",
   "version": "1.0.0",
+  "description": "a bleeding edge universal boilerplate for react.",
   "main": "index.js",
+  "repository": "https://github.com/madeagency/react-universal.git",
+  "private": true,
+  "author": "Made Code",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",
