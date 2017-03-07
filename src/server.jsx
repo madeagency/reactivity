@@ -1,22 +1,27 @@
 import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+import { Provider } from 'react-redux'
 import { withAsyncComponents } from 'react-async-component'
 import { ServerRouter, createServerRenderContext } from 'react-router'
+import configureStore from './redux/configureStore'
 import Html from './helpers/Html'
 import App from './containers/App/App'
 
 const app = express()
+const store = configureStore()
 
 app.use((req, res) => {
   const context = createServerRenderContext()
   const component = (
-    <ServerRouter
-      location={req.url}
-      context={context}
-    >
-      {({ location }) => <App location={location} />}
-    </ServerRouter>
+    <Provider store={store} key="provider">
+      <ServerRouter
+        location={req.url}
+        context={context}
+      >
+        {({ location }) => <App location={location} />}
+      </ServerRouter>
+    </Provider>
   )
 
   withAsyncComponents(component).then((result) => {
