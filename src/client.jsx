@@ -1,39 +1,33 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { BrowserRouter } from 'react-router'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { withAsyncComponents } from 'react-async-component'
 import App from './containers/App/App'
 
+const supportsHistory = 'pushState' in window.history
 const reactRoot = document.getElementById('root')
 
-function renderApp(theApp) {
-  withAsyncComponents(theApp)
-    .then((result) => {
-      const {
-      appWithAsyncComponents
-    } = result
+function renderApp(TheApp) {
+  const app = (
+    <AppContainer>
+      <BrowserRouter forceRefresh={!supportsHistory}>
+        <TheApp />
+      </BrowserRouter>
+    </AppContainer>
+  )
 
-      render(appWithAsyncComponents, reactRoot)
-    })
+  withAsyncComponents(app).then(({ appWithAsyncComponents }) =>
+    render(appWithAsyncComponents, reactRoot),
+  )
 }
 
-const container = (
-  <AppContainer>
-    <BrowserRouter>
-      {
-        ({ location }) => <App location={location} />
-      }
-    </BrowserRouter>
-  </AppContainer>
-)
-
-renderApp(container)
+renderApp(App)
 
 if (module.hot) {
   module.hot.accept('./client')
   module.hot.accept(
     './containers/App/App',
-    () => renderApp(container),
+    () => renderApp(App),
   )
 }
