@@ -28,6 +28,6 @@ if (module.hot) {
   module.hot.accept('./client')
   module.hot.accept(
     './containers/App/App',
-    () => renderApp(App),
+    () => renderApp(require('./containers/App/App').default)
   )
 }
