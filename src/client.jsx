@@ -2,43 +2,37 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
-import { BrowserRouter } from 'react-router'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { withAsyncComponents } from 'react-async-component'
 import configureStore from './redux/configureStore'
 import App from './containers/App/App'
 
+const supportsHistory = 'pushState' in window.history
 const reactRoot = document.getElementById('root')
 const store = configureStore()
 
-function renderApp(theApp) {
-  withAsyncComponents(theApp)
-    .then((result) => {
-      const {
-      appWithAsyncComponents
-    } = result
+function renderApp(TheApp) {
+  const app = (
+    <AppContainer>
+      <Provider store={store} key="provider">
+        <BrowserRouter forceRefresh={!supportsHistory}>
+          <TheApp />
+        </BrowserRouter>
+      </Provider>
+    </AppContainer>
+  )
 
-      render(appWithAsyncComponents, reactRoot)
-    })
+  withAsyncComponents(app).then(({ appWithAsyncComponents }) =>
+    render(appWithAsyncComponents, reactRoot),
+  )
 }
 
-const container = (
-  <AppContainer>
-    <Provider store={store} key="provider">
-      <BrowserRouter>
-        {
-          ({ location }) => <App location={location} />
-        }
-      </BrowserRouter>
-    </Provider>
-  </AppContainer>
-)
-
-renderApp(container)
+renderApp(App)
 
 if (module.hot) {
   module.hot.accept('./client')
   module.hot.accept(
     './containers/App/App',
-    () => renderApp(container),
+    () => renderApp(App),
   )
 }

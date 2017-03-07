@@ -1,10 +1,10 @@
 import express from 'express'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { withAsyncComponents } from 'react-async-component'
-import { ServerRouter, createServerRenderContext } from 'react-router'
 import configureStore from './redux/configureStore'
+import { withAsyncComponents } from 'react-async-component'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
 import Html from './helpers/Html'
 import App from './containers/App/App'
 
@@ -12,15 +12,16 @@ const app = express()
 const store = configureStore()
 
 app.use((req, res) => {
-  const context = createServerRenderContext()
+  const reactRouterContext = {}
+
   const component = (
     <Provider store={store} key="provider">
-      <ServerRouter
+      <StaticRouter
         location={req.url}
-        context={context}
+        context={reactRouterContext}
       >
-        {({ location }) => <App location={location} />}
-      </ServerRouter>
+        <App />
+      </StaticRouter>
     </Provider>
   )
 
@@ -31,15 +32,14 @@ app.use((req, res) => {
       STATE_IDENTIFIER
     } = result
 
-    const componentString = renderToString(appWithAsyncComponents)
-
-    res.send(`<!doctype html>\n${renderToString(
+    const html = renderToStaticMarkup(
       <Html
-        component={componentString}
-        stateId={STATE_IDENTIFIER}
-        state={state}
+        component={renderToString(appWithAsyncComponents)}
+        asyncComponents={{ state, STATE_IDENTIFIER }}
       />
-    )}`)
+    )
+
+    res.send(`<!doctype html>\n${html}`)
   })
 })
 
