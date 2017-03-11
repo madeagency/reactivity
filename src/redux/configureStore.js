@@ -3,14 +3,13 @@ import { createEpicMiddleware } from 'redux-observable'
 import app, { rootEpic } from './reducers'
 
 const epicMiddleware = createEpicMiddleware(rootEpic)
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const middleware = applyMiddleware(epicMiddleware)
-const enhancer = composeEnhancers(middleware)
 
 export default function configureStore() {
   let store
   if (process.env.BUILD_TARGET === 'client') {
-    store = createStore(app, enhancer)
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    store = createStore(app, composeEnhancers(middleware))
   } else {
     store = createStore(app, middleware)
   }
