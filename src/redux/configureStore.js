@@ -4,13 +4,16 @@ import app, { rootEpic } from './reducers'
 
 const epicMiddleware = createEpicMiddleware(rootEpic)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-const enhancer = composeEnhancers(
-  applyMiddleware(epicMiddleware)
-)
+const middleware = applyMiddleware(epicMiddleware)
+const enhancer = composeEnhancers(middleware)
 
 export default function configureStore() {
-  const store = createStore(app, enhancer)
+  let store
+  if (process.env.BUILD_TARGET === 'client') {
+    store = createStore(app, enhancer)
+  } else {
+    store = createStore(app, middleware)
+  }
 
   if (module.hot) {
     module.hot.accept(
