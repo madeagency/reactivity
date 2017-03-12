@@ -18,6 +18,7 @@ What things you need to install the software and how to install them
 ### Installing
 
 * run `yarn install`
+* copy `sample.env` to `.env` and alter the variables as required.
 
 ## Running the tests
 
