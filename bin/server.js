@@ -4,7 +4,7 @@ import app from '../src/server'
 const server = http.createServer(app)
 let currentApp = app
 
-server.listen(3000)
+server.listen(process.env.PORT)
 
 if (module.hot) {
   module.hot.accept('../src/server', () => {

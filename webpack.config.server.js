@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const StartServerPlugin = require('start-server-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: [
@@ -33,6 +34,7 @@ module.exports = {
         BUILD_TARGET: JSON.stringify('server')
       }
     }),
+    new Dotenv()
   ],
   output: {
     path: path.join(__dirname, '.build'),
