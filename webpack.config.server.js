@@ -1,8 +1,12 @@
+require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const StartServerPlugin = require('start-server-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
+
+const env = Object.assign({}, process.env, {
+  SERVER: true
+})
 
 module.exports = {
   entry: [
@@ -30,11 +34,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        BUILD_TARGET: JSON.stringify('server')
-      }
-    }),
-    new Dotenv()
+      'process.env': JSON.stringify(env)
+    })
   ],
   output: {
     path: path.join(__dirname, '.build'),

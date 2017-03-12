@@ -7,7 +7,7 @@ const middleware = applyMiddleware(epicMiddleware)
 
 export default function configureStore() {
   let store
-  if (process.env.BUILD_TARGET === 'client') {
+  if (!process.env.SERVER) {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     store = createStore(app, composeEnhancers(middleware))
   } else {
