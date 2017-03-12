@@ -9,9 +9,9 @@ import Html from './helpers/Html'
 import App from './containers/App/App'
 
 const app = express()
-const store = configureStore()
 
 app.use((req, res) => {
+  const store = configureStore()
   const reactRouterContext = {}
 
   const component = (
