@@ -19,6 +19,7 @@ What things you need to install the software and how to install them
 
 * run `yarn install`
 * copy `sample.env` to `.env` and alter the variables as required.
+* recommended to also clone and run [simple-express-api](https://github.com/madeagency/simple-express-api)
 
 ## Running the tests
 

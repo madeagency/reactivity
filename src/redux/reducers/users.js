@@ -1,6 +1,6 @@
 import 'rxjs'
 import { Observable } from 'rxjs/Observable'
-import getPeople from '../test_api'
+import { ajax } from 'rxjs/observable/dom/ajax'
 
 export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS'
@@ -46,9 +46,10 @@ export function fetchData() {
 }
 
 export function getDataSuccess(data) {
+  console.log(data)
   return {
     type: FETCHING_DATA_SUCCESS,
-    data
+    data: data.people
   }
 }
 
@@ -62,7 +63,7 @@ export function getDataFailure(error) {
 export const fetchUserEpic = action$ =>
   action$.ofType(FETCHING_DATA)
     .mergeMap(() =>
-      Observable.fromPromise(getPeople())
+      ajax.getJSON('/api/people')
         .map(response => getDataSuccess(response))
         .catch(error => Observable.of(getDataFailure(error)))
     )
