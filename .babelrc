@@ -6,6 +6,11 @@
         "modules": false
       }
     ],
-    "react"
+    "react",
+    "es2015",
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-decorators-legacy"
   ]
 }
