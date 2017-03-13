@@ -63,6 +63,6 @@ export const fetchUserEpic = action$ =>
   action$.ofType(FETCHING_DATA)
     .mergeMap(() =>
       Observable.fromPromise(getPeople())
-        .map(response => getDataSuccess(response))
+        .map(getDataSuccess)
         .catch(error => Observable.of(getDataFailure(error)))
     )
