@@ -63,6 +63,6 @@ export const fetchUserEpic = action$ =>
   action$.ofType(FETCHING_DATA)
     .mergeMap(() =>
       ajax.getJSON('/api/people')
-        .map(response => getDataSuccess(response))
+        .map(getDataSuccess)
         .catch(error => Observable.of(getDataFailure(error)))
     )
