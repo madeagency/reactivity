@@ -2,10 +2,11 @@ import express from 'express'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { withAsyncComponents } from 'react-async-component'
-import { renderToString, renderToStaticMarkup } from 'react-dom/server'
+import { renderToString as renderToStringEpic } from 'react-redux-epic'
+import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { createProxyServer } from 'http-proxy'
-import configureStore from './redux/configureStore'
+import configureStore, { wrappedEpic } from './redux/configureStore'
 import Html from './helpers/Html'
 import App from './containers/App/App'
 
@@ -44,14 +45,26 @@ app.use((req, res) => {
       STATE_IDENTIFIER
     } = result
 
-    const html = renderToStaticMarkup(
-      <Html
-        component={renderToString(appWithAsyncComponents)}
-        asyncComponents={{ state, STATE_IDENTIFIER }}
-      />
-    )
+    renderToStringEpic(appWithAsyncComponents, wrappedEpic)
+      .map(({ markup }) => ({
+        markup,
+        data: store.getState()
+      }))
+      .subscribe(({ markup, data }) => {
+        wrappedEpic.unsubscribe()
+        console.log('markup', markup)
+        console.log('data', data)
 
-    res.send(`<!doctype html>\n${html}`)
+        const html = renderToString(
+          <Html
+            component={markup}
+            preLoadedState={data}
+            asyncComponents={{ state, STATE_IDENTIFIER }}
+          />
+        )
+
+        res.send(`<!doctype html>\n${html}`)
+      })
   })
 })
 

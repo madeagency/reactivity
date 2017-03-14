@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
+import { wrapRootEpic } from 'react-redux-epic'
 import app, { rootEpic } from './reducers'
 
-const epicMiddleware = createEpicMiddleware(rootEpic)
+export const wrappedEpic = wrapRootEpic(rootEpic)
+const epicMiddleware = createEpicMiddleware(wrappedEpic)
 const middleware = applyMiddleware(epicMiddleware)
 
 export default function configureStore() {

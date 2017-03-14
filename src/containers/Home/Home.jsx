@@ -17,6 +17,10 @@ export default class Home extends Component {
     fetchData: PropTypes.func.isRequired
   }
 
+  componentWillMount() {
+    this.props.fetchData()
+  }
+
   render() {
     const { users } = this.props
 

@@ -846,7 +846,7 @@ babel-register@^6.23.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0:
+babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
   dependencies:
@@ -3184,7 +3184,7 @@ react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-dom@^15.4.2:
+react-dom@^15.3.2, react-dom@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
@@ -3208,6 +3208,19 @@ react-proxy@^3.0.0-alpha.0:
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz#4400426bcfa80caa6724c7755695315209fa4b07"
   dependencies:
     lodash "^4.6.1"
+
+react-redux-epic@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-redux-epic/-/react-redux-epic-0.1.0.tgz#8830bb1c20c85cd73d8fc7243fdff482285422dc"
+  dependencies:
+    babel-runtime "^6.11.6"
+    debug "^2.2.0"
+    invariant "^2.2.1"
+    react "^15.3.2"
+    react-dom "^15.3.2"
+    redux "^3.6.0"
+    redux-observable "^0.12.2"
+    rxjs "^5.0.0-rc.5"
 
 react-redux@^5.0.3:
   version "5.0.3"
@@ -3240,7 +3253,7 @@ react-tree-walker@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-1.0.0.tgz#061f719232a5b77b01fbab21b8ee6a3ab7be7085"
 
-react@^15.4.2:
+react@^15.3.2, react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -3324,6 +3337,10 @@ redbox-react@^1.2.5:
   dependencies:
     error-stack-parser "^1.3.6"
     object-assign "^4.0.1"
+
+redux-observable@^0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.12.2.tgz#4bc1657c7eedace577e114b74ffe6f6fb2b36ccf"
 
 redux-observable@^0.14.0:
   version "0.14.0"
@@ -3491,7 +3508,7 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
-rxjs@^5.0.0:
+rxjs@^5.0.0, rxjs@^5.0.0-rc.5:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.2.0.tgz#db537de8767c05fa73721587a29e0085307d318b"
   dependencies:
