@@ -25,5 +25,8 @@
         "src"
       ]
     }
+  },
+  "globals": {
+    "apiUrl": false
   }
 }

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 
@@ -25,7 +26,13 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+      apiUrl: JSON.stringify(`http://${process.env.HOST}:${process.env.PORT}/api`)
+    }),
+    new webpack.ProvidePlugin({
+      fetch: 'isomorphic-fetch'
+    })
   ],
   devServer: {
     host: 'localhost',

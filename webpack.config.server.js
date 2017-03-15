@@ -34,7 +34,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(env)
+      'process.env': JSON.stringify(env),
+      apiUrl: JSON.stringify(`http://${env.API_HOST}:${env.API_PORT}/api`)
+    }),
+    new webpack.ProvidePlugin({
+      fetch: 'isomorphic-fetch'
     })
   ],
   output: {
