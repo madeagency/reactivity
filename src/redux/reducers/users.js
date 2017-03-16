@@ -1,7 +1,7 @@
 import 'rxjs'
 import { Observable } from 'rxjs/Observable'
 
-import { fetchJsonObservable } from '../../helpers/Rx'
+import { getUsers } from 'api'
 
 export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS'
@@ -63,7 +63,7 @@ export function getDataFailure(error) {
 export const fetchUserEpic = action$ =>
   action$.ofType(FETCHING_DATA)
     .mergeMap(() =>
-      fetchJsonObservable(`${apiUrl}/people`)
+      Observable.from(getUsers())
         .map(result => getDataSuccess(result))
         .catch(error => Observable.of(getDataFailure(error)))
     )

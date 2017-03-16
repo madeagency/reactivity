@@ -1,12 +1,8 @@
-require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const StartServerPlugin = require('start-server-webpack-plugin')
-
-const env = Object.assign({}, process.env, {
-  SERVER: true
-})
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: [
@@ -26,7 +22,10 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx']
+    extensions: ['.json', '.js', '.jsx'],
+    alias: {
+      api: path.resolve(__dirname, 'src/api/')
+    }
   },
   plugins: [
     new StartServerPlugin('server.js'),
@@ -34,11 +33,14 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(env),
-      apiUrl: JSON.stringify(`http://${env.API_HOST}:${env.API_PORT}/api`)
+      'process.env.SERVER': JSON.stringify(true)
     }),
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
+    }),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: false // load .env.example (defaults to "false" which does not use dotenv-safe)
     })
   ],
   output: {
