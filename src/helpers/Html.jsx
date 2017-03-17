@@ -10,10 +10,11 @@ const Html = (props) => {
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
         <script src="http://localhost:3001/client.js" />
-        <script type="text/javascript">{`${serialize(preLoadedState)}`}</script>
-        <script type="text/javascript">
-          {`window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};`}
-        </script>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: `window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};` }}
+          charSet="UTF-8"
+        />
       </body>
     </html>
   )

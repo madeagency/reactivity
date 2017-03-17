@@ -52,8 +52,6 @@ app.use((req, res) => {
       }))
       .subscribe(({ markup, data }) => {
         wrappedEpic.unsubscribe()
-        console.log('markup', markup)
-        console.log('data', data)
 
         const html = renderToString(
           <Html
@@ -62,7 +60,6 @@ app.use((req, res) => {
             asyncComponents={{ state, STATE_IDENTIFIER }}
           />
         )
-
         res.send(`<!doctype html>\n${html}`)
       })
   })
