@@ -9,12 +9,15 @@ const Html = (props) => {
     <html lang="en">
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-        <script src="http://localhost:3001/client.js" />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};` }}
+          dangerouslySetInnerHTML={{
+            __html: `window.__data=${serialize(preLoadedState)};
+            window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};`
+          }}
           charSet="UTF-8"
         />
+        <script src="http://localhost:3001/client.js" />
       </body>
     </html>
   )
@@ -22,7 +25,7 @@ const Html = (props) => {
 
 Html.propTypes = {
   component: PropTypes.node.isRequired,
-  preLoadedState: PropTypes.object.isRequired,
+  preLoadedState: PropTypes.shape({}).isRequired,
   asyncComponents: PropTypes.shape({
     state: PropTypes.object,
     STATE_IDENTIFIER: PropTypes.string

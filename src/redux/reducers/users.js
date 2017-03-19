@@ -27,6 +27,7 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
+        dataFetched: true,
         data: action.data
       }
     case FETCHING_DATA_FAILURE:
@@ -65,5 +66,6 @@ export const fetchUserEpic = action$ =>
     .mergeMap(() =>
       Observable.from(getUsers())
         .map(result => getDataSuccess(result))
+        .takeUntil(action$.ofType(FETCHING_DATA))
         .catch(error => Observable.of(getDataFailure(error)))
     )
