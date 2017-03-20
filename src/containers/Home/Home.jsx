@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 import { fetchData } from '../../redux/reducers/users'
 
 @connect(state => ({
@@ -30,6 +31,12 @@ export default class Home extends Component {
 
     return (
       <div id="home">
+        <Helmet
+          title="My Title"
+          meta={[
+            { name: 'description', content: 'Helmet application' }
+          ]}
+        />
         {users.data.length ? (
           users.data.map(person => (
             <div key={person.id}>
