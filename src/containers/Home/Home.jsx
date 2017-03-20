@@ -32,9 +32,9 @@ export default class Home extends Component {
     return (
       <div id="home">
         <Helmet
-          title="My Title"
+          title="Home"
           meta={[
-            { name: 'description', content: 'Helmet application' }
+            { name: 'description', content: 'My Home Page' }
           ]}
         />
         {users.data.length ? (
