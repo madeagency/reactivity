@@ -9,7 +9,11 @@ const Html = (props) => {
     <html lang="en">
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-        <script src="http://localhost:3001/client.js" />
+        <script
+          src={process.env.NODE_ENV === 'production' ?
+            `${process.env.PUBLIC_PATH}/client.js` :
+            'http://localhost:3001/client.js'
+          } />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{ __html: `window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};` }}

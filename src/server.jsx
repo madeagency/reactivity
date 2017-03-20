@@ -23,6 +23,8 @@ app.use('/api', (req, res) => {
   proxy.web(req, res, { target: apiUrl })
 })
 
+app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
+
 app.use((req, res) => {
   const store = configureStore()
   const reactRouterContext = {}

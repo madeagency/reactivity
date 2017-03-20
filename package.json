@@ -24,6 +24,8 @@
     "eslint-plugin-react": "^6.10.0",
     "npm-run-all": "^4.0.2",
     "start-server-webpack-plugin": "^2.1.2",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony",
+    "uglifyjs-webpack-plugin": "^0.3.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-node-externals": "^1.5.4"
@@ -48,6 +50,9 @@
   "scripts": {
     "start:server": "rm -rf ./build && webpack --config  webpack.config.server.js",
     "start:client": "webpack-dev-server --config webpack.config.client.js",
-    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client"
+    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
+    "production:server": "webpack -p --config webpack.config.server.production.js",
+    "production:client": "webpack -p --config webpack.config.client.production.js",
+    "production": "npm-run-all --parallel production:server production:client"
   }
 }
