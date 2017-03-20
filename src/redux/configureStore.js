@@ -7,11 +7,11 @@ export const wrappedEpic = wrapRootEpic(rootEpic)
 const epicMiddleware = createEpicMiddleware(wrappedEpic)
 const middleware = applyMiddleware(epicMiddleware)
 
-export default function configureStore() {
+export default function configureStore(data) {
   let store
   if (!process.env.SERVER) {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    store = createStore(app, composeEnhancers(middleware))
+    store = createStore(app, data, composeEnhancers(middleware))
   } else {
     store = createStore(app, middleware)
   }

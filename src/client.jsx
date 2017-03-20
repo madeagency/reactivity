@@ -9,7 +9,7 @@ import App from './containers/App/App'
 
 const supportsHistory = 'pushState' in window.history
 const reactRoot = document.getElementById('root')
-const store = configureStore()
+const store = configureStore(window.__data)
 
 function renderApp(TheApp) {
   const app = (

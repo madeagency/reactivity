@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { fetchData } from '../../redux/reducers/users'
 
 @connect(state => ({
-  users: state.users
+  users: state.users,
+  loaded: state.users.dataFetched
 }), { fetchData })
 export default class Home extends Component {
   static propTypes = {
@@ -14,11 +15,14 @@ export default class Home extends Component {
         age: PropTypes.number
       }))
     }).isRequired,
+    loaded: PropTypes.bool.isRequired,
     fetchData: PropTypes.func.isRequired
   }
 
   componentWillMount() {
-    this.props.fetchData()
+    if (!this.props.loaded) {
+      this.props.fetchData()
+    }
   }
 
   render() {
