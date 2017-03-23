@@ -18,10 +18,7 @@ const Html = (props) => {
           charSet="UTF-8"
         />
         <script
-          src={process.env.NODE_ENV === 'production' ?
-            `${process.env.PUBLIC_PATH}/client.js` :
-            'http://localhost:3001/client.js'
-          }
+          src={`${process.env.PUBLIC_PATH}/client.js`}
         />
       </body>
     </html>

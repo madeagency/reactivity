@@ -1,9 +1,13 @@
 const webpack = require('webpack')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
+const WebpackChunkHash = require('webpack-chunk-hash')
 
 module.exports = {
-  entry: ['./src/client'],
+  entry: {
+    client: './src/client'
+  },
   target: 'web',
   module: {
     rules: [{
@@ -21,19 +25,34 @@ module.exports = {
     }
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
     }),
     new Dotenv({
       path: './.env',
       safe: false
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function include(module) {
+        return module.context && module.context.indexOf('node_modules') !== -1
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'client.manifest',
+    }),
+    new WebpackChunkHash(),
+    new ChunkManifestPlugin({
+      filename: 'client.chunk-manifest.json',
+      manifestVariable: 'webpackManifest'
     })
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist/',
-    filename: 'client.js'
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js'
   }
 }

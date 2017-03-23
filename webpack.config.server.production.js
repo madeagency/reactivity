@@ -4,7 +4,9 @@ const nodeExternals = require('webpack-node-externals')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: './bin/server',
+  entry: {
+    server: './bin/server'
+  },
   target: 'node',
   externals: [nodeExternals()],
   module: {
@@ -23,7 +25,7 @@ module.exports = {
     }
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
@@ -39,6 +41,6 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'server.js'
+    filename: '[name].js'
   }
 }
