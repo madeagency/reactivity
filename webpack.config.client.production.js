@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
     }),
@@ -41,11 +41,11 @@ module.exports = {
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'client.manifest',
+      name: 'manifest',
     }),
     new WebpackChunkHash(),
     new ChunkManifestPlugin({
-      filename: 'client.chunk-manifest.json',
+      filename: 'chunk-manifest.json',
       manifestVariable: 'webpackManifest'
     })
   ],
