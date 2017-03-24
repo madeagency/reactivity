@@ -10,20 +10,22 @@ import configureStore, { wrappedEpic } from './redux/configureStore'
 import Html from './helpers/Html'
 import App from './containers/App/App'
 
-const { API_HOST, API_PORT, NODE_ENV } = process.env
+const { API_HOST, API_PORT } = process.env
 const apiUrl = `http://${API_HOST}:${API_PORT}/api/`
-const isProduction = NODE_ENV === 'production'
-
 const app = express()
-app.use(express.static(isProduction ? 'dist' : '.build'))
-
-const proxy = createProxyServer({
-  target: apiUrl
-})
+const proxy = createProxyServer()
 
 app.use('/api', (req, res) => {
   proxy.web(req, res, { target: apiUrl })
 })
+
+app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use(`/${process.env.PUBLIC_PATH}`, (req, res) => {
+    proxy.web(req, res, { target: 'http://localhost:3001/' })
+  })
+}
 
 app.use((req, res) => {
   const store = configureStore()

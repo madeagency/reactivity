@@ -33,7 +33,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.SERVER': JSON.stringify(true)
+      'process.env.SERVER': JSON.stringify(true),
+      'process.env.PUBLIC_PATH': JSON.stringify('.build')
     }),
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'

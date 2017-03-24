@@ -93,3 +93,4 @@ typings/
 #App
 .build
 .favicon
+dist

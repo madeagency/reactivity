@@ -24,7 +24,9 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        <script src="http://localhost:3001/client.js" />
+        <script
+          src={`${process.env.PUBLIC_PATH}/client.js`}
+        />
       </body>
     </html>
   )
