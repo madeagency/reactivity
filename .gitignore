@@ -93,3 +93,6 @@ typings/
 #App
 .build
 dist
+
+
+.vscode

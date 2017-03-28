@@ -13,61 +13,64 @@ import App from './containers/App/App'
 const { API_HOST, API_PORT } = process.env
 const apiUrl = `http://${API_HOST}:${API_PORT}/api/`
 
-const app = express()
-const proxy = createProxyServer()
+export default function (assets) {
+  const app = express()
+  const proxy = createProxyServer()
 
-app.use('/api', (req, res) => {
-  proxy.web(req, res, { target: apiUrl })
-})
-
-app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
-
-if (process.env.NODE_ENV !== 'production') {
-  app.use(`/${process.env.PUBLIC_PATH}`, (req, res) => {
-    proxy.web(req, res, { target: 'http://localhost:3001/' })
+  app.use('/api', (req, res) => {
+    proxy.web(req, res, { target: apiUrl })
   })
+
+  app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
+
+  if (process.env.NODE_ENV !== 'production') {
+    app.use(`/${process.env.PUBLIC_PATH}`, (req, res) => {
+      proxy.web(req, res, { target: 'http://localhost:3001/' })
+    })
+  }
+
+  app.use((req, res) => {
+    const store = configureStore()
+    const reactRouterContext = {}
+
+    const component = (
+      <Provider store={store} key="provider">
+        <StaticRouter
+          location={req.url}
+          context={reactRouterContext}
+        >
+          <App />
+        </StaticRouter>
+      </Provider>
+    )
+
+    withAsyncComponents(component).then((result) => {
+      const {
+        appWithAsyncComponents,
+        state,
+        STATE_IDENTIFIER
+      } = result
+
+      renderToStringEpic(appWithAsyncComponents, wrappedEpic)
+        .map(({ markup }) => ({
+          markup,
+          data: store.getState()
+        }))
+        .subscribe(({ markup, data }) => {
+          wrappedEpic.unsubscribe()
+
+          const html = renderToString(
+            <Html
+              assets={assets}
+              component={markup}
+              preLoadedState={data}
+              asyncComponents={{ state, STATE_IDENTIFIER }}
+            />
+          )
+          res.send(`<!doctype html>\n${html}`)
+        })
+    })
+  })
+
+  return app
 }
-
-app.use((req, res) => {
-  const store = configureStore()
-  const reactRouterContext = {}
-
-  const component = (
-    <Provider store={store} key="provider">
-      <StaticRouter
-        location={req.url}
-        context={reactRouterContext}
-      >
-        <App />
-      </StaticRouter>
-    </Provider>
-  )
-
-  withAsyncComponents(component).then((result) => {
-    const {
-      appWithAsyncComponents,
-      state,
-      STATE_IDENTIFIER
-    } = result
-
-    renderToStringEpic(appWithAsyncComponents, wrappedEpic)
-      .map(({ markup }) => ({
-        markup,
-        data: store.getState()
-      }))
-      .subscribe(({ markup, data }) => {
-        wrappedEpic.unsubscribe()
-
-        const html = renderToString(
-          <Html
-            component={markup}
-            preLoadedState={data}
-            asyncComponents={{ state, STATE_IDENTIFIER }}
-          />
-        )
-        res.send(`<!doctype html>\n${html}`)
-      })
-  })
-})
-
-export default app

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import serialize from 'serialize-javascript'
 
 const Html = (props) => {
-  const { component, asyncComponents, preLoadedState } = props
+  const { component, asyncComponents, preLoadedState, assets } = props
   const content = component || ''
 
   return (
@@ -17,15 +17,15 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        <script
-          src={`${process.env.PUBLIC_PATH}/client.js`}
-        />
+        <script src={assets.javascript.vendor} />
+        <script src={assets.javascript.client} />
       </body>
     </html>
   )
 }
 
 Html.propTypes = {
+  assets: PropTypes.shape({}).isRequired,
   component: PropTypes.node.isRequired,
   preLoadedState: PropTypes.shape({}).isRequired,
   asyncComponents: PropTypes.shape({
