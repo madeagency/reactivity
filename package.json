@@ -47,14 +47,16 @@
     "rxjs": "^5.2.0",
     "serialize-javascript": "^1.3.0",
     "universal-webpack": "^0.3.7",
+    "nodemon": "^1.11.0",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {
-    "start:server": "rm -rf ./build && webpack --config  webpack.config.server.js",
+    "start:server": "webpack --config webpack.config.server.js --watch --hot",
     "start:client": "webpack-dev-server --config webpack.config.client.js",
-    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
-    "production:client:build": "webpack --config webpack.config.client.production.js -p --colors --display-error-details",
-    "production:server:build": "webpack --config webpack.config.server.production.js -p --colors --display-error-details",
-    "production": "rm -rf dist; npm-run-all --parallel production:server:build production:client:build; node bin/start-server.js"
+    "start:process": "node bin/start-server.watch.js",
+    "start": "rm -rf dist && npm-run-all --parallel start:server start:client start:process",
+    "production:client": "webpack --config webpack.config.client.production.js -p --colors --display-error-details",
+    "production:server": "webpack --config webpack.config.server.production.js -p --colors --display-error-details",
+    "production": "rm -rf dist; npm-run-all --parallel production:server production:client; node bin/start-server.js"
   }
 }
