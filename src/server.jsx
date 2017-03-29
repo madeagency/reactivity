@@ -21,13 +21,8 @@ export default function (assets) {
     proxy.web(req, res, { target: apiUrl })
   })
 
-  app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
-
-  if (process.env.NODE_ENV !== 'production') {
-    app.use(`/${process.env.PUBLIC_PATH}`, (req, res) => {
-      proxy.web(req, res, { target: 'http://localhost:3001/' })
-    })
-  }
+  app.use(express.static('dist'))
+  app.use(express.static('static'))
 
   app.use((req, res) => {
     const store = configureStore()

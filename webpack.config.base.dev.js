@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -35,12 +37,16 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
     }),
-    new webpack.DefinePlugin({
-      'process.env.PUBLIC_PATH': JSON.stringify('dist')
-    }),
     new Dotenv({
       path: './.env',
       safe: false
+    }),
+    new ServiceWorkerPlugin({
+      entry: path.join(__dirname, 'src/sw.js')
+    }),
+    new WriteFilePlugin({
+      test: /sw.js$/,
+      useHashIndex: true
     })
   ],
   devServer: {
