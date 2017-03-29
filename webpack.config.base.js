@@ -3,10 +3,6 @@ const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const Visualizer = require('webpack-visualizer-plugin')
-const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
-const HtmlPlugin = require('html-webpack-plugin')
-const HelmetPlugin = require('helmet-webpack-plugin').default
-const config = require('./src/config')
 
 module.exports = {
   context: path.resolve(__dirname),
@@ -37,16 +33,6 @@ module.exports = {
     new Dotenv({
       path: './.env',
       safe: false
-    }),
-    new ServiceWorkerPlugin({
-      entry: path.join(__dirname, 'src/sw.js')
-    }),
-    new HtmlPlugin({
-      filename: 'index.html',
-      template: 'src/helpers/shell.jsx'
-    }),
-    new HelmetPlugin({
-      helmetProps: config.head
     }),
     new WebpackChunkHash(),
     new webpack.optimize.CommonsChunkPlugin({
