@@ -1,12 +1,19 @@
 import React, { PropTypes } from 'react'
 import serialize from 'serialize-javascript'
+import Helmet from 'react-helmet'
 
 const Html = (props) => {
   const { component, asyncComponents, preLoadedState, assets } = props
   const content = component || ''
+  const head = Helmet.rewind()
 
   return (
     <html lang="en">
+      <head>
+        { head.title.toComponent() }
+        { head.meta.toComponent() }
+        { head.link.toComponent() }
+      </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
         <script
@@ -17,8 +24,8 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        <script src={assets.javascript.vendor} />
-        <script src={assets.javascript.client} />
+        {assets && assets.javascript && <script src={assets.javascript.vendor} />}
+        {assets && assets.javascript && <script src={assets.javascript.client} />}
       </body>
     </html>
   )

@@ -35,9 +35,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
     }),
-    new webpack.DefinePlugin({
-      'process.env.PUBLIC_PATH': JSON.stringify('dist')
-    }),
     new Dotenv({
       path: './.env',
       safe: false

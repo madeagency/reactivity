@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { withAsyncComponents } from 'react-async-component'
+import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import configureStore from './redux/configureStore'
 import App from './containers/App/App'
 
@@ -28,6 +29,10 @@ function renderApp(TheApp) {
 }
 
 renderApp(App)
+
+if ('serviceWorker' in navigator) {
+  runtime.register()
+}
 
 if (module.hot) {
   module.hot.accept('./client')

@@ -6,8 +6,7 @@ const configuration = require('./webpack.config.base')
 const settings = require('./universal-webpack-settings')
 
 configuration.plugins.push(new webpack.DefinePlugin({
-  'process.env.SERVER': JSON.stringify(true),
-  'process.env.PUBLIC_PATH': JSON.stringify('dist')
+  'process.env.SERVER': JSON.stringify(true)
 }))
 
 module.exports = serverConfiguration(configuration, settings)

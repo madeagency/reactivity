@@ -6,6 +6,7 @@ import { renderToString as renderToStringEpic } from 'react-redux-epic'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { createProxyServer } from 'http-proxy'
+import path from 'path'
 import configureStore, { wrappedEpic } from './redux/configureStore'
 import Html from './helpers/Html'
 import App from './containers/App/App'
@@ -21,13 +22,8 @@ export default function (assets) {
     proxy.web(req, res, { target: apiUrl })
   })
 
-  app.use(`/${process.env.PUBLIC_PATH}`, express.static(process.env.PUBLIC_PATH))
-
-  if (process.env.NODE_ENV !== 'production') {
-    app.use(`/${process.env.PUBLIC_PATH}`, (req, res) => {
-      proxy.web(req, res, { target: 'http://localhost:3001/' })
-    })
-  }
+  app.use(express.static(path.join(__dirname, '..', 'dist')))
+  app.use(express.static(path.join(__dirname, '..', 'static')))
 
   app.use((req, res) => {
     const store = configureStore()
