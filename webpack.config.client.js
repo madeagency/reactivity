@@ -20,6 +20,7 @@ configuration.plugins.push(new HtmlPlugin({
 }))
 
 configuration.plugins.push(new HelmetPlugin({
+  filename: 'shell.html',
   helmetProps: config.head
 }))
 
@@ -28,7 +29,7 @@ configuration.plugins.push(new ServiceWorkerPlugin({
 }))
 
 configuration.plugins.push(new WriteFilePlugin({
-  test: /(sw.js|shell.html)$/,
+  test: /(sw.js|\.html)$/,
   useHashIndex: true,
   log: false
 }))
