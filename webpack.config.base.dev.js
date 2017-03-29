@@ -3,6 +3,9 @@ const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const HelmetPlugin = require('helmet-webpack-plugin').default
+const config = require('./src/config')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -44,9 +47,17 @@ module.exports = {
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, 'src/sw.js')
     }),
+    new HtmlPlugin({
+      filename: 'index.html',
+      template: 'src/helpers/shell.jsx'
+    }),
+    new HelmetPlugin({
+      helmetProps: config.head
+    }),
     new WriteFilePlugin({
-      test: /sw.js$/,
-      useHashIndex: true
+      test: /(sw.js|\.html)$/,
+      useHashIndex: true,
+      log: false
     })
   ],
   devServer: {

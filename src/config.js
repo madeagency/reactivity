@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   title: 'React Universal',
   description: 'a bleeading edge react boilerplate',
   head: {
@@ -19,3 +19,4 @@ export default {
     ]
   }
 }
+

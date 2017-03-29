@@ -24,8 +24,8 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        <script src={assets.javascript.vendor} />
-        <script src={assets.javascript.client} />
+        {assets && assets.javascript && <script src={assets.javascript.vendor} />}
+        {assets && assets.javascript && <script src={assets.javascript.client} />}
       </body>
     </html>
   )
