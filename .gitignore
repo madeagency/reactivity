@@ -94,3 +94,6 @@ typings/
 .build
 .favicon
 dist
+
+
+.vscode

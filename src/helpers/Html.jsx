@@ -3,7 +3,7 @@ import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
 
 const Html = (props) => {
-  const { component, asyncComponents, preLoadedState } = props
+  const { component, asyncComponents, preLoadedState, assets } = props
   const content = component || ''
   const head = Helmet.rewind()
 
@@ -24,15 +24,15 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        <script
-          src={`${process.env.PUBLIC_PATH}/client.js`}
-        />
+        <script src={assets.javascript.vendor} />
+        <script src={assets.javascript.client} />
       </body>
     </html>
   )
 }
 
 Html.propTypes = {
+  assets: PropTypes.shape({}).isRequired,
   component: PropTypes.node.isRequired,
   preLoadedState: PropTypes.shape({}).isRequired,
   asyncComponents: PropTypes.shape({
