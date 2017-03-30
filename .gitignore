@@ -94,6 +94,6 @@ typings/
 .build
 .favicon
 dist
-
+./index.html
 
 .vscode
