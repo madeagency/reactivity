@@ -16,6 +16,19 @@ module.exports = {
       include: [
         path.join(__dirname, 'src')
       ]
+    }, {
+      test: /\.scss?$/,
+      use: [{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          importLoaders: 2
+        }
+      }, {
+        loader: 'sass-loader'
+      }]
     }]
   },
   resolve: {

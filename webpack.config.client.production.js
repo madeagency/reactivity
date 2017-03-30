@@ -27,4 +27,4 @@ configuration.plugins.push(new ServiceWorkerPlugin({
   entry: path.join(__dirname, 'src/sw.js')
 }))
 
-module.exports = clientConfiguration(configuration, settings)
+module.exports = clientConfiguration(configuration, settings, { development: false })

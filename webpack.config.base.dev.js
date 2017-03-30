@@ -20,6 +20,25 @@ module.exports = {
       include: [
         path.join(__dirname, 'src')
       ]
+    }, {
+      test: /\.scss?$/,
+      use: [{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          importLoaders: 2,
+          sourceMap: true
+        }
+      }, {
+        loader: 'sass-loader',
+        options: {
+          outputStyle: 'expanded',
+          sourceMap: true,
+          sourceMapContents: true
+        }
+      }]
     }]
   },
   resolve: {

@@ -13,6 +13,9 @@ const Html = (props) => {
         { head.title.toComponent() }
         { head.meta.toComponent() }
         { head.link.toComponent() }
+        { Object.keys(assets.styles || {}).map(name => (
+          <link rel="stylesheet" key={name} href={assets.styles[name]} />
+        ))}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />

@@ -34,4 +34,7 @@ configuration.plugins.push(new WriteFilePlugin({
   log: false
 }))
 
-module.exports = clientConfiguration(configuration, settings)
+module.exports = clientConfiguration(configuration, settings, {
+  development: true,
+  css_bundle: true
+})
