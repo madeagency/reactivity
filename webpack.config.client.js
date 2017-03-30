@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const yargs = require('yargs')
 
-const devConfig = require('./webpack.config.base.dev')
+const devConfig = require('./webpack.config.dev')
 const baseConfig = require('./webpack.config.base')
 const settings = require('./universal-webpack-settings')
 
@@ -17,7 +17,9 @@ const config = require('./src/config')
 const isDevelopmentMode = !(yargs.argv.p || false)
 const configuration = isDevelopmentMode ? devConfig : baseConfig
 
-const clientPlugins = [
+configuration.target = 'web'
+
+configuration.plugins.push(
   new webpack.DefinePlugin({
     'process.env.SERVER': JSON.stringify(false)
   }),
@@ -32,18 +34,15 @@ const clientPlugins = [
   new ServiceWorkerPlugin({
     entry: path.join(__dirname, 'src/sw.js')
   })
-]
+)
 
 if (isDevelopmentMode) {
-  clientPlugins.push(new WriteFilePlugin({
+  configuration.plugins.push(new WriteFilePlugin({
     test: /(sw.js|\.html)$/,
     useHashIndex: true,
     log: false
   }))
 }
-
-configuration.target = 'web'
-configuration.plugins.push(clientPlugins)
 
 // https://github.com/halt-hammerzeit/universal-webpack#flash-of-unstyled-content
 module.exports = clientConfiguration(configuration, settings, {

@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const yargs = require('yargs')
 const serverConfiguration = require('universal-webpack').serverConfiguration
-const devConfig = require('./webpack.config.base.dev')
+const devConfig = require('./webpack.config.dev')
 const baseConfig = require('./webpack.config.base')
 const settings = require('./universal-webpack-settings')
 
