@@ -6,9 +6,10 @@ const Html = (props) => {
   const { component, asyncComponents, preLoadedState, assets } = props
   const content = component || ''
   const head = Helmet.rewind()
+  const htmlAttrs = head.htmlAttributes.toComponent()
 
   return (
-    <html lang="en">
+    <html {...htmlAttrs}>
       <head>
         { head.title.toComponent() }
         { head.meta.toComponent() }
@@ -27,8 +28,8 @@ const Html = (props) => {
           }}
           charSet="UTF-8"
         />
-        {assets && assets.javascript && <script src={assets.javascript.vendor} />}
-        {assets && assets.javascript && <script src={assets.javascript.client} />}
+        { assets && assets.javascript && <script src={assets.javascript.vendor} /> }
+        { assets && assets.javascript && <script src={assets.javascript.client} /> }
       </body>
     </html>
   )
