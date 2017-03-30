@@ -3,7 +3,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { withAsyncComponents } from 'react-async-component'
 import { renderToString as renderToStringEpic } from 'react-redux-epic'
-import { renderToString } from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { createProxyServer } from 'http-proxy'
 import path from 'path'
@@ -55,7 +55,7 @@ export default function (assets) {
         .subscribe(({ markup, data }) => {
           wrappedEpic.unsubscribe()
 
-          const html = renderToString(
+          const html = renderToStaticMarkup(
             <Html
               assets={assets}
               component={markup}
