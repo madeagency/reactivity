@@ -24,7 +24,8 @@
         "node_modules",
         "src",
         "components",
-        "reducers"
+        "reducers",
+        "api"
       ]
     },
     "import/resolver": {
