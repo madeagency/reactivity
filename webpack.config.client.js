@@ -34,4 +34,8 @@ configuration.plugins.push(new WriteFilePlugin({
   log: false
 }))
 
-module.exports = clientConfiguration(configuration, settings)
+// https://github.com/halt-hammerzeit/universal-webpack#flash-of-unstyled-content
+module.exports = clientConfiguration(configuration, settings, {
+  development: true,
+  css_bundle: true
+})
