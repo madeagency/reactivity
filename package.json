@@ -31,7 +31,8 @@
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.4.1",
     "webpack-node-externals": "^1.5.4",
-    "write-file-webpack-plugin": "^4.0.0"
+    "write-file-webpack-plugin": "^4.0.0",
+    "yargs": "^7.0.2"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -66,8 +67,8 @@
     "start:client": "webpack-dev-server --config webpack.config.client.js",
     "start:process": "node bin/start-server.watch.js",
     "start": "rm -rf dist && npm-run-all --parallel start:server start:client start:process",
-    "production:client": "webpack --config webpack.config.client.production.js -p --colors --display-error-details",
-    "production:server": "webpack --config webpack.config.server.production.js -p --colors --display-error-details",
+    "production:client": "webpack --config webpack.config.client.js -p --colors --display-error-details",
+    "production:server": "webpack --config webpack.config.server.js -p --colors --display-error-details",
     "production": "rm -rf dist; npm-run-all --parallel production:server production:client; node bin/start-server.js",
     "generate:favicon": "real-favicon generate favicon.config.json .favicon static"
   }

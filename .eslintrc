@@ -22,12 +22,14 @@
     "import/resolve": {
       "moduleDirectory": [
         "node_modules",
-        "src"
+        "src",
+        "components",
+        "reducers"
       ]
     },
     "import/resolver": {
       "webpack": {
-         "config": "webpack.config.client.js"
+         "config": "webpack.config.base.js"
       }
     }
   }
