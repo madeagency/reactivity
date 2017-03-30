@@ -3,6 +3,7 @@ const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const Visualizer = require('webpack-visualizer-plugin')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   context: path.resolve(__dirname),
@@ -25,6 +26,13 @@ module.exports = {
         options: {
           modules: true,
           importLoaders: 2
+        }
+      }, {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [
+            autoprefixer({ browsers: 'last 2 versions' })
+          ]
         }
       }, {
         loader: 'sass-loader'

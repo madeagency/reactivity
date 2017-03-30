@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -30,6 +31,13 @@ module.exports = {
           modules: true,
           importLoaders: 2,
           sourceMap: true
+        }
+      }, {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [
+            autoprefixer({ browsers: 'last 2 versions' })
+          ]
         }
       }, {
         loader: 'sass-loader',
