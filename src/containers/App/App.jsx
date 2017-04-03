@@ -3,8 +3,8 @@ import Switch from 'react-router-dom/Switch'
 import Route from 'react-router-dom/Route'
 import { createAsyncComponent } from 'react-async-component'
 import Helmet from 'react-helmet'
+import Menu from 'components/Menu/Menu'
 import config from '../../config'
-import Menu from '../../components/Menu/Menu'
 
 const Home = createAsyncComponent({
   resolve: () => System.import('../Home/Home'),

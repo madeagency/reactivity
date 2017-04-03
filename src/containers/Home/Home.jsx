@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import { fetchData } from '../../redux/reducers/users'
+import { fetchData } from 'reducers/users'
 
 @connect(state => ({
   users: state.users,

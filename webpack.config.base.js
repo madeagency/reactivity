@@ -5,6 +5,7 @@ const WebpackChunkHash = require('webpack-chunk-hash')
 const Visualizer = require('webpack-visualizer-plugin')
 const autoprefixer = require('autoprefixer')
 
+// Base Webpack config for server and client
 module.exports = {
   context: path.resolve(__dirname),
   entry: {
@@ -42,7 +43,9 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx'],
     alias: {
-      api: path.resolve(__dirname, 'src/api/')
+      api: path.resolve(__dirname, 'src/api/'),
+      components: path.resolve(__dirname, 'src/components/'),
+      reducers: path.resolve(__dirname, 'src/redux/reducers/')
     }
   },
   plugins: [

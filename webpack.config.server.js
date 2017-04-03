@@ -1,9 +1,14 @@
 const webpack = require('webpack')
-
+const yargs = require('yargs')
 const serverConfiguration = require('universal-webpack').serverConfiguration
-
-const configuration = require('./webpack.config.base.dev')
+const devConfig = require('./webpack.config.dev')
+const baseConfig = require('./webpack.config.base')
 const settings = require('./universal-webpack-settings')
+
+const isDevelopmentMode = !(yargs.argv.p || false)
+const configuration = isDevelopmentMode ? devConfig : baseConfig
+
+configuration.target = 'node'
 
 configuration.plugins.push(new webpack.DefinePlugin({
   'process.env.SERVER': JSON.stringify(true)
