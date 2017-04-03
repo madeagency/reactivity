@@ -1,7 +1,9 @@
 const webpack = require('webpack')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
-const configuration = require('./webpack.config.base')
+const originalConfiguration = require('./webpack.config.base')
+// Clone base configuration, this prevents modification of exported object
+const configuration = Object.assign({}, originalConfiguration)
 
 // Base Dev Webpack config for server and client
 configuration.devtool = 'inline-source-map'
