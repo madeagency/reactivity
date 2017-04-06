@@ -10,9 +10,7 @@ const settings = require('./universal-webpack-settings')
 const clientConfiguration = require('universal-webpack').clientConfiguration
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
-const HelmetPlugin = require('helmet-webpack-plugin').default
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const config = require('./src/config')
 
 const isDevelopmentMode = !(yargs.argv.p || false)
 const configuration = isDevelopmentMode ? devConfig : baseConfig
@@ -26,10 +24,6 @@ configuration.plugins.push(
   new HtmlPlugin({
     filename: 'shell.html',
     template: 'src/helpers/shell.jsx'
-  }),
-  new HelmetPlugin({
-    helmetProps: config.head,
-    filename: 'shell.html'
   }),
   new ServiceWorkerPlugin({
     entry: path.join(__dirname, 'src/sw.js')

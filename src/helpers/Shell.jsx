@@ -1,12 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
+import Helmet from 'react-helmet'
 import Html from './Html'
 
+import config from '../config'
+
 export default function () {
-  return `<!doctype html>${ReactDOM.renderToStaticMarkup(
+  renderToStaticMarkup(<Helmet {...config.head} />)
+  return `<!doctype html>${renderToStaticMarkup(
     <Html
       assets={{}}
-      component={{}}
       preLoadedState={{}}
       asyncComponents={{}}
     />
