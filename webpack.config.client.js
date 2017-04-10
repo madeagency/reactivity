@@ -9,7 +9,6 @@ const settings = require('./universal-webpack-settings')
 // Client Specific Plugins
 const clientConfiguration = require('universal-webpack').clientConfiguration
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
-const HtmlPlugin = require('html-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 
 const isDevelopmentMode = !(yargs.argv.p || false)
@@ -21,10 +20,6 @@ configuration.plugins.push(
   new webpack.DefinePlugin({
     'process.env.SERVER': JSON.stringify(false)
   }),
-  new HtmlPlugin({
-    filename: 'shell.html',
-    template: 'src/helpers/shell.jsx'
-  }),
   new ServiceWorkerPlugin({
     entry: path.join(__dirname, 'src/sw.js')
   })
@@ -32,7 +27,7 @@ configuration.plugins.push(
 
 if (isDevelopmentMode) {
   configuration.plugins.push(new WriteFilePlugin({
-    test: /(sw.js|\.html)$/,
+    test: /(sw.js)$/,
     useHashIndex: true,
     log: false
   }))

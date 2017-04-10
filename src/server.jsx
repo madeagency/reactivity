@@ -9,6 +9,7 @@ import { createProxyServer } from 'http-proxy'
 import path from 'path'
 import configureStore, { wrappedEpic } from './redux/configureStore'
 import Html from './helpers/Html'
+import renderShell from './helpers/Shell'
 import App from './containers/App/App'
 
 const { API_HOST, API_PORT } = process.env
@@ -21,6 +22,8 @@ export default function (assets) {
   app.use('/api', (req, res) => {
     proxy.web(req, res, { target: apiUrl })
   })
+
+  app.use('/shell', (req, res) => res.send(renderShell(assets)))
 
   app.use(express.static(path.join(__dirname, '..', 'dist')))
   app.use(express.static(path.join(__dirname, '..', 'static')))
