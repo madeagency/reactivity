@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const yargs = require('yargs')
 
+const packageJson = require('./package.json')
 const devConfig = require('./webpack.config.dev')
 const baseConfig = require('./webpack.config.base')
 const settings = require('./universal-webpack-settings')
@@ -18,10 +19,12 @@ configuration.target = 'web'
 
 configuration.plugins.push(
   new webpack.DefinePlugin({
-    'process.env.SERVER': JSON.stringify(false)
+    'process.env.SERVER': JSON.stringify(false),
+    'process.env.VERSION': JSON.stringify(packageJson.version)
   }),
   new ServiceWorkerPlugin({
-    entry: path.join(__dirname, 'src/sw.js')
+    entry: path.join(__dirname, 'src/sw.js'),
+    excludes: ['*hot-update*']
   })
 )
 
