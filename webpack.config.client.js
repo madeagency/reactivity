@@ -39,5 +39,5 @@ if (isDevelopmentMode) {
 // https://github.com/halt-hammerzeit/universal-webpack#flash-of-unstyled-content
 module.exports = clientConfiguration(configuration, settings, {
   development: isDevelopmentMode,
-  css_bundle: isDevelopmentMode
+  css_bundle: true
 })

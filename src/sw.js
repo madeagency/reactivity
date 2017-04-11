@@ -4,7 +4,10 @@ const CACHE_NAME = process.env.VERSION
 const production = process.env.NODE_ENV === 'production'
 const assetOrigin = production ? location.origin : 'http://localhost:3001'
 const assetsToCache = [
-  ...assets.filter(asset => asset.match(/client.*\.(js|css)/))
+  ...assets.filter(asset => (
+    asset.match(/(client|vendor).*\.(js|css)/) ||
+    asset.match(/\.(png|jpg|jpeg|gif|svg)$/i)
+  ))
 ].map(path => new URL(path, assetOrigin).toString())
 
 self.addEventListener('install', (event) => {
@@ -23,6 +26,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url)
   const requestingKnownAsset = assetsToCache.indexOf(requestUrl.toString()) !== -1
+  const requestingRoute = requestUrl.pathname.indexOf('.') === -1
 
   if (requestUrl.origin !== location.origin && !requestingKnownAsset) {
     return
@@ -32,7 +36,11 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  const request = !requestingKnownAsset ? new Request('/shell') : event.request
+  if (!requestingRoute && !requestingKnownAsset) {
+    return
+  }
+
+  const request = requestingRoute ? new Request('/shell') : event.request
   event.respondWith(
     caches.match(event.request).then(cacheResponse => cacheResponse || (
       fetch(request).then((response) => {
