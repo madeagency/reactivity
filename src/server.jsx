@@ -1,7 +1,8 @@
 import express from 'express'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { withAsyncComponents } from 'react-async-component'
+import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
+import asyncBootstrapper from 'react-async-bootstrapper'
 import { renderToString as renderToStringEpic } from 'react-redux-epic'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
@@ -18,6 +19,7 @@ const apiUrl = `http://${API_HOST}:${API_PORT}/api/`
 export default function (assets) {
   const app = express()
   const proxy = createProxyServer()
+  const asyncContext = createAsyncContext()
 
   app.use('/api', (req, res) => {
     proxy.web(req, res, { target: apiUrl })
@@ -33,24 +35,22 @@ export default function (assets) {
     const reactRouterContext = {}
 
     const component = (
-      <Provider store={store} key="provider">
-        <StaticRouter
-          location={req.url}
-          context={reactRouterContext}
-        >
-          <App />
-        </StaticRouter>
-      </Provider>
+      <AsyncComponentProvider asyncContext={asyncContext}>
+        <Provider store={store} key="provider">
+          <StaticRouter
+            location={req.url}
+            context={reactRouterContext}
+          >
+            <App />
+          </StaticRouter>
+        </Provider>
+      </AsyncComponentProvider>
     )
 
-    withAsyncComponents(component).then((result) => {
-      const {
-        appWithAsyncComponents,
-        state,
-        STATE_IDENTIFIER
-      } = result
+    asyncBootstrapper(component).then(() => {
+      const asyncState = asyncContext.getState()
 
-      renderToStringEpic(appWithAsyncComponents, wrappedEpic)
+      renderToStringEpic(component, wrappedEpic)
         .map(({ markup }) => ({
           markup,
           data: store.getState()
@@ -63,7 +63,7 @@ export default function (assets) {
               assets={assets}
               component={markup}
               preLoadedState={data}
-              asyncComponents={{ state, STATE_IDENTIFIER }}
+              asyncState={asyncState}
             />
           )
           res.send(`<!doctype html>\n${html}`)
