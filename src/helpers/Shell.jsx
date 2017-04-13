@@ -19,7 +19,6 @@ export default function (assets) {
       component={content}
       assets={assets}
       preLoadedState={{}}
-      asyncComponents={{}}
     />
   )}`
 }

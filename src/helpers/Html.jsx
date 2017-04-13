@@ -3,7 +3,7 @@ import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
 
 const Html = (props) => {
-  const { component, asyncComponents, preLoadedState, assets } = props
+  const { component, asyncState, preLoadedState, assets } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
   return (
@@ -23,9 +23,9 @@ const Html = (props) => {
           dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(preLoadedState)};` }}
           charSet="UTF-8"
         />
-        { asyncComponents.STATE_IDENTIFIER && <script
+        { asyncState && <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.${asyncComponents.STATE_IDENTIFIER}=${serialize(asyncComponents.state)};` }}
+          dangerouslySetInnerHTML={{ __html: `window.ASYNC_COMPONENTS_STATE=${serialize(asyncState)}` }}
           charSet="UTF-8"
         /> }
         { assets && assets.javascript && <script src={assets.javascript.vendor} /> }
@@ -39,10 +39,7 @@ Html.propTypes = {
   assets: PropTypes.shape({}).isRequired,
   component: PropTypes.node,
   preLoadedState: PropTypes.shape({}).isRequired,
-  asyncComponents: PropTypes.shape({
-    state: PropTypes.object,
-    STATE_IDENTIFIER: PropTypes.string
-  }).isRequired
+  asyncState: PropTypes.shape({})
 }
 
 Html.defaultProps = {
