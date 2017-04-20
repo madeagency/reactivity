@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { combineEpics } from 'redux-observable'
+import { reducer as formReducer } from 'redux-form'
 import users, { fetchUserEpic } from './users'
 
 export const rootEpic = combineEpics(
@@ -7,5 +8,6 @@ export const rootEpic = combineEpics(
 )
 
 export default combineReducers({
-  users
+  users,
+  form: formReducer
 })

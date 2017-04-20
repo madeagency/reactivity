@@ -1,5 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import TypicalFrom from 'components/TypicalForm/TypicalForm'
+
+function typicalSubmit(values) {
+  console.log(values)
+}
 
 const About = () => (
   <div id="about">
@@ -9,7 +14,10 @@ const About = () => (
         { name: 'description', content: 'My About Page' }
       ]}
     />
+
     test about!!!!
+
+    <TypicalFrom onSubmit={typicalSubmit} />
   </div>
 )
 
