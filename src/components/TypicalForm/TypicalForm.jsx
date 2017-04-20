@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'components/TextField/TextField'
 import SelectField from 'components/SelectField/SelectField'
+import FileField from 'components/FileField/FileField'
 import typicalValidation from './TypicalValidation'
 
 const TypicalForm = (props) => {
@@ -34,6 +35,12 @@ const TypicalForm = (props) => {
           { title: 'blue', value: '00ff00' },
           { title: 'orange', value: '0000ff' }
         ]}
+      />
+
+      <Field
+        name="avatar"
+        type="file"
+        component={FileField}
       />
 
       <button type="submit" disabled={pristine || submitting}>Submit</button>
