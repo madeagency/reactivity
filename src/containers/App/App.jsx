@@ -8,11 +8,15 @@ import config from '../../config'
 
 const Home = asyncComponent({
   resolve: () => System.import('../Home/Home'),
+  LoadingComponent: () => <div>Loading Home</div>,
+  ErrorComponent: () => <div>Some Error Happened</div>,
   ssrMode: 'boundary'
 })
 
 const About = asyncComponent({
   resolve: () => System.import('../About/About'),
+  LoadingComponent: () => <div>Loading About</div>,
+  ErrorComponent: () => <div>Some Error Happened</div>,
   ssrMode: 'defer'
 })
 
