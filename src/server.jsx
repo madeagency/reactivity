@@ -56,8 +56,6 @@ export default function (assets) {
           data: store.getState()
         }))
         .subscribe(({ markup, data }) => {
-          wrappedEpic.unsubscribe()
-
           const html = renderToStaticMarkup(
             <Html
               assets={assets}

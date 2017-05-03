@@ -4776,9 +4776,9 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-redux-epic@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/react-redux-epic/-/react-redux-epic-0.1.0.tgz#8830bb1c20c85cd73d8fc7243fdff482285422dc"
+react-redux-epic@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-redux-epic/-/react-redux-epic-0.3.1.tgz#f9e559be41e4f7ac23c11d107e92ffa3d47b9868"
   dependencies:
     babel-runtime "^6.11.6"
     debug "^2.2.0"
@@ -4786,8 +4786,8 @@ react-redux-epic@^0.1.0:
     react "^15.3.2"
     react-dom "^15.3.2"
     redux "^3.6.0"
-    redux-observable "^0.12.2"
-    rxjs "^5.0.0-rc.5"
+    redux-observable "^0.14.1"
+    rxjs "^5.3.0"
 
 react-redux@^5.0.4:
   version "5.0.4"
@@ -4980,10 +4980,6 @@ redux-form@^6.6.3:
     lodash "^4.17.3"
     lodash-es "^4.17.3"
     prop-types "^15.5.6"
-
-redux-observable@^0.12.2:
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.12.2.tgz#4bc1657c7eedace577e114b74ffe6f6fb2b36ccf"
 
 redux-observable@^0.14.1:
   version "0.14.1"
@@ -5184,7 +5180,7 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
-rxjs@^5.0.0-rc.5, rxjs@^5.3.1:
+rxjs@^5.3.0, rxjs@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.3.1.tgz#9ecc9e722247e4f4490d30a878577a3740fd0cb7"
   dependencies:
