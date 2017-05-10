@@ -19,7 +19,7 @@ export function request(url, options) {
 }
 
 export function apiFetch(path, options) {
-  return fetch(`${process.env.APP_HOST}:${process.env.APP_PORT}/api/${path}`, options)
+  return fetch(`${process.env.APP_HOST}:${process.env.APP_PORT}/api${path}`, options)
     .then(checkStatus)
     .then(parseJSON)
 }
