@@ -19,7 +19,7 @@ export default function (assets) {
   const asyncContext = createAsyncContext()
 
   app.use('/api', (req, res) => {
-    proxy.web(req, res, { target: process.env.API_URL })
+    proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
   })
 
   app.use('/shell', (req, res) => res.send(renderShell(assets)))
