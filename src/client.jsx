@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
-import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
+import { AsyncComponentProvider } from 'react-async-component'
 import asyncBootstrapper from 'react-async-bootstrapper'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import configureStore from './redux/configureStore'
@@ -11,7 +11,7 @@ import App from './containers/App/App'
 
 const supportsHistory = 'pushState' in window.history
 const reactRoot = document.getElementById('root')
-const store = configureStore(window.__data)
+const { store } = configureStore(f => f, window.__data)
 const rehydrateState = window.ASYNC_COMPONENTS_STATE
 
 function renderApp(TheApp) {
@@ -29,7 +29,7 @@ function renderApp(TheApp) {
 
   asyncBootstrapper(app).then(() => {
     render(app, reactRoot)
-  });
+  })
 }
 
 renderApp(App)

@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/mergeMap'
 import { getUsers } from 'api'
 
 export const FETCHING_DATA = 'FETCHING_DATA'
