@@ -1,4 +1,5 @@
 import express from 'express'
+import compression from 'compression'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
@@ -20,6 +21,9 @@ export default function (assets) {
   const app = express()
   const proxy = createProxyServer()
   const asyncContext = createAsyncContext()
+
+  app.use(compression())
+  app.disable('x-powered-by')
 
   app.use('/api', (req, res) => {
     proxy.web(req, res, { target: apiUrl })
