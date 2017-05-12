@@ -1,6 +1,4 @@
-import 'rxjs'
 import { Observable } from 'rxjs/Observable'
-
 import { getUsers } from 'api'
 
 export const FETCHING_DATA = 'FETCHING_DATA'
