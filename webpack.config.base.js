@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const Visualizer = require('webpack-visualizer-plugin')
 const autoprefixer = require('autoprefixer')
+const BabiliPlugin = require('babili-webpack-plugin')
 
 // Base Webpack config for server and client
 module.exports = {
@@ -63,6 +64,7 @@ module.exports = {
       path: './.env',
       safe: false
     }),
+    new BabiliPlugin(),
     new WebpackChunkHash(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
