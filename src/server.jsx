@@ -14,9 +14,6 @@ import Html from './helpers/Html'
 import renderShell from './helpers/Shell'
 import App from './containers/App/App'
 
-const { API_HOST, API_PORT } = process.env
-const apiUrl = `http://${API_HOST}:${API_PORT}/api/`
-
 export default function (assets) {
   const app = express()
   const proxy = createProxyServer()
@@ -26,7 +23,7 @@ export default function (assets) {
   app.disable('x-powered-by')
 
   app.use('/api', (req, res) => {
-    proxy.web(req, res, { target: apiUrl })
+    proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
   })
 
   app.use('/shell', (req, res) => res.send(renderShell(assets)))
@@ -60,8 +57,6 @@ export default function (assets) {
           data: store.getState()
         }))
         .subscribe(({ markup, data }) => {
-          wrappedEpic.unsubscribe()
-
           const html = renderToStaticMarkup(
             <Html
               assets={assets}

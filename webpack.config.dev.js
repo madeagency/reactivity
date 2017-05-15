@@ -34,7 +34,8 @@ configuration.devServer = {
   host: 'localhost',
   port: 3001,
   historyApiFallback: true,
-  hot: true
+  hot: true,
+  headers: { 'Access-Control-Allow-Origin': '*' }
 }
 
 configuration.output = {
