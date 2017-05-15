@@ -22,11 +22,11 @@
     "babili-webpack-plugin": "^0.0.11",
     "cli-real-favicon": "^0.0.6",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-airbnb": "^15.0.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "npm-run-all": "^4.0.2",
@@ -39,7 +39,7 @@
     "yargs": "^8.0.1"
   },
   "dependencies": {
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^7.1.0",
     "compression": "^1.6.2",
     "css-loader": "^0.28.0",
     "dotenv-webpack": "^1.4.3",
@@ -79,6 +79,7 @@
     "production:client": "webpack --config webpack.config.client.js -p --colors --display-error-details",
     "production:server": "webpack --config webpack.config.server.js -p --colors --display-error-details",
     "production": "rm -rf dist; npm-run-all --parallel production:server production:client; node bin/start-server.js",
-    "generate:favicon": "real-favicon generate favicon.config.json .favicon static"
+    "generate:favicon": "real-favicon generate favicon.config.json .favicon static",
+    "lint": "eslint -c .eslintrc src"
   }
 }
