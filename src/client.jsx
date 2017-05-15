@@ -29,7 +29,7 @@ function renderApp(TheApp) {
 
   asyncBootstrapper(app).then(() => {
     render(app, reactRoot)
-  });
+  })
 }
 
 renderApp(App)
