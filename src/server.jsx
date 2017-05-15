@@ -1,14 +1,15 @@
 import express from 'express'
+import compression from 'compression'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
 import asyncBootstrapper from 'react-async-bootstrapper'
-import { renderToString as renderToStringEpic } from 'react-redux-epic'
+import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { createProxyServer } from 'http-proxy'
 import path from 'path'
-import configureStore, { wrappedEpic } from './redux/configureStore'
+import configureStore from './redux/configureStore'
 import Html from './helpers/Html'
 import renderShell from './helpers/Shell'
 import App from './containers/App/App'
@@ -17,6 +18,9 @@ export default function (assets) {
   const app = express()
   const proxy = createProxyServer()
   const asyncContext = createAsyncContext()
+
+  app.use(compression())
+  app.disable('x-powered-by')
 
   app.use('/api', (req, res) => {
     proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
@@ -28,7 +32,7 @@ export default function (assets) {
   app.use(express.static(path.join(__dirname, '..', 'static')))
 
   app.use((req, res) => {
-    const store = configureStore()
+    const { wrappedEpic, store } = configureStore(wrapRootEpic)
     const reactRouterContext = {}
 
     const component = (
