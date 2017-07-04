@@ -1,11 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 const res = p => path.resolve(__dirname, p)
 
 const modeModules = res('../node_modules')
-const entry = res('../server/render.js')
+const entry = res('../src/server.js')
 const output = res('../buildServer')
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -30,37 +31,56 @@ module.exports = {
     path: output,
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: {
+        test: /\.scss?$/,
+        use: [{
           loader: 'css-loader/locals',
           options: {
             modules: true,
             localIdentName: '[name]__[local]--[hash:base64:5]'
           }
-        }
+        }, {
+          loader: 'sass-loader'
+        }]
+      }, {
+        test: /\.(jpg|png|gif|svg|ico)$/,
+        use: [{
+          loader: 'url-loader'
+        }]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
+    alias: {
+      api: path.resolve(__dirname, 'src/api/'),
+      components: path.resolve(__dirname, 'src/components/'),
+      reducers: path.resolve(__dirname, 'src/redux/reducers/')
+    }
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
-
+    new webpack.ProvidePlugin({
+      fetch: 'isomorphic-fetch'
+    }),
+    new Dotenv({
+      path: path.resolve(__dirname, '../.env'),
+      safe: false
+    }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
+      'process.env.SERVER': JSON.stringify(true),
+      'process.env.NODE_ENV': JSON.stringify('development')
     })
   ]
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import { fetchData } from 'reducers/users'
+import { fetchData } from '../../redux/reducers/users'
 
 @connect(state => ({
   users: state.users,
