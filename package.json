@@ -47,6 +47,7 @@
     "autoprefixer": "^7.1.1",
     "compression": "^1.6.2",
     "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.2",
     "express": "^4.15.3",
     "http-proxy": "^1.16.2",
@@ -85,6 +86,6 @@
     "production": "rm -rf dist; npm-run-all --parallel production:server production:client; node bin/start-server.js",
     "generate:favicon": "real-favicon generate favicon.config.json .favicon static",
     "lint": "eslint -c .eslintrc src",
-    "newStart": "NODE_ENV=development babel-watch server/index.js"
+    "newStart": "NODE_ENV=development babel-watch server.js"
   }
 }

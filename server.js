@@ -1,3 +1,5 @@
+import {} from 'dotenv/config'
+
 import path from 'path'
 import express from 'express'
 import compression from 'compression'
@@ -7,8 +9,8 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware-multi-compiler'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware'
-import clientConfig from '../webpack/client.dev'
-import serverConfig from '../webpack/server.dev'
+import clientConfig from './webpack/client.dev'
+import serverConfig from './webpack/server.dev'
 
 // import renderShell from '../src/helpers/Shell'
 
@@ -30,8 +32,8 @@ if (DEV) {
     })
   )
 } else {
-  const clientStats = require('../buildClient/stats.json')
-  const serverRender = require('../buildServer/main.js').default
+  const clientStats = require('./buildClient/stats.json')
+  const serverRender = require('./buildServer/main.js').default
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
@@ -48,9 +50,9 @@ app.use('/api', (req, res) => {
 
 // app.use('/shell', (req, res) => res.send(renderShell({})))
 
-app.use(express.static(path.join(__dirname, '..', 'dist')))
-app.use(express.static(path.join(__dirname, '..', 'static')))
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'static')))
 
-app.listen(4000, () => {
+app.listen(process.env.APP_PORT, () => {
   console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`)
 })
