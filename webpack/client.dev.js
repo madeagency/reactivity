@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can see what chunks are built
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   name: 'client',
@@ -28,38 +29,32 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.scss?$/,
+        test: /\.scss$/,
         use: ExtractCssChunks.extract({
           use: [{
-            loader: 'style-loader'
-          }, {
             loader: 'css-loader',
-            options: {
+            query: {
               modules: true,
-              importLoaders: 2
+              localIdentName: '[name]__[local]--[hash:base64:5]'
             }
-          }, {
-            loader: 'sass-loader'
+          },
+            'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                autoprefixer({ browsers: 'last 2 versions' })
+              ]
+            }
           }]
         })
-      }, {
+      },
+      {
         test: /\.(jpg|png|gif|svg|ico)$/,
         use: [{
           loader: 'url-loader'
         }]
       }
-      // {
-      //   test: /\.css$/,
-      //   use: ExtractCssChunks.extract({
-      //     use: {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: true,
-      //         localIdentName: '[name]__[local]--[hash:base64:5]'
-      //       }
-      //     }
-      //   })
-      // }
     ]
   },
   resolve: {

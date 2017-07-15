@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
+import serialize from '../utils/serialize'
 
 const Html = (props) => {
-  const { Styles, CssHash, Js, component, state } = props
+  const { styles, cssHash, js, publicPath, component, state } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
 
@@ -14,10 +14,10 @@ const Html = (props) => {
         {head.title.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
-        {Styles.map(name => (
-          <script
-            type="text/javascript"
-            src={`/static/${name}`}
+        {styles.map(name => (
+          <link
+            rel="stylesheet"
+            src={`${publicPath}/${name}`}
             key={name}
             charSet="UTF-8"
           />
@@ -27,18 +27,18 @@ const Html = (props) => {
         <div id="root" dangerouslySetInnerHTML={{ __html: component }} />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state)};` }}
+          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state, { isJSON: true })};` }}
           charSet="UTF-8"
         />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(CssHash)};` }}
+          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash, { isJSON: true })};` }}
           charSet="UTF-8"
         />
-        {Js.map(name => (
+        {js.map(name => (
           <script
             type="text/javascript"
-            src={`/static/${name}`}
+            src={`${publicPath}/${name}`}
             key={name}
             charSet="UTF-8"
           />
@@ -49,11 +49,12 @@ const Html = (props) => {
 }
 
 Html.propTypes = {
-  Styles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  CssHash: PropTypes.shape({}).isRequired,
-  Js: PropTypes.arrayOf(PropTypes.string).isRequired,
+  styles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cssHash: PropTypes.shape({}).isRequired,
+  js: PropTypes.arrayOf(PropTypes.string).isRequired,
   component: PropTypes.node,
-  state: PropTypes.shape({}).isRequired
+  state: PropTypes.shape({}).isRequired,
+  publicPath: PropTypes.string.isRequired
 }
 
 Html.defaultProps = {

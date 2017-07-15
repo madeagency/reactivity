@@ -5682,6 +5682,10 @@ serialize-javascript@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.4.0.tgz#7c958514db6ac2443a8abc062dc9f7886a7f6005"
 
+serialize-js@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-js/-/serialize-js-1.1.0.tgz#ff68ad681ef21bd4158c0a89fe2e53b67879e251"
+
 serve-index@^1.7.2:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/serve-index/-/serve-index-1.9.0.tgz#d2b280fc560d616ee81b48bf0fa82abed2485ce7"

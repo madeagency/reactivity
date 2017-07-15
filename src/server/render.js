@@ -9,11 +9,11 @@ import configureStore from '../redux/configureStore'
 import App from '../containers/App/App'
 import Html from '../helpers/Html'
 
-export default ({ clientStats, outputPath }) => (req, res) => {
+export default ({ clientStats }) => (req, res) => {
   const { wrappedEpic, store } = configureStore(wrapRootEpic)
   const reactRouterContext = {}
   const chunkNames = flushChunkNames()
-  const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
+  const { scripts, stylesheets, cssHashRaw, publicPath } = flushChunks(clientStats, { chunkNames })
 
   const component = (
     <Provider store={store} key="provider">
@@ -29,16 +29,20 @@ export default ({ clientStats, outputPath }) => (req, res) => {
   renderToStringEpic(component, wrappedEpic)
     .map(({ markup }) => ({
       markup,
-      data: store.getState()
+      data: store.getState(),
+      styles: stylesheets,
+      cssHash: cssHashRaw,
+      js: scripts
     }))
-    .subscribe(({ markup, data }) => {
+    .subscribe(({ markup, data, styles, cssHash, js }) => {
       const html = renderToStaticMarkup(
         <Html
-          Styles={stylesheets}
-          CssHash={cssHashRaw}
-          Js={scripts}
+          styles={styles}
+          cssHash={cssHash}
+          js={js}
           component={markup}
           state={data}
+          publicPath={publicPath}
         />
       )
       res.send(`<!doctype html>\n${html}`)
