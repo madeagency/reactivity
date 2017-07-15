@@ -2621,9 +2621,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css-chunks-webpack-plugin@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-1.0.15.tgz#5fd6a3c2f68b7be651e136e0959718eddb8f6dd2"
+extract-css-chunks-webpack-plugin@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.4.tgz#3822664763da18f485cb0643270a4f125aeee327"
   dependencies:
     ajv "^4.11.2"
     async "^2.1.2"

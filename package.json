@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.6.1",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "extract-css-chunks-webpack-plugin": "^1.0.15",
+    "extract-css-chunks-webpack-plugin": "^2.0.4",
     "file-loader": "^0.11.2",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",

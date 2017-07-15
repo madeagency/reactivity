@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import TypicalFrom from '../../components/TypicalForm'
+import TypicalFrom from '../../components/TypicalForm/TypicalForm'
+import styles from './About.scss'
 
 function typicalSubmit(values) {
   console.log(values)
@@ -14,10 +15,10 @@ const About = () => (
         { name: 'description', content: 'My About Page' }
       ]}
     />
-
-    test about!!!!
-
-    <TypicalFrom onSubmit={typicalSubmit} />
+    <div className={styles.background}>
+        test about!!!!
+        <TypicalFrom onSubmit={typicalSubmit} />
+    </div>
   </div>
 )
 

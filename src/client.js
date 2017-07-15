@@ -8,9 +8,7 @@ import configureStore from './redux/configureStore'
 import App from './containers/App/App'
 
 const supportsHistory = 'pushState' in window.history
-const reactRoot = document.getElementById('root')
 const { store } = configureStore(f => f, window.__data)
-
 
 const renderApp = App =>
   render(
@@ -26,8 +24,7 @@ const renderApp = App =>
 
 if (process.env.NODE_ENV === 'development') {
   module.hot.accept('./containers/App/App.js', () => {
-    const App = require('./containers/App/App').default
-    renderApp(App)
+    renderApp(require('./containers/App/App').default)
   })
 }
 
