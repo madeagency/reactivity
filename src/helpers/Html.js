@@ -4,7 +4,7 @@ import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
 
 const Html = (props) => {
-  const { component, state, Styles, Js } = props
+  const { Styles, CssHash, Js, component, state } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
 
@@ -14,7 +14,14 @@ const Html = (props) => {
         {head.title.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
-        <Styles />
+        {Styles.map(name => (
+          <script
+            type="text/javascript"
+            src={`/static/${name}`}
+            key={name}
+            charSet="UTF-8"
+          />
+        ))}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: component }} />
@@ -23,15 +30,28 @@ const Html = (props) => {
           dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state)};` }}
           charSet="UTF-8"
         />
-        <Js />
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(CssHash)};` }}
+          charSet="UTF-8"
+        />
+        {Js.map(name => (
+          <script
+            type="text/javascript"
+            src={`/static/${name}`}
+            key={name}
+            charSet="UTF-8"
+          />
+        ))}
       </body>
     </html>
   )
 }
 
 Html.propTypes = {
-  Styles: PropTypes.node.isRequired,
-  Js: PropTypes.node.isRequired,
+  Styles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  CssHash: PropTypes.shape({}).isRequired,
+  Js: PropTypes.arrayOf(PropTypes.string).isRequired,
   component: PropTypes.node,
   state: PropTypes.shape({}).isRequired
 }

@@ -1,12 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const res = p => path.resolve(__dirname, p)
 
 const modeModules = res('../node_modules')
-const entry = res('../src/server.js')
+const entry = res('../src/server/render.js')
 const output = res('../buildServer')
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -15,7 +16,12 @@ const output = res('../buildServer')
 // within Webpack and can properly make connections to client modules:
 const externals = fs
   .readdirSync(modeModules)
-  .filter(x => !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(x))
+  .filter(
+  x =>
+    !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
+      x
+    )
+  )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}`
     return externals
@@ -24,14 +30,15 @@ const externals = fs
 module.exports = {
   name: 'server',
   target: 'node',
-  devtool: 'source-map',
+  // devtool: 'source-map',
+  devtool: 'eval',
   entry: [entry],
   externals,
   output: {
     path: output,
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    publicPath: '/'
+    publicPath: '/static/'
   },
   module: {
     rules: [
@@ -68,6 +75,7 @@ module.exports = {
     }
   },
   plugins: [
+    new WriteFilePlugin(),
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),

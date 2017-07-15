@@ -1,7 +1,6 @@
 import universal from 'react-universal-component'
 
-export default universal(() => import(/* webpackChunkName: 'Home' */ './Home'), {
+export default universal(() => import('./Home'), {
   resolve: () => require.resolveWeak('./Home'),
-  chunkName: 'Home',
-  minDelay: 500
+  chunkName: 'Home' // babel-plugin-dual-import automatically sets chunkName based on path
 })

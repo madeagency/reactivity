@@ -5,20 +5,15 @@ import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-
 import { renderToStaticMarkup } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import configureStore from './redux/configureStore'
-import App from './containers/App/App'
-import Html from './helpers/Html'
+import configureStore from '../redux/configureStore'
+import App from '../containers/App/App'
+import Html from '../helpers/Html'
 
 export default ({ clientStats, outputPath }) => (req, res) => {
   const { wrappedEpic, store } = configureStore(wrapRootEpic)
   const reactRouterContext = {}
   const chunkNames = flushChunkNames()
-  const { Js, Css } = flushChunks(clientStats, {
-    chunkNames,
-    before: ['bootstrap'],
-    after: ['main'],
-    outputPath
-  })
+  const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
 
   const component = (
     <Provider store={store} key="provider">
@@ -39,8 +34,9 @@ export default ({ clientStats, outputPath }) => (req, res) => {
     .subscribe(({ markup, data }) => {
       const html = renderToStaticMarkup(
         <Html
-          Styles={Css}
-          Js={Js}
+          Styles={stylesheets}
+          CssHash={cssHashRaw}
+          Js={scripts}
           component={markup}
           state={data}
         />

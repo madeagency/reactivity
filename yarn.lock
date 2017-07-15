@@ -516,6 +516,10 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-dual-import@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-dual-import/-/babel-plugin-dual-import-1.1.1.tgz#f43aea1bf98c50e2c7035e41bce2cc6a9935e97d"
+
 babel-plugin-minify-builtins@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-builtins/-/babel-plugin-minify-builtins-0.1.3.tgz#4f21a7dcb51f91a04ea71d47ff0e8e3b05fec021"
@@ -6402,15 +6406,6 @@ wbuf@^1.1.0, wbuf@^1.7.2:
 webpack-chunk-hash@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/webpack-chunk-hash/-/webpack-chunk-hash-0.4.0.tgz#6b40c3070fbc9ff0cfe0fe781c7174af6c7c16a4"
-
-webpack-dev-middleware-multi-compiler@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware-multi-compiler/-/webpack-dev-middleware-multi-compiler-1.0.0.tgz#a3129835668debeb2300c00f37181d49c31fbac8"
-  dependencies:
-    memory-fs "~0.4.1"
-    mime "^1.3.4"
-    path-is-absolute "^1.0.0"
-    range-parser "^1.0.3"
 
 webpack-dev-middleware@^1.11.0:
   version "1.11.0"
