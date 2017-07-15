@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import serialize from '../utils/serialize'
+import serialize from 'serialize-javascript'
 
 const Html = (props) => {
   const { styles, cssHash, js, publicPath, component, state } = props
@@ -17,9 +17,8 @@ const Html = (props) => {
         {styles.map(name => (
           <link
             rel="stylesheet"
-            src={`${publicPath}/${name}`}
+            href={`${publicPath}/${name}`}
             key={name}
-            charSet="UTF-8"
           />
         ))}
       </head>
@@ -27,12 +26,12 @@ const Html = (props) => {
         <div id="root" dangerouslySetInnerHTML={{ __html: component }} />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state, { isJSON: true })};` }}
+          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state)};` }}
           charSet="UTF-8"
         />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash, { isJSON: true })};` }}
+          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash)};` }}
           charSet="UTF-8"
         />
         {js.map(name => (
