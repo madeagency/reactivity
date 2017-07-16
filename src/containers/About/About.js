@@ -8,17 +8,14 @@ function typicalSubmit(values) {
 }
 
 const About = () => (
-  <div id="about">
+  <div id="about" className={styles.background}>
     <Helmet
       title="About"
       meta={[
         { name: 'description', content: 'My About Page' }
       ]}
     />
-    <div className={styles.background}>
-        test about!!!!
-        <TypicalFrom onSubmit={typicalSubmit} />
-    </div>
+    <TypicalFrom onSubmit={typicalSubmit} />
   </div>
 )
 

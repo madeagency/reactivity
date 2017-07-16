@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import { fetchData } from '../../redux/reducers/users'
+import TypicalFrom from '../../components/TypicalForm/TypicalForm'
 
 @connect(state => ({
   users: state.users,
@@ -27,6 +28,10 @@ export default class Home extends Component {
     }
   }
 
+  typicalSubmit = (values) => {
+    console.log(values)
+  }
+
   render() {
     const { users } = this.props
 
@@ -47,6 +52,7 @@ export default class Home extends Component {
           ))
         ) : null}
         <button onClick={this.props.fetchData}>{users.label}</button>
+        <TypicalFrom onSubmit={this.typicalSubmit} />
       </div>
     )
   }

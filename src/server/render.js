@@ -29,22 +29,27 @@ export default ({ clientStats }) => (req, res) => {
   renderToStringEpic(component, wrappedEpic)
     .map(({ markup }) => ({
       markup,
-      data: store.getState(),
-      styles: stylesheets,
-      cssHash: cssHashRaw,
-      js: scripts
+      data: store.getState()
     }))
-    .subscribe(({ markup, data, styles, cssHash, js }) => {
+    .subscribe(({ markup, data }) => {
       const html = renderToStaticMarkup(
         <Html
-          styles={styles}
-          cssHash={cssHash}
-          js={js}
+          styles={stylesheets}
+          cssHash={cssHashRaw}
+          js={scripts}
           component={markup}
           state={data}
           publicPath={publicPath}
         />
       )
-      res.send(`<!doctype html>\n${html}`)
+      if (reactRouterContext.url) {
+        res.writeHead(302, {
+          Location: reactRouterContext.url
+        })
+        res.end()
+      } else {
+        res.write(`<!doctype html>\n${html}`)
+        res.end()
+      }
     })
 }
