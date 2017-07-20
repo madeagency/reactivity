@@ -22,7 +22,19 @@ app.use('/api', (req, res) => {
   proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
 })
 
-if (true) {
+// added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
+proxy.on('error', (error, req, res) => {
+  if (error.code !== 'ECONNRESET') {
+    console.error('proxy error', error)
+  }
+  if (!res.headersSent) {
+    res.writeHead(500, { 'content-type': 'application/json' })
+  }
+
+  res.end(JSON.stringify({ error: 'proxy_error', reason: error.message }))
+})
+
+if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig])
   const clientCompiler = multiCompiler.compilers[0]
 
