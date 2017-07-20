@@ -4,11 +4,12 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
+const Visualizer = require('webpack-visualizer-plugin')
 
 module.exports = {
   name: 'client',
   target: 'web',
-  devtool: 'source-map',
+  devtool: 'hidden-source-map',
   entry: [path.resolve(__dirname, '../src/client.js')],
   output: {
     filename: '[name].[chunkhash].js',
@@ -83,6 +84,7 @@ module.exports = {
       },
       sourceMap: true
     }),
-    new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
+    new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
+    new Visualizer()
   ]
 }
