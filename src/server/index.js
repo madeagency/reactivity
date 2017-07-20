@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -17,6 +18,7 @@ const app = express()
 
 app.use(compression())
 app.disable('x-powered-by')
+app.use(express.static(path.join(__dirname, '..', '..', 'static')))
 
 app.use('/api', (req, res) => {
   proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
