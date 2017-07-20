@@ -80,16 +80,13 @@
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {
-    "start:server": "webpack --config webpack.config.server.js --watch --hot",
-    "start:client": "webpack-dev-server --config webpack.config.client.js",
-    "start:process": "node bin/start-server.watch.js",
-    "start": "rm -rf dist && npm-run-all --parallel start:server start:client start:process",
-    "production:client": "webpack --config webpack.config.client.js -p --colors --display-error-details",
-    "production:server": "webpack --config webpack.config.server.js -p --colors --display-error-details",
-    "production": "rm -rf dist; npm-run-all --parallel production:server production:client; node bin/start-server.js",
-    "generate:favicon": "real-favicon generate favicon.config.json .favicon static",
+    "start": "npm run clean && NODE_ENV=development node src/server/index.js",
+    "start:prod": "npm run build && NODE_ENV=production node src/server/index.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "rimraf buildClient && NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
+    "build:server": "rimraf buildServer && NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
+    "clean": "rimraf buildClient buildServer",
     "lint": "eslint -c .eslintrc src",
-    "newStart": "npm run clean && NODE_ENV=development node src/server/index.js",
-    "clean": "rimraf buildClient buildServer"
+    "generate:favicon": "real-favicon generate favicon.config.json .favicon static"
   }
 }
