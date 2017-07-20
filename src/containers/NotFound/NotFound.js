@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
 
 const NotFound = ({ staticContext }) => {
   if (staticContext) {
@@ -17,6 +18,12 @@ const NotFound = ({ staticContext }) => {
       Not Found
   </div>
   )
+}
+
+NotFound.propTypes = {
+  staticContext: PropTypes.shape({
+    statusCode: PropTypes.number
+  }).isRequired
 }
 
 export default NotFound

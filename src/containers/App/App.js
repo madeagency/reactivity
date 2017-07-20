@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import Menu from '../../components/Menu/Menu'
 import Home from '../Home'
 import About from '../About'
+import NotFound from '../NotFound'
 import config from '../../config'
 
 const App = () => (
@@ -12,9 +13,9 @@ const App = () => (
     <Helmet {...config.head} />
     <Menu />
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route component={Home} />
+      <Route path="/" component={Home} exact />
+      <Route path="/about" component={About} exact />
+      <Route component={NotFound} exact />
     </Switch>
   </div>
 )
