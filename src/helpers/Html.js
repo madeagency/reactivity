@@ -29,11 +29,6 @@ const Html = (props) => {
           dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state)};` }}
           charSet="UTF-8"
         />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash)};` }}
-          charSet="UTF-8"
-        />
         {js.map(name => (
           <script
             type="text/javascript"
@@ -42,6 +37,11 @@ const Html = (props) => {
             charSet="UTF-8"
           />
         ))}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash)};` }}
+          charSet="UTF-8"
+        />
       </body>
     </html>
   )
