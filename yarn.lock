@@ -1968,9 +1968,9 @@ domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dotenv-webpack@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.3.tgz#452ed4be171fb00d2a85111cb6ee4da8ceda768c"
+dotenv-webpack@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.4.tgz#9c92e46e412a1cfbc60217ed33d69d2bbfddbf9f"
   dependencies:
     dotenv "^4.0.0"
 
@@ -2454,9 +2454,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css-chunks-webpack-plugin@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.7.tgz#2258fd961561031c1b03dfe46702b3fdd8364da2"
+extract-css-chunks-webpack-plugin@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.8.tgz#a1e1199943aa12694f4ac04b49aab23505b75413"
   dependencies:
     ajv "4.11.2"
     async "^2.5.0"
@@ -2529,9 +2529,9 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.2.tgz#4ff1df28af38719a6098093b88c82c71d1794a34"
+file-loader@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.0.0.tgz#08accf9631a0875e4ab7f209fc4db338604b3190"
   dependencies:
     loader-utils "^1.0.2"
 
@@ -2938,9 +2938,9 @@ hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.2.0.tgz#b099ca82f3640b1244309c8a526a2bd60ad9d7d9"
+hoist-non-react-statics@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.2.1.tgz#a7e41c760121d0abfc7a2339b331d29a26389e52"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -5047,11 +5047,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-universal-component@^1.4.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-1.5.0.tgz#12b342b90ca8b2a077f35842dab075cf4c5cee9c"
-  dependencies:
-    require-universal-module "^1.2.8"
+react-universal-component@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.12.tgz#3827d608cf51d16152d808cc10bfa8cbb828845d"
 
 react@^0.14.0:
   version "0.14.9"
@@ -5190,13 +5188,13 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-form@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.0.1.tgz#2754a4fbd343b90ae336e3f3637d060127429e92"
+redux-form@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.0.3.tgz#80157d01df7de6c8eb2297ad1fbbb092bafa34f5"
   dependencies:
     deep-equal "^1.0.1"
     es6-error "^4.0.0"
-    hoist-non-react-statics "^2.0.0"
+    hoist-non-react-statics "^2.2.1"
     invariant "^2.2.2"
     is-promise "^2.1.0"
     lodash "^4.17.3"
@@ -5349,10 +5347,6 @@ require-uncached@^1.0.2:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
-
-require-universal-module@^1.2.8:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/require-universal-module/-/require-universal-module-1.5.0.tgz#0e2b33848009eb4dd5cbfe593d6e356141580061"
 
 requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
