@@ -90,7 +90,7 @@ module.exports = {
     }),
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, '..', 'src/sw.js'),
-      excludes: ['*hot-update*', '**/*.map']
+      excludes: ['*hot-update*', '**/*.map', '**/stats.json']
     })
   ]
 }
