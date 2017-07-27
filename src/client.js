@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 }
 
 if ('serviceWorker' in navigator) {
-  runtime.register()
+  const registration = runtime.register();
 }
 
 renderApp(App)

@@ -4,7 +4,7 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
-const Visualizer = require('webpack-visualizer-plugin')
+// const Visualizer = require('webpack-visualizer-plugin')
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
@@ -35,7 +35,7 @@ module.exports = {
               localIdentName: '[name]__[local]--[hash:base64:5]'
             }
           },
-            'sass-loader',
+          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -87,10 +87,10 @@ module.exports = {
     }),
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, '..', 'src/sw.js'),
-      excludes: ['*hot-update*'],
+      excludes: ['*hot-update*', '**/*.map'],
       publicPath: 'static/'
     }),
-    new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
-    new Visualizer()
+    new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
+    // new Visualizer()
   ]
 }

@@ -18,10 +18,10 @@ const output = res('../buildServer')
 const externals = fs
   .readdirSync(modeModules)
   .filter(
-  x =>
-    !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
-      x
-    )
+    x =>
+      !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
+        x
+      )
   )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}`
@@ -58,7 +58,7 @@ module.exports = {
             localIdentName: '[name]__[local]--[hash:base64:5]'
           }
         },
-          'sass-loader',
+        'sass-loader',
         {
           loader: 'postcss-loader',
           options: {

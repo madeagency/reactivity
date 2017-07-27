@@ -1,25 +1,29 @@
 const { assets } = global.serviceWorkerOption
 
-const CACHE_NAME = process.env.VERSION
-const production = process.env.NODE_ENV === 'production'
-const assetOrigin = production ? location.origin : 'http://localhost:3001'
+const CACHE_NAME = new Date().toISOString()
 const assetsToCache = [
   ...assets.filter(asset => (
     asset.match(/.*\.(js|css)/) ||
     asset.match(/\.(png|jpg|jpeg|gif|svg)$/i)
   ))
-].map(path => new URL(path, assetOrigin).toString())
+].map(path => new URL(path, location.origin).toString())
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME, cache => cache.addAll(assetsToCache))
+    global.caches
+      .open(CACHE_NAME)
+      .then(cache => cache.addAll(assetsToCache))
+      .catch((error) => {
+        console.error(error)
+        throw error
+      })
   )
 })
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(caches.keys().then((keys) => {
+  event.waitUntil(global.caches.keys().then((keys) => {
     const toDelete = keys.filter(key => key !== CACHE_NAME)
-    return Promise.all(toDelete.map(key => caches.delete(key)))
+    return Promise.all(toDelete.map(key => global.caches.delete(key)))
   }))
 })
 
@@ -41,10 +45,11 @@ self.addEventListener('fetch', (event) => {
   }
 
   const request = requestingRoute ? new Request('/shell') : event.request
+  console.log(request)
   event.respondWith(
-    caches.match(event.request).then(cacheResponse => cacheResponse || (
+    global.caches.match(event.request).then(cacheResponse => cacheResponse || (
       fetch(request).then((response) => {
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, response))
+        global.caches.open(CACHE_NAME).then(cache => cache.put(event.request, response))
         return response.clone()
       })
     ))

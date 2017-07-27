@@ -39,7 +39,7 @@ module.exports = {
               localIdentName: '[name]__[local]--[hash:base64:5]'
             }
           },
-            'sass-loader',
+          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -90,7 +90,7 @@ module.exports = {
     }),
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, '..', 'src/sw.js'),
-      excludes: ['*hot-update*'],
+      excludes: ['*hot-update*', '**/*.map'],
       publicPath: 'static/'
     })
   ]

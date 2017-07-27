@@ -48,14 +48,12 @@ if (DEV) {
       serverRendererOptions: { outputPath }
     })
   )
-  // app.use('/shell', (req, res) => res.send(renderShell({ multiCompiler, outputPath })))
 } else {
   const clientStats = require('../../buildClient/stats.json')
   const serverRender = require('../../buildServer/main.js').default
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
-  // app.use('/shell', (req, res) => res.send(renderShell({ clientStats, outputPath })))
 }
 
 app.listen(process.env.APP_PORT, () => {
