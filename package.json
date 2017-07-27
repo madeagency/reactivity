@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "extract-css-chunks-webpack-plugin": "^2.0.9",
+    "extract-css-chunks-webpack-plugin": "^2.0.15",
     "file-loader": "^1.0.0",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
@@ -64,7 +64,7 @@
     "react-redux": "^5.0.5",
     "react-redux-epic": "^0.3.1",
     "react-router-dom": "^4.1.2",
-    "react-universal-component": "^2.0.14",
+    "react-universal-component": "^2.0.19",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
     "redux-observable": "^0.14.1",
@@ -74,7 +74,7 @@
     "serviceworker-webpack-plugin": "^0.2.3",
     "style-loader": "^0.18.2",
     "webpack-dev-middleware": "^1.11.0",
-    "webpack-flush-chunks": "^1.1.11",
+    "webpack-flush-chunks": "^1.1.14",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {

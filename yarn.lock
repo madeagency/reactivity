@@ -2455,9 +2455,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css-chunks-webpack-plugin@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.9.tgz#e4eb0ed771f61933a2482dcbaed1bae8f22649f9"
+extract-css-chunks-webpack-plugin@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.15.tgz#7ba65b53a1c1fa4b2b562760ffe0c1356ac6fcdf"
   dependencies:
     ajv "4.11.2"
     async "^2.5.0"
@@ -5019,9 +5019,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-universal-component@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.14.tgz#2a60435510c5e34d7a1cb9b791fe981aecf1b55e"
+react-universal-component@^2.0.19:
+  version "2.0.19"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.19.tgz#6dcfa5d0e7c9513cb0068a4906f80638c69dffac"
 
 react@^0.14.0:
   version "0.14.9"
@@ -6216,9 +6216,9 @@ webpack-dev-server@^2.6.1:
     webpack-dev-middleware "^1.11.0"
     yargs "^6.0.0"
 
-webpack-flush-chunks@^1.1.11:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.11.tgz#7af95f279ae4a06d973ff9e75645b3081ecb83a3"
+webpack-flush-chunks@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.14.tgz#9466eb1a74ed764b68032ad2b0585dd7db962a99"
 
 webpack-hot-middleware@^2.18.2:
   version "2.18.2"
