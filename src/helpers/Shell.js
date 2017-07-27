@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import Helmet from 'react-helmet'
 import { StaticRouter } from 'react-router-dom'
 
-import Menu from 'components/Menu/Menu'
+import Menu from '../components/Menu/Menu'
 import Html from './Html'
 import config from '../config'
 

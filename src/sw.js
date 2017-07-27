@@ -5,7 +5,7 @@ const production = process.env.NODE_ENV === 'production'
 const assetOrigin = production ? location.origin : 'http://localhost:3001'
 const assetsToCache = [
   ...assets.filter(asset => (
-    asset.match(/(client|vendor).*\.(js|css)/) ||
+    asset.match(/.*\.(js|css)/) ||
     asset.match(/\.(png|jpg|jpeg|gif|svg)$/i)
   ))
 ].map(path => new URL(path, assetOrigin).toString())

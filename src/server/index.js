@@ -7,6 +7,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
 const clientConfig = require('../../webpack/client.dev')
 const serverConfig = require('../../webpack/server.dev')
+const renderShell = require('../../src/helpers/Shell')
 const compression = require('compression')
 const httpProxy = require('http-proxy')
 
@@ -48,15 +49,15 @@ if (DEV) {
       serverRendererOptions: { outputPath }
     })
   )
+  // app.use('/shell', (req, res) => res.send(renderShell({ multiCompiler, outputPath })))
 } else {
   const clientStats = require('../../buildClient/stats.json')
   const serverRender = require('../../buildServer/main.js').default
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
+  // app.use('/shell', (req, res) => res.send(renderShell({ clientStats, outputPath })))
 }
-
-// app.use('/shell', (req, res) => res.send(renderShell({})))
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`)
