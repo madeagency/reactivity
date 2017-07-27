@@ -6,7 +6,7 @@ import Menu from '../../components/Menu/Menu'
 import Home from '../Home'
 import About from '../About'
 import NotFound from '../NotFound'
-import Shell from '../Shell/Shell'
+import Loading from '../../components/Loading/Loading'
 import config from '../../config'
 
 const App = () => (
@@ -16,7 +16,7 @@ const App = () => (
     <Switch>
       <Route path="/" component={Home} exact />
       <Route path="/about" component={About} exact />
-      <Route path="/shell" component={Shell} exact />
+      <Route path="/shell" component={Loading} exact />
       <Route component={NotFound} exact />
     </Switch>
   </div>
