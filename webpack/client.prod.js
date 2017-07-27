@@ -16,7 +16,7 @@ module.exports = {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, '../buildClient'),
-    publicPath: '/static/'
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -87,8 +87,7 @@ module.exports = {
     }),
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, '..', 'src/sw.js'),
-      excludes: ['*hot-update*', '**/*.map'],
-      publicPath: 'static/'
+      excludes: ['*hot-update*', '**/*.map']
     }),
     new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
     // new Visualizer()

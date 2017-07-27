@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import serialize from 'serialize-javascript'
 
 const Html = (props) => {
-  const { styles, cssHash, js, publicPath, component, state } = props
+  const { styles, cssHash, js, component, state } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
 
@@ -17,7 +17,7 @@ const Html = (props) => {
         {styles.map(name => (
           <link
             rel="stylesheet"
-            href={`${publicPath}/${name}`}
+            href={`/${name}`}
             key={name}
           />
         ))}
@@ -37,7 +37,7 @@ const Html = (props) => {
         {js.map(name => (
           <script
             type="text/javascript"
-            src={`${publicPath}/${name}`}
+            src={`/${name}`}
             key={name}
             charSet="UTF-8"
           />
@@ -52,8 +52,7 @@ Html.propTypes = {
   cssHash: PropTypes.shape({}).isRequired,
   js: PropTypes.arrayOf(PropTypes.string).isRequired,
   component: PropTypes.node,
-  state: PropTypes.shape({}).isRequired,
-  publicPath: PropTypes.string.isRequired
+  state: PropTypes.shape({}).isRequired
 }
 
 Html.defaultProps = {

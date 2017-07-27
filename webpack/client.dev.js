@@ -20,7 +20,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].js',
     path: path.resolve(__dirname, '../buildClient'),
-    publicPath: '/static/'
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -90,8 +90,7 @@ module.exports = {
     }),
     new ServiceWorkerPlugin({
       entry: path.join(__dirname, '..', 'src/sw.js'),
-      excludes: ['*hot-update*', '**/*.map'],
-      publicPath: 'static/'
+      excludes: ['*hot-update*', '**/*.map']
     })
   ]
 }

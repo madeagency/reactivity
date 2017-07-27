@@ -39,7 +39,7 @@ module.exports = {
     path: output,
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   module: {
     rules: [

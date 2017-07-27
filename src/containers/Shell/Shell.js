@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Shell = () => (
-  <div />
+  <div>Loading...</div>
 )
 
 export default Shell

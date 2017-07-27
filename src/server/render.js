@@ -31,7 +31,7 @@ export default ({ clientStats }) => (req, res) => {
     }))
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
-      const { scripts, stylesheets, cssHashRaw, publicPath } = flushChunks(clientStats, { chunkNames })
+      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
       const html = renderToStaticMarkup(
         <Html
           styles={stylesheets}
@@ -39,7 +39,6 @@ export default ({ clientStats }) => (req, res) => {
           js={scripts}
           component={markup}
           state={data}
-          publicPath={publicPath}
         />
       )
       if (reactRouterContext.url) {

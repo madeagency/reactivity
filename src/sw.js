@@ -1,12 +1,12 @@
 const { assets } = global.serviceWorkerOption
-
 const CACHE_NAME = new Date().toISOString()
+
 const assetsToCache = [
   ...assets.filter(asset => (
     asset.match(/.*\.(js|css)/) ||
     asset.match(/\.(png|jpg|jpeg|gif|svg)$/i)
   ))
-].map(path => new URL(path, location.origin).toString())
+].map(path => new URL(path, global.location).toString())
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -28,30 +28,27 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return
+
   const requestUrl = new URL(event.request.url)
-  const requestingKnownAsset = assetsToCache.indexOf(requestUrl.toString()) !== -1
-  const requestingRoute = requestUrl.pathname.indexOf('.') === -1
 
-  if (requestUrl.origin !== location.origin && !requestingKnownAsset) {
-    return
-  }
+  if (requestUrl.origin !== location.origin) return
+  if (requestUrl.pathname === '/__webpack_hmr') return
+  if (requestUrl.pathname.match(/\/api/)) return
 
-  if (requestUrl.pathname.match(/\/api/)) {
-    return
-  }
+  const request = requestUrl.pathname.indexOf('.') === -1 ? new Request('/shell') : event.request
+  const resource = global.caches.match(request).then((response) => {
+    if (response) return response
 
-  if (!requestingRoute && !requestingKnownAsset) {
-    return
-  }
+    return fetch(request).then((responseNetwork) => {
+      if (!responseNetwork || !responseNetwork.ok) return responseNetwork
 
-  const request = requestingRoute ? new Request('/shell') : event.request
-  console.log(request)
-  event.respondWith(
-    global.caches.match(event.request).then(cacheResponse => cacheResponse || (
-      fetch(request).then((response) => {
-        global.caches.open(CACHE_NAME).then(cache => cache.put(event.request, response))
-        return response.clone()
-      })
-    ))
-  )
+      const responseCache = responseNetwork.clone()
+      global.caches.open(CACHE_NAME)
+        .then(cache => cache.put(request, responseCache))
+        .then(() => responseNetwork).catch(() => null)
+    })
+  })
+
+  event.respondWith(resource)
 })

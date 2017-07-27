@@ -19,6 +19,7 @@ const app = express()
 app.use(compression())
 app.disable('x-powered-by')
 app.use(express.static(path.join(__dirname, '..', '..', 'static')))
+app.use(express.static(path.join(__dirname, '..', '..', 'buildClient')))
 
 app.use('/api', (req, res) => {
   proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true })
@@ -52,7 +53,7 @@ if (DEV) {
   const clientStats = require('../../buildClient/stats.json')
   const serverRender = require('../../buildServer/main.js').default
 
-  app.use(publicPath, express.static(outputPath))
+  // app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
 }
 
