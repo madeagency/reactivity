@@ -12,8 +12,6 @@ import Html from '../helpers/Html'
 export default ({ clientStats }) => (req, res) => {
   const { wrappedEpic, store } = configureStore(wrapRootEpic)
   const reactRouterContext = {}
-  const chunkNames = flushChunkNames()
-  const { scripts, stylesheets, cssHashRaw, publicPath } = flushChunks(clientStats, { chunkNames })
 
   const component = (
     <Provider store={store} key="provider">
@@ -32,6 +30,8 @@ export default ({ clientStats }) => (req, res) => {
       data: store.getState()
     }))
     .subscribe(({ markup, data }) => {
+      const chunkNames = flushChunkNames()
+      const { scripts, stylesheets, cssHashRaw, publicPath } = flushChunks(clientStats, { chunkNames })
       const html = renderToStaticMarkup(
         <Html
           styles={stylesheets}
