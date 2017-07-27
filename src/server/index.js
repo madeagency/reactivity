@@ -7,7 +7,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
 const clientConfig = require('../../webpack/client.dev')
 const serverConfig = require('../../webpack/server.dev')
-const renderShell = require('../../src/helpers/Shell')
 const compression = require('compression')
 const httpProxy = require('http-proxy')
 
