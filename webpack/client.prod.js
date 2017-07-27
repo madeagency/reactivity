@@ -5,6 +5,7 @@ const StatsPlugin = require('stats-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
 const Visualizer = require('webpack-visualizer-plugin')
+const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -83,6 +84,11 @@ module.exports = {
         comments: false
       },
       sourceMap: true
+    }),
+    new ServiceWorkerPlugin({
+      entry: path.join(__dirname, '..', 'src/sw.js'),
+      excludes: ['*hot-update*'],
+      publicPath: 'static/'
     }),
     new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
     new Visualizer()
