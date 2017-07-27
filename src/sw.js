@@ -5,7 +5,8 @@ const assetsToCache = [
   ...assets.filter(asset => (
     asset.match(/.*\.(js|css)/) ||
     asset.match(/\.(png|jpg|jpeg|gif|svg)$/i)
-  ))
+  )),
+  '/shell'
 ].map(path => new URL(path, global.location).toString())
 
 self.addEventListener('install', (event) => {
