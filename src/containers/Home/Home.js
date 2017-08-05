@@ -5,11 +5,7 @@ import Helmet from 'react-helmet'
 import TypicalFrom from 'components/TypicalForm/TypicalForm'
 import { fetchData } from 'reducers/users'
 
-@connect(state => ({
-  users: state.users,
-  loaded: state.users.dataFetched
-}), { fetchData })
-export default class Home extends Component {
+class Home extends Component {
   static propTypes = {
     users: PropTypes.shape({
       label: PropTypes.string,
@@ -57,3 +53,8 @@ export default class Home extends Component {
     )
   }
 }
+
+export default connect(state => ({
+  users: state.users,
+  loaded: state.users.dataFetched
+}), { fetchData })(Home)
