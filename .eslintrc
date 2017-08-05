@@ -7,8 +7,19 @@
   "rules": {
     "comma-dangle": "off", // not sure why airbnb turned this on.
     "no-console": "off",
-    "semi": [2, "never"],
-    "react/jsx-filename-extension": [2, { "extensions": [".jsx", ".js"] }]
+    "semi": [
+      2,
+      "never"
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".jsx",
+          ".js"
+        ]
+      }
+    ]
   },
   "parser": "babel-eslint",
   "plugins": [
@@ -16,22 +27,15 @@
     "import"
   ],
   "settings": {
-    "import/ignore": [
-      "node_modules",
-      ".scss$"
-    ],
-    "import/resolve": {
-      "moduleDirectory": [
-        "node_modules",
-        "src",
-        "components",
-        "reducers",
-        "api"
-      ]
-    },
     "import/resolver": {
-      "webpack": {
-         "config": "./webpack/client.prod.js"
+      "node": {
+        "paths": [
+          "node_modules",
+          "src",
+          "components",
+          "reducers",
+          "api"
+        ]
       }
     }
   }

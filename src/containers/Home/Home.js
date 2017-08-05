@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import { fetchData } from '../../redux/reducers/users'
-import TypicalFrom from '../../components/TypicalForm/TypicalForm'
+import TypicalFrom from 'components/TypicalForm/TypicalForm'
+import { fetchData } from 'reducers/users'
 
 @connect(state => ({
   users: state.users,

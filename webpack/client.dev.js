@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can see what chunks are built
+const WriteFilePlugin = require('write-file-webpack-plugin')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
@@ -59,12 +59,12 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx'],
     alias: {
-      api: path.resolve(__dirname, 'src/api/'),
-      components: path.resolve(__dirname, 'src/components/'),
-      reducers: path.resolve(__dirname, 'src/redux/reducers/')
-    }
+      api: path.resolve(__dirname, '..', 'src/api/'),
+      components: path.resolve(__dirname, '..', 'src/components/'),
+      reducers: path.resolve(__dirname, '..', 'src/redux/reducers/')
+    },
+    extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
     new WriteFilePlugin(),

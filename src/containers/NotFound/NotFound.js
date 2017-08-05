@@ -16,7 +16,7 @@ const NotFound = ({ staticContext }) => {
         ]}
       />
       Not Found
-  </div>
+    </div>
   )
 }
 

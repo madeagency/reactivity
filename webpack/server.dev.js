@@ -75,9 +75,9 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx'],
     alias: {
-      api: path.resolve(__dirname, 'src/api/'),
-      components: path.resolve(__dirname, 'src/components/'),
-      reducers: path.resolve(__dirname, 'src/redux/reducers/')
+      api: path.resolve(__dirname, '..', 'src/api/'),
+      components: path.resolve(__dirname, '..', 'src/components/'),
+      reducers: path.resolve(__dirname, '..', 'src/redux/reducers/')
     }
   },
   plugins: [

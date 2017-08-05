@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import TypicalFrom from '../../components/TypicalForm/TypicalForm'
+import TypicalFrom from 'components/TypicalForm/TypicalForm'
 import styles from './About.scss'
 
 function typicalSubmit(values) {

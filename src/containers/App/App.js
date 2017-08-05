@@ -2,11 +2,11 @@ import React from 'react'
 import Switch from 'react-router-dom/Switch'
 import Route from 'react-router-dom/Route'
 import Helmet from 'react-helmet'
-import Menu from '../../components/Menu/Menu'
+import Menu from 'components/Menu/Menu'
+import Loading from 'components/Loading/Loading'
 import Home from '../Home'
 import About from '../About'
 import NotFound from '../NotFound'
-import Loading from '../../components/Loading/Loading'
 import config from '../../config'
 
 const App = () => (
