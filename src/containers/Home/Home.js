@@ -2,20 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import TypicalFrom from 'components/TypicalForm/TypicalForm'
-import { fetchData } from 'reducers/users'
+import { fetchData } from 'reducers/neo'
 
 class Home extends Component {
   static propTypes = {
-    users: PropTypes.shape({
-      label: PropTypes.string,
-      data: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string,
-        age: PropTypes.number
-      }))
-    }).isRequired,
+    neo: PropTypes.arrayOf(PropTypes.shape({})),
     loaded: PropTypes.bool.isRequired,
     fetchData: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    neo: []
   }
 
   componentWillMount() {
@@ -29,7 +26,7 @@ class Home extends Component {
   }
 
   render() {
-    const { users } = this.props
+    const { neo } = this.props
 
     return (
       <div id="home">
@@ -39,22 +36,17 @@ class Home extends Component {
             { name: 'description', content: 'My Home Page' }
           ]}
         />
-        {users.data.length ? (
-          users.data.map(person => (
-            <div key={person.id}>
-              <p>Name: {person.name}</p>
-              <p>Age: {person.age}</p>
-            </div>
-          ))
-        ) : null}
-        <button onClick={this.props.fetchData}>{users.label}</button>
-        <TypicalFrom onSubmit={this.typicalSubmit} />
+        <ul>
+          {neo && neo.map(object => (
+            <li key={object.neo_reference_id}>{object.name}</li>
+          ))}
+        </ul>
       </div>
     )
   }
 }
 
 export default connect(state => ({
-  users: state.users,
-  loaded: state.users.dataFetched
+  neo: state.neo.data,
+  loaded: state.neo.fetched
 }), { fetchData })(Home)
