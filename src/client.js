@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   })
 }
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && process.env.ENABLE_SW) {
   runtime.register()
 }
 
