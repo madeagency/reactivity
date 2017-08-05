@@ -7,6 +7,7 @@
   "rules": {
     "comma-dangle": "off", // not sure why airbnb turned this on.
     "no-console": "off",
+    "no-underscore-dangle": "off",
     "semi": [
       2,
       "never"
@@ -28,13 +29,15 @@
   ],
   "settings": {
     "import/resolver": {
+      "webpack": {
+        "config": "./webpack/client.prod.js"
+      },
       "node": {
         "paths": [
           "node_modules",
           "src",
           "components",
-          "reducers",
-          "api"
+          "reducers"
         ]
       }
     }

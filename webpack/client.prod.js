@@ -52,6 +52,13 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, '..', 'src/components/'),
+      reducers: path.resolve(__dirname, '..', 'src/redux/reducers/')
+    },
+    extensions: ['.json', '.js', '.jsx']
+  },
   plugins: [
     new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
