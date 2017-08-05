@@ -6,13 +6,12 @@
         "modules": false
       }
     ],
-    "react",
     "es2015",
+    "react",
     "stage-2"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "react-hot-loader/babel"
+    "universal-import"
   ],
   "env": {
     "production": {
@@ -24,6 +23,9 @@
         "transform-react-constant-elements",
         "transform-react-inline-elements"
       ]
+    },
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
     }
   }
 }
