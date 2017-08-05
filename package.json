@@ -1,9 +1,9 @@
 {
-  "name": "react-universal",
+  "name": "reactivity",
   "version": "0.1.0",
-  "description": "a bleeding edge universal boilerplate for react.",
+  "description": "A Bleeding Edge React Universal Boilerplate for Power Users.",
   "main": "index.js",
-  "repository": "https://github.com/madeagency/react-universal.git",
+  "repository": "https://github.com/madeagency/reactivity.git",
   "private": true,
   "author": "Made Code",
   "license": "MIT",

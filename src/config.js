@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'React Universal',
-  description: 'a bleeding edge react boilerplate',
+  title: 'Reactivity',
+  description: 'A Bleeding Edge React Universal Boilerplate for Power Users.',
   head: {
     meta: [
       { charset: 'utf-8' },
