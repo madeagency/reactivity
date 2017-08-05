@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import TextField from 'components/TextField/TextField'
-import SelectField from 'components/SelectField/SelectField'
-import FileField from 'components/FileField/FileField'
+import TextField from '../TextField/TextField'
+import SelectField from '../SelectField/SelectField'
+import FileField from '../FileField/FileField'
 import typicalValidation from './TypicalValidation'
 
 const TypicalForm = (props) => {

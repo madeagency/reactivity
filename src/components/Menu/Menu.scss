@@ -3,6 +3,9 @@
   display: block;
   margin: 15px 0;
   padding-bottom: 15px;
+  &:hover {
+    border-bottom: 1px solid orange;
+  }
 }
 
 .link {

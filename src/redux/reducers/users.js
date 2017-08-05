@@ -1,7 +1,11 @@
-import 'rxjs'
 import { Observable } from 'rxjs/Observable'
-
-import { getUsers } from 'api'
+import 'rxjs/add/operator/mergeMap'
+import 'rxjs/add/observable/of'
+import 'rxjs/add/observable/from'
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/takeUntil'
+import 'rxjs/add/operator/catch'
+import { apiFetch } from '../../helpers/Api'
 
 export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS'
@@ -64,7 +68,7 @@ export function getDataFailure(error) {
 export const fetchUserEpic = action$ =>
   action$.ofType(FETCHING_DATA)
     .mergeMap(() =>
-      Observable.from(getUsers())
+      Observable.from(apiFetch('/people'))
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
         .catch(error => Observable.of(getDataFailure(error)))
