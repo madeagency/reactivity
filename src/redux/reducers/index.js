@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import { combineEpics } from 'redux-observable'
 import { reducer as formReducer } from 'redux-form'
-import users, { fetchUserEpic } from './users'
+import neo, { fetchNeoFeedEpic } from './neo'
 
 export const rootEpic = combineEpics(
-  fetchUserEpic
+  fetchNeoFeedEpic
 )
 
 export default combineReducers({
-  users,
+  neo,
   form: formReducer
 })
