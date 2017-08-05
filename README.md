@@ -2,7 +2,7 @@
 
 A Bleeding Edge React Universal Boilerplate for Power Users.
 
-[![code climate](https://codeclimate.com/github/madeagency/reactivity/badges/gpa.svg)](https://codeclimate.com/github/madeagency/reactivity) [![Greenkeeper badge](https://badges.greenkeeper.io/redux-observable/redux-observable.svg)](https://greenkeeper.io/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests) [![Dependency Status](https://david-dm.org/madeagency/reactivity.svg)](https://david-dm.org/madeagency/reactivity) [![devDependency Status](https://david-dm.org/madeagency/reactivity/dev-status.svg)](https://david-dm.org/madeagency/reactivity#info=devDependencies)
+[![code climate](https://codeclimate.com/github/madeagency/reactivity/badges/gpa.svg)](https://codeclimate.com/github/madeagency/reactivity) [![Greenkeeper badge](https://badges.greenkeeper.io/madeagency/reactivity.svg)](https://greenkeeper.io/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests) [![Dependency Status](https://david-dm.org/madeagency/reactivity.svg)](https://david-dm.org/madeagency/reactivity) [![devDependency Status](https://david-dm.org/madeagency/reactivity/dev-status.svg)](https://david-dm.org/madeagency/reactivity#info=devDependencies)
 
 Yes this is really another boilerplate because that whats missing in the react world right? Well actually yes... Why you ask? 
 
