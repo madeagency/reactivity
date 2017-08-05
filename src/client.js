@@ -10,12 +10,12 @@ import App from './containers/App/App'
 const supportsHistory = 'pushState' in window.history
 const { store } = configureStore(f => f, window.__data)
 
-const renderApp = App =>
+const renderApp = TheApp =>
   render(
     <AppContainer>
       <Provider store={store} key="provider">
         <BrowserRouter forceRefresh={!supportsHistory}>
-          <App />
+          <TheApp />
         </BrowserRouter>
       </Provider>
     </AppContainer>,
@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   })
 }
 
-if ('serviceWorker' in navigator && process.env.ENABLE_SW) {
+if ('serviceWorker' in navigator && process.env.ENABLE_SW === 'true') {
   runtime.register()
 }
 
