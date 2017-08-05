@@ -483,10 +483,6 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-dual-import@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-dual-import/-/babel-plugin-dual-import-1.1.4.tgz#3efbc4f728661b3d70a9b76c6f821334ceb4cd8c"
-
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-async-functions/-/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
@@ -818,6 +814,10 @@ babel-plugin-transform-strict-mode@^6.24.1:
   dependencies:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
+
+babel-plugin-universal-import@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-universal-import/-/babel-plugin-universal-import-1.2.5.tgz#1c2576dfb80250e735db1770515f7264fdcac9d3"
 
 babel-preset-env@^1.6.0:
   version "1.6.0"

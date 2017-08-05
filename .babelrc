@@ -11,7 +11,7 @@
     "stage-2"
   ],
   "plugins": [
-    "dual-import",
+    "universal-import",
     "transform-decorators-legacy"
   ],
   "env": {

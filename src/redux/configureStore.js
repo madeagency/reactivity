@@ -15,7 +15,7 @@ export default function configureStore(wrapEpic = (f => f), data) {
     store = createStore(app, middleware)
   }
 
-  if (module.hot) {
+  if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept(
       './reducers',
       () => {
