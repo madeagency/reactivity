@@ -69,8 +69,8 @@
     "webpack-flush-chunks": "^1.1.18"
   },
   "scripts": {
-    "start": "npm run clean && node src/server/index.js",
-    "start:prod": "npm run build && node src/server/index.js",
+    "start": "npm run clean && node bin/server.js",
+    "start:prod": "npm run build && node bin/server.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "rimraf buildClient && webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && webpack --progress -p --config webpack/server.prod.js",
