@@ -92,8 +92,7 @@ module.exports = {
       safe: false
     }),
     new webpack.DefinePlugin({
-      'process.env.SERVER': JSON.stringify(true),
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.SERVER': JSON.stringify(true)
     })
   ]
 }

@@ -5,6 +5,7 @@
     "node": true
   },
   "rules": {
+    "global-require":"off",
     "comma-dangle": "off", // not sure why airbnb turned this on.
     "no-console": "off",
     "no-underscore-dangle": "off",

@@ -9,7 +9,7 @@ const Html = (props) => {
   const htmlAttrs = head.htmlAttributes.toComponent()
 
   return (
-    <html {...htmlAttrs}>
+    <html lang="en" {...htmlAttrs}>
       <head>
         {head.title.toComponent()}
         {head.meta.toComponent()}

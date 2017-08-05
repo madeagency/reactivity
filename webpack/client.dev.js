@@ -75,11 +75,6 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
-    }),
     new webpack.ProvidePlugin({
       fetch: 'isomorphic-fetch'
     }),
