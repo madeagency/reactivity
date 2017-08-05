@@ -4,7 +4,6 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
-// const Visualizer = require('webpack-visualizer-plugin')
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
@@ -90,6 +89,5 @@ module.exports = {
       excludes: ['*hot-update*', '**/*.map', '**/stats.json']
     }),
     new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
-    // new Visualizer()
   ]
 }

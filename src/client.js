@@ -24,12 +24,13 @@ const renderApp = App =>
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept('./containers/App/App.js', () => {
-    renderApp(require('./containers/App/App').default)
+    const theApp = require('./containers/App/App').default
+    renderApp(theApp)
   })
 }
 
 if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
+  runtime.register()
 }
 
 renderApp(App)

@@ -21,7 +21,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-watch": "^2.0.7",
-    "cli-real-favicon": "^0.0.6",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -39,9 +38,7 @@
     "webpack-dev-server": "^2.6.1",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-hot-server-middleware": "^0.1.0",
-    "webpack-node-externals": "^1.6.0",
-    "write-file-webpack-plugin": "^4.1.0",
-    "yargs": "^8.0.2"
+    "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
     "autoprefixer": "^7.1.2",
@@ -74,8 +71,7 @@
     "serviceworker-webpack-plugin": "^0.2.3",
     "style-loader": "^0.18.2",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-flush-chunks": "^1.1.18",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-flush-chunks": "^1.1.18"
   },
   "scripts": {
     "start": "npm run clean && NODE_ENV=development node src/server/index.js",
@@ -84,7 +80,6 @@
     "build:client": "rimraf buildClient && NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
     "clean": "rimraf buildClient buildServer",
-    "lint": "eslint -c .eslintrc src",
-    "generate:favicon": "real-favicon generate favicon.config.json .favicon static"
+    "lint": "eslint -c .eslintrc src"
   }
 }

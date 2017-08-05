@@ -31,7 +31,7 @@
     },
     "import/resolver": {
       "webpack": {
-         "config": "webpack.config.base.js"
+         "config": "./webpack/client.prod.js"
       }
     }
   }
