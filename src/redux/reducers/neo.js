@@ -7,68 +7,76 @@ import 'rxjs/add/operator/takeUntil'
 import 'rxjs/add/operator/catch'
 import { apiFetch } from '../../helpers/Api'
 
-export const FETCHING_DATA = 'FETCHING_DATA'
-export const FETCHING_DATA_SUCCESS = 'FETCHING_DATA_SUCCESS'
-export const FETCHING_DATA_FAILURE = 'FETCHING_DATA_FAILURE'
+export const FETCHING_DATA = 'nasa/neo/FETCHING_DATA'
+export const FETCHING_DATA_SUCCESS = 'nasa/neo/FETCHING_DATA_SUCCESS'
+export const FETCHING_DATA_FAILURE = 'nasa/neo/FETCHING_DATA_FAILURE'
 
 const initialState = {
+  date: new Date().toISOString().slice(0, 10),
   data: [],
-  dataFetched: false,
-  isFetching: false,
-  error: false,
-  label: 'GET NOW!!'
+  fetched: false,
+  fetching: false,
+  error: false
 }
 
-export default function users(state = initialState, action) {
+export default function neo(state = initialState, action) {
   switch (action.type) {
     case FETCHING_DATA:
       return {
         ...state,
-        data: [],
-        isFetching: true
+        fetching: true
       }
     case FETCHING_DATA_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        dataFetched: true,
-        data: action.data
+        fetching: false,
+        fetched: true,
+        data: action.payload
       }
     case FETCHING_DATA_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        error: true
+        fetched: false,
+        error: true,
+        data: action.payload
       }
     default:
       return state
   }
 }
 
-export function fetchData() {
+export function fetchData(startDate, endDate) {
   return {
-    type: FETCHING_DATA
+    type: FETCHING_DATA,
+    payload: {
+      startDate,
+      endDate
+    }
   }
 }
 
 export function getDataSuccess(data) {
   return {
     type: FETCHING_DATA_SUCCESS,
-    data: data.people
+    payload: data.near_earth_objects[initialState.date]
   }
 }
 
 export function getDataFailure(error) {
   return {
     type: FETCHING_DATA_FAILURE,
-    errorMessage: error
+    payload: error
   }
 }
 
-export const fetchUserEpic = action$ =>
+export const fetchNeoFeedEpic = action$ =>
   action$.ofType(FETCHING_DATA)
+    .map(action => ({
+      startDate: action.payload.startDate,
+      endDate: action.payload.endDate
+    }))
     .mergeMap(() =>
-      Observable.from(apiFetch('/people'))
+      Observable.from(apiFetch(`/feed?start_date=${initialState.date}&end_date=${initialState.date}`))
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
         .catch(error => Observable.of(getDataFailure(error)))
