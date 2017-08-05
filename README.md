@@ -24,8 +24,8 @@ Whats unique about this boilerplate however is:
 
 If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 
-1. Clone this repo using `git clone --depth=1 https://github.com/madeagency/react-universal.git`
-2. Move to the appropriate directory: `cd react-universal`.
+1. Clone this repo using `git clone --depth=1 https://github.com/madeagency/reactivity.git`
+2. Move to the appropriate directory: `cd reactivity`.
 3. Copy the `.sample.env` to `.env` and change any details as required.
 3. Run `yarn install` in order to install dependencies.
 4. Run `yarn start` and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
@@ -46,14 +46,14 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/react-universal/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/reactivity/tags). 
 
 ## Authors
 
 * **Dawid** - *Initial work* - [dawidvdh](https://github.com/dawidvdh)
 * **Ross** - *Initial work* - [rocbear](https://github.com/rocbear)
 
-See also the list of [contributors](https://github.com/madeagency/react-universal/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/madeagency/reactivity/graphs/contributors) who participated in this project.
 
 License
 -------
