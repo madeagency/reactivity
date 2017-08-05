@@ -1,8 +1,10 @@
-# React Universal
+# Reactivity
 
 A Bleeding Edge React Universal Boilerplate for Power Users.
 
-Yes this is really another boilerplate because that whats missing in the react world right? Well actually yes... Why you ask? Well see we need a boilerplate for people who want to be able to tweak at every layer of the application if you are comfortable with installing something like [offline-plugin](https://github.com/NekR/offline-plugin) and letting that manage your offline settings then this is not the boilerplate for you, By no means are we saying that is an incorrect approach all were saying is that this boilerplate is targeted at a different audience.
+Yes this is really another boilerplate because that whats missing in the react world right? Well actually yes... Why you ask? 
+
+Well see we need a boilerplate for people who want to be able to tweak at every layer of the application if you are comfortable with installing something like [offline-plugin](https://github.com/NekR/offline-plugin) and letting that manage your offline settings then this is not the boilerplate for you, By no means are we saying that is an incorrect approach all were saying is that this boilerplate is targeted at a different audience.
 
 ## Features
 
@@ -54,7 +56,7 @@ See also the list of [contributors](https://github.com/madeagency/react-universa
 License
 -------
 
-React Universal is © 2017 MADE Code PTY Ltd.
+Reactivity is © 2017 MADE Code PTY Ltd.
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: LICENSE
@@ -64,7 +66,7 @@ Maintained by
 
 [![madeagency](https://www.made.co.za/logo.png)](https://www.made.co.za?utm_source=github)
 
-React Universal was created and is maintained MADE Agency PTY Ltd.
+Reactivity was created and is maintained MADE Agency PTY Ltd.
 The names and logos for MADE Code are trademarks of MADE Code PTY Ltd.
 
 We love open source software. See our [Github Profile](https://github.com/madeagency) for more.
