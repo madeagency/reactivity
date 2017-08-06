@@ -77,6 +77,10 @@
     "build:client": "rimraf buildClient && webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && webpack --progress -p --config webpack/server.prod.js",
     "clean": "rimraf buildClient buildServer",
-    "lint": "eslint -c .eslintrc src"
+    "lint": "eslint -c .eslintrc src",
+    "flow:start": "flow start",
+    "flow:stop": "flow stop",
+    "flow:status": "flow status",
+    "flow:coverage": "flow coverage"
   }
 }
