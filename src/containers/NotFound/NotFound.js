@@ -1,14 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
+import Status from 'components/RouterStatus/Status'
 
-const NotFound = ({ staticContext }) => {
-  if (staticContext) {
-    staticContext.statusCode = 404
-  }
-
-  return (
-    <div id="NotFound">
+const NotFound = () => (
+  <Status code={404}>
+    <div>
       <Helmet
         title="NotFound"
         meta={[
@@ -17,13 +13,7 @@ const NotFound = ({ staticContext }) => {
       />
       Not Found
     </div>
-  )
-}
-
-NotFound.propTypes = {
-  staticContext: PropTypes.shape({
-    statusCode: PropTypes.number
-  }).isRequired
-}
+  </Status>
+)
 
 export default NotFound

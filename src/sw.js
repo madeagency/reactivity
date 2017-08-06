@@ -45,7 +45,7 @@ self.addEventListener('fetch', (event) => {
       if (!responseNetwork || !responseNetwork.ok) return responseNetwork
 
       const responseCache = responseNetwork.clone()
-      global.caches.open(CACHE_NAME)
+      return global.caches.open(CACHE_NAME)
         .then(cache => cache.put(request, responseCache))
         .then(() => responseNetwork).catch(() => null)
     })
