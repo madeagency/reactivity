@@ -41,14 +41,23 @@ export default ({ clientStats }) => (req, res) => {
           state={data}
         />
       )
-      if (reactRouterContext.url) {
-        res.writeHead(302, {
-          Location: reactRouterContext.url
-        })
-        res.end()
-      } else {
-        res.write(`<!doctype html>\n${html}`)
-        res.end()
+
+      switch (reactRouterContext.status) {
+        case 301:
+        case 302:
+          res.writeHead(reactRouterContext.status, {
+            Location: reactRouterContext.url
+          })
+          res.end()
+          break
+        case 404:
+          res.writeHead(reactRouterContext.status)
+          res.write(`<!doctype html>\n${html}`)
+          res.end()
+          break
+        default:
+          res.write(`<!doctype html>\n${html}`)
+          res.end()
       }
     })
 }
