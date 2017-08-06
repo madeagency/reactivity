@@ -9,6 +9,8 @@
     "comma-dangle": "off", // not sure why airbnb turned this on.
     "no-console": "off",
     "no-underscore-dangle": "off",
+    "react/no-danger": "off",
+    "no-bitwise":"off",
     "semi": [
       2,
       "never"
