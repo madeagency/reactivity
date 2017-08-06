@@ -20,6 +20,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-watch": "^2.0.7",
+    "coveralls": "^2.13.1",
+    "enzyme": "^2.9.1",
     "eslint": "^4.4.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -28,8 +30,12 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-css-chunks-webpack-plugin": "^2.0.16",
     "file-loader": "^1.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
     "url-loader": "^0.5.9",
+    "watchman": "^0.1.8",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
     "webpack-hot-middleware": "^2.18.2",
@@ -75,6 +81,10 @@
     "build:client": "rimraf buildClient && webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && webpack --progress -p --config webpack/server.prod.js",
     "clean": "rimraf buildClient buildServer",
-    "lint": "eslint -c .eslintrc src"
+    "lint": "eslint -c .eslintrc src",
+    "pretest": "rimraf ./coverage",
+    "test": "jest --config jestrc.json --coverage",
+    "test:watch": "jest --config jestrc.json --watchAll",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   }
 }

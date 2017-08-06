@@ -18,7 +18,7 @@ TextField.propTypes = {
   meta: PropTypes.shape({
     touched: PropTypes.bool,
     error: PropTypes.string,
-    warning: PropTypes.bool
+    warning: PropTypes.string
   }).isRequired
 }
 

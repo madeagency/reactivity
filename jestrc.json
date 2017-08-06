@@ -1,0 +1,24 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "!src/**/*.test.{js,jsx}"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "statements": 98,
+      "branches": 91,
+      "functions": 98,
+      "lines": 98
+    }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "moduleNameMapper": {
+    "^components(.*)$": "<rootDir>/src/components$1",
+    "^reducers(.*)$": "<rootDir>/src/redux/reducers$1",
+    "^.+\\.(css|scss)$": "identity-obj-proxy"
+  },
+  "testRegex": "tests/.*\\.test\\.js$"
+}
