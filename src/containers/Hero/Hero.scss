@@ -1,0 +1,48 @@
+.Hero {
+  text-align: center;
+}
+
+.Logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 200px;
+}
+
+.Header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.Heading {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.Intro {
+  font-size: large;
+}
+
+.props {
+  color:#777;
+  font-size: 12px;
+}
+
+.githubLink {
+  display: inline-block;
+  font-size: 20px;
+  text-decoration: none;
+  color: #DDDDDD;
+  &:hover {
+    color: #61DAFB;
+  }
+}
+
+.github {
+  height: 20px;
+  vertical-align: top;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

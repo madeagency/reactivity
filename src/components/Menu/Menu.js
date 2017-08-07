@@ -13,12 +13,12 @@ const Menu = () => (
       Home
     </NavLink>
     <NavLink
-      to="/about"
+      to="/examples"
       className={style.link}
       activeClassName={style.activeLink}
       exact
     >
-      About
+      Examples
     </NavLink>
   </nav>
 )
