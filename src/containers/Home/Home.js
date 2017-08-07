@@ -33,9 +33,10 @@ class Home extends Component {
         <Helmet
           title="Home"
           meta={[
-            { name: 'description', content: 'My Home Page' }
+            { name: 'description', content: 'Welcome to Reactivity' }
           ]}
         />
+        <h1>Some Data loaded from NASA:</h1>
         <ul>
           {neo && neo.map(object => (
             <li key={object.neo_reference_id}>{object.name}</li>
