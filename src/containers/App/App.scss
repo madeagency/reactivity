@@ -4,6 +4,10 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  a {
+    color: darken(#61DAFB, 20);
+  }
 }
 
 .Hero {
@@ -29,4 +33,9 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
 }

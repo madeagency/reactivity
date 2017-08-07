@@ -23,13 +23,15 @@ const App = () => (
     </div>
 
     <Menu />
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/about" component={About} exact />
-      <RedirectWithStatus status={302} from="/home" to="/" />
-      <Route path="/shell" component={Loading} exact />
-      <Route component={NotFound} />
-    </Switch>
+    <div className={style.container}>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/about" component={About} exact />
+        <RedirectWithStatus status={302} from="/home" to="/" />
+        <Route path="/shell" component={Loading} exact />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
   </div>
 )
 
