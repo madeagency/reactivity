@@ -6,27 +6,22 @@ import Menu from 'components/Menu/Menu'
 import Loading from 'components/Loading/Loading'
 import RedirectWithStatus from 'components/RouterStatus/RedirectWithStatus'
 import Home from '../Home'
-import About from '../About'
+import Examples from '../Examples'
 import NotFound from '../NotFound'
+import Hero from '../Hero/Hero'
 import config from '../../config'
 import style from './App.scss'
-import logo from './logo.svg'
 
 const App = () => (
   <div>
-    <div className={style.Hero}>
-      <Helmet {...config.head} />
-      <div className={style.Header}>
-        <img src={logo} className={style.Logo} alt="logo" />
-        <h2>Welcome to Reactivity</h2>
-      </div>
-    </div>
+    <Helmet {...config.head} />
+    <Hero />
 
     <Menu />
     <div className={style.container}>
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/about" component={About} exact />
+        <Route path="/examples" component={Examples} exact />
         <RedirectWithStatus status={302} from="/home" to="/" />
         <Route path="/shell" component={Loading} exact />
         <Route component={NotFound} />
