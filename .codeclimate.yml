@@ -1,3 +1,18 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+      - python
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
 ratings:
   paths:
-    - "src/**/*"
+  - "src/**/*"
+exclude_paths: []
