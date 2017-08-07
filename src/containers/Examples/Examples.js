@@ -7,7 +7,10 @@ import { fetchData } from 'reducers/neo'
 
 class Examples extends Component {
   static propTypes = {
-    neo: PropTypes.arrayOf(PropTypes.shape({})),
+    neo: PropTypes.arrayOf(PropTypes.shape({
+      neo_reference_id: PropTypes.string,
+      name: PropTypes.string
+    })),
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     fetchData: PropTypes.func.isRequired
@@ -40,10 +43,13 @@ class Examples extends Component {
         />
         <h1>Examples</h1>
 
-        <p>Our demo app is not particularly exciting we know, we are actively planning something a little more special.</p>
+        <p>
+          Our demo app is not particularly exciting we know,
+          we are actively planning something a little more special.
+        </p>
         <p>But for the moment this should suffice as a simple example of how it all works.</p>
 
-        <h3>Here's some Data {loading ? 'Loading' : 'Loaded'} from NASA:</h3>
+        <h3>Here&apos;s some Data {loading ? 'Loading' : 'Loaded'} from NASA:</h3>
 
         {loading && (<p>loading..</p>)}
         {loaded && (
