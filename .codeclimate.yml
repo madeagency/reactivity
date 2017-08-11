@@ -4,14 +4,12 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
-      - python
-      - php
+        javascript:
+          mass_threshold: 60
   eslint:
     enabled: true
     checks:
-      import/no-absolute-path:
+      import/no-unresolved:
           enabled: false
   fixme:
     enabled: true
@@ -20,3 +18,7 @@ ratings:
   - "src/**/*"
 exclude_paths:
   - "webpack/*"
+  - "node_modules/**/*"
+  - "buildClient/**/*"
+  - "buildServer/**/*"
+  - "bin/*"
