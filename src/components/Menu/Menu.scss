@@ -8,10 +8,11 @@
   margin-right: 10px;
   font-size: 16px;
   color: #000;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .activeLink {
   composes: link;
-  text-decoration: underline;
+  pointer-events: none;
+  text-decoration: none;
 }
