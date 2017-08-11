@@ -15,7 +15,8 @@
 
 .Heading {
   font-size: 3em;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .Intro {
@@ -27,14 +28,20 @@
   font-size: 12px;
 }
 
-.githubLink {
-  display: inline-block;
-  font-size: 20px;
-  text-decoration: none;
+.link {
   color: #DDDDDD;
+  text-decoration: none;
+  border-bottom: 1px solid gray;
   &:hover {
     color: #61DAFB;
   }
+}
+
+.githubLink {
+  composes: link;
+  display: inline-block;
+  font-size: 20px;
+  color: #DDDDDD;
 }
 
 .github {

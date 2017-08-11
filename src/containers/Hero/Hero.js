@@ -8,8 +8,11 @@ const Hero = () => (
   <div className={style.Hero}>
     <div className={style.Header}>
       <img src={logo} className={style.Logo} alt="logo" />
-      <h1 className={style.Heading}>Welcome to Reactivity</h1>
-      <h2>A Boilerplate for Power Users.</h2>
+      <h1 className={style.Heading}>
+        Reactivity
+      </h1>
+      <del><i>n.</i> The quality of being reactive or the degree to which something is reactive.</del>
+      <h2><i>n.</i> Boilerplate for Power Users.</h2>
       <p>
         <a
           href="https://github.com/madeagency/reactivity"
@@ -39,7 +42,15 @@ const Hero = () => (
         large
       />
       <p className={style.props}>
-        Created with love from the team at Made Code.
+        <span>Created with love from the team at </span>
+        <a
+          href="https://www.madecode.co.za/"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={style.link}
+        >
+          MADE Code
+        </a>
       </p>
     </div>
   </div>
