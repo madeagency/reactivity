@@ -10,9 +10,13 @@ engines:
       - php
   eslint:
     enabled: true
+    checks:
+      import/no-absolute-path:
+          enabled: false
   fixme:
     enabled: true
 ratings:
   paths:
   - "src/**/*"
-exclude_paths: []
+exclude_paths:
+  - "webpack/*"
