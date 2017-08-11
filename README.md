@@ -4,17 +4,17 @@ A Bleeding Edge React Universal Boilerplate for Power Users.
 
 [![Code Climate](https://codeclimate.com/repos/598770109f7dbb02640013d9/badges/dac168d1b640d9ab7e3e/gpa.svg)](https://codeclimate.com/repos/598770109f7dbb02640013d9/feed) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-request-process) [![Dependency Status](https://david-dm.org/madeagency/reactivity.svg)](https://david-dm.org/madeagency/reactivity) [![devDependency Status](https://david-dm.org/madeagency/reactivity/dev-status.svg)](https://david-dm.org/madeagency/reactivity#info=devDependencies)
 
-What is Reactivity? Well at its most basic definition it is how easily an atom has a chemical reaction with another element. Our goal is to achieve stable valence levels, A full valence shell if you will.
+What is Reactivity? Well at its most basic definition it is how easily an atom has a chemical reaction with another element. Our goal is to achieve stable valence levels, a full valence shell if you will.
 
-But really its just a Boilerplate.
+But really it's just a boilerplate.
 
-Because that whats missing in the react realm right?
+Because that's what's missing in the React realm right?
 
-Well see we need a boilerplate for people who want to be able to tweak every atom of an application a simple boilerplate that doesn't contain any magic or code generation that takes pages of documentation to learn how to override, its a boilerplate for power users.
+Well see we need a boilerplate for people who want to be able to tweak every atom of an application and a simple boilerplate that doesn't contain any magic or code generation that takes pages of documentation to learn how to override, it's a boilerplate for power users.
 
 ## Features
 
-You will find that this boilerplate covers all the expected areas such as SEO, Hot Reloading and all the other things typically covered in a boilerplate, check our pull requests to see whats coming up.
+You will find that this boilerplate covers all the expected areas such as SEO, Hot Reloading and all the other things typically covered in a boilerplate, check out our pull requests to see what's coming up.
 
 Whats unique about this boilerplate however is:
 
