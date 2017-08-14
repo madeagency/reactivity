@@ -4482,9 +4482,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-universal-component@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.3.2.tgz#9ddb24e75aec61ad266197962cdb34de338f1353"
+react-universal-component@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.3.5.tgz#e2993af57201dd42d65e079e4583686af99728e4"
   dependencies:
     hoist-non-react-statics "^2.2.1"
 
@@ -4782,9 +4782,15 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^5.3.0, rxjs@^5.4.2:
+rxjs@^5.3.0:
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.2.tgz#2a3236fcbf03df57bae06fd6972fd99e5c08fcf7"
+  dependencies:
+    symbol-observable "^1.0.1"
+
+rxjs@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
   dependencies:
     symbol-observable "^1.0.1"
 
@@ -5557,9 +5563,9 @@ webpack-dev-server@^2.7.1:
     webpack-dev-middleware "^1.11.0"
     yargs "^6.0.0"
 
-webpack-flush-chunks@^1.1.18:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.18.tgz#30b2ea8dbc932080bbe37ce859becc1bb8079a9a"
+webpack-flush-chunks@^1.1.20:
+  version "1.1.20"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.20.tgz#bd324bc0b0a273a044c3c4ff97770582fbae0547"
 
 webpack-hot-middleware@^2.18.2:
   version "2.18.2"
@@ -5585,9 +5591,9 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.5.3"
 
-webpack@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.2.tgz#a9601066e23af3c80f3bf9758fd794ca9778f251"
+webpack@^3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.4.tgz#5583eb263ed27b78b5bd17bfdfb0eb1b1cd1bf81"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
