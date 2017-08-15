@@ -36,13 +36,11 @@ if (process.env.NODE_ENV === 'development') {
 
   compiler.plugin('done', done)
 } else {
-  webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
-    const clientStats = stats.toJson().children[0]
-    const serverRender = require('../buildServer/main.js').default
+  const clientStats = require('../buildClient/stats.json')
+  const serverRender = require('../buildServer/main.js').default
 
-    app.use(publicPath, express.static(outputPath))
-    app.use(serverRender({ clientStats }))
+  app.use(publicPath, express.static(outputPath))
+  app.use(serverRender({ clientStats }))
 
-    done()
-  })
+  done()
 }
