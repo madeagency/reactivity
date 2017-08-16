@@ -38,9 +38,8 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 
 This will largely vary however heres a super simple overview.
 
-1. Ensure that your that `NODE_ENV` in your `.env` file is set to `production`.
-2. Run `yarn build`
-3. Run either `yarn start` or `node bin/server.prod.js` to start the application.
+1. Run `yarn build`
+2. Run either `yarn start` or `node bin/server.prod.js` to start the application.
 
 You could also run `start:prod` after step one to immediately launch the app after its been built.
 
