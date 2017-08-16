@@ -29,6 +29,7 @@
     "extract-css-chunks-webpack-plugin": "^2.0.16",
     "file-loader": "^1.0.0",
     "rimraf": "^2.6.1",
+    "stats-webpack-plugin": "^0.6.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.4",
     "webpack-dev-server": "^2.7.1",
@@ -69,8 +70,9 @@
     "webpack-flush-chunks": "^1.1.20"
   },
   "scripts": {
-    "start": "node bin/server.js",
-    "start:prod": "npm run build && node bin/server.js",
+    "start": "node bin/server.prod.js",
+    "prod": "npm run build && node bin/server.prod.js",
+    "dev": "node bin/server.dev.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "rimraf buildClient && webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && webpack --progress -p --config webpack/server.prod.js",

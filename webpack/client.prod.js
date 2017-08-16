@@ -4,6 +4,7 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
+const StatsPlugin = require('stats-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -60,6 +61,7 @@ module.exports = {
     extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
+    new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
@@ -68,6 +70,7 @@ module.exports = {
     }),
     new Dotenv({
       path: path.resolve(__dirname, '../.env'),
+      systemvars: true,
       safe: false
     }),
     new webpack.optimize.UglifyJsPlugin({
