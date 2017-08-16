@@ -6,10 +6,13 @@ dependencies:
     - rm -rf node_modules
     - curl -o- -L https://yarnpkg.com/install.sh | bash
   override:
+    - yarn global add greenkeeper-lockfile@1
     - yarn install
 compile:
+  pre: greenkeeper-lockfile-update
   override:
     - yarn build
+  post: greenkeeper-lockfile-upload
 test:
   override:
     - echo "No tests configured"
