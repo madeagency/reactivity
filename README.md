@@ -32,7 +32,7 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 2. Move to the appropriate directory: `cd reactivity`.
 3. Copy the `.sample.env` to `.env` and change any details as required.
 3. Run `yarn install` in order to install dependencies.
-4. Run `yarn start` and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
+4. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
 
 ## Deployment
 
@@ -40,7 +40,7 @@ This will largely vary however heres a super simple overview.
 
 1. Ensure that your that `NODE_ENV` in your `.env` file is set to `production`.
 2. Run `yarn build`
-3. Run `node bin/server.js` to start the application.
+3. Run either `yarn start` or `node bin/server.prod.js` to start the application.
 
 You could also run `start:prod` after step one to immediately launch the app after its been built.
 
