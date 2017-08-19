@@ -1,0 +1,15 @@
+machine:
+  node:
+    version: v8.2.1
+dependencies:
+  pre:
+    - rm -rf node_modules
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+  override:
+    - yarn install
+compile:
+  override:
+    - yarn build
+test:
+  override:
+    - echo "No tests configured"

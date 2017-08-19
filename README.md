@@ -2,13 +2,19 @@
 
 A Bleeding Edge React Universal Boilerplate for Power Users.
 
-Yes this is really another boilerplate because that whats missing in the react world right? Well actually yes... Why you ask? 
+[![Code Climate](https://codeclimate.com/repos/598770109f7dbb02640013d9/badges/dac168d1b640d9ab7e3e/gpa.svg)](https://codeclimate.com/repos/598770109f7dbb02640013d9/feed) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-request-process) [![Dependency Status](https://david-dm.org/madeagency/reactivity.svg)](https://david-dm.org/madeagency/reactivity) [![devDependency Status](https://david-dm.org/madeagency/reactivity/dev-status.svg)](https://david-dm.org/madeagency/reactivity#info=devDependencies)
 
-Well see we need a boilerplate for people who want to be able to tweak at every layer of the application if you are comfortable with installing something like [offline-plugin](https://github.com/NekR/offline-plugin) and letting that manage your offline settings then this is not the boilerplate for you, By no means are we saying that is an incorrect approach all were saying is that this boilerplate is targeted at a different audience.
+What is Reactivity? Well at its most basic definition it is how easily an atom has a chemical reaction with another element. Our goal is to achieve stable valence levels, A full valence shell if you will.
+
+But really its just a Boilerplate.
+
+Because that whats missing in the react realm right?
+
+Well see we need a boilerplate for people who want to be able to tweak every atom of an application a simple boilerplate that doesn't contain any magic or code generation that takes pages of documentation to learn how to override, its a boilerplate for power users.
 
 ## Features
 
-You will find that this boilerplate covers all the expected areas such as SEO, Hot Reloading and all the other things typically covered in a boilerplate, check our to do list to see whats not there yet and whats coming. 
+You will find that this boilerplate covers all the expected areas such as SEO, Hot Reloading and all the other things typically covered in a boilerplate, check our pull requests to see whats coming up.
 
 Whats unique about this boilerplate however is:
 
@@ -22,19 +28,18 @@ Whats unique about this boilerplate however is:
 
 If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 
-1. Clone this repo using `git clone --depth=1 https://github.com/madeagency/react-universal.git`
-2. Move to the appropriate directory: `cd react-universal`.
+1. Clone this repo using `git clone --depth=1 https://github.com/madeagency/reactivity.git`
+2. Move to the appropriate directory: `cd reactivity`.
 3. Copy the `.sample.env` to `.env` and change any details as required.
 3. Run `yarn install` in order to install dependencies.
-4. Run `yarn start` and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
+4. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
 
 ## Deployment
 
 This will largely vary however heres a super simple overview.
 
-1. Ensure that your that `NODE_ENV` in your `.env` file is set to `production`.
-2. Run `yarn build`
-3. Run `node bin/server.js` to start the application.
+1. Run `yarn build`
+2. Run either `yarn start` or `node bin/server.prod.js` to start the application.
 
 You could also run `start:prod` after step one to immediately launch the app after its been built.
 
@@ -44,14 +49,14 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/react-universal/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/reactivity/tags). 
 
 ## Authors
 
 * **Dawid** - *Initial work* - [dawidvdh](https://github.com/dawidvdh)
 * **Ross** - *Initial work* - [rocbear](https://github.com/rocbear)
 
-See also the list of [contributors](https://github.com/madeagency/react-universal/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/madeagency/reactivity/graphs/contributors) who participated in this project.
 
 License
 -------

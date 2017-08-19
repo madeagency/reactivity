@@ -6,12 +6,13 @@ const NotFound = () => (
   <Status code={404}>
     <div>
       <Helmet
-        title="NotFound"
+        title="Not Found"
         meta={[
-          { name: 'description', content: 'NotFound' }
+          { name: 'description', content: 'Not Found' }
         ]}
       />
-      Not Found
+      <h1>This Page is no longer with us.</h1>
+      <p>Its in a better place now...</p>
     </div>
   </Status>
 )
