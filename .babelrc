@@ -3,10 +3,12 @@
     [
       "env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "browsers": ["last 3 versions", "safari >= 7"]
+        }
       }
     ],
-    "es2015",
     "react",
     "stage-2"
   ],
