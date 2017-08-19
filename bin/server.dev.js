@@ -17,8 +17,13 @@ app.use(webpackDevMiddleware(compiler, options))
 app.use(webpackHotMiddleware(clientCompiler))
 app.use(webpackHotServerMiddleware(compiler))
 
+let isBuilt = false
+
 compiler.plugin('done', () => {
-  app.listen(process.env.APP_PORT, () => {
-    console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`)
-  })
+  if (!isBuilt) {
+    app.listen(process.env.APP_PORT, () => {
+      isBuilt = true
+      console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`)
+    })
+  }
 })
