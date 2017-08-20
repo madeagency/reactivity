@@ -24,6 +24,7 @@ const Hero = () => (
         </a>
       </p>
       <GithubButton
+        title="Star this project on github"
         user="madeagency"
         repo="reactivity"
         type="star"
@@ -33,6 +34,7 @@ const Hero = () => (
         large
       />
       <GithubButton
+        title="Fork this project on github"
         user="madeagency"
         repo="reactivity"
         type="fork"
