@@ -31,8 +31,10 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 1. Clone this repo using `git clone --depth=1 https://github.com/madeagency/reactivity.git`
 2. Move to the appropriate directory: `cd reactivity`.
 3. Copy the `.sample.env` to `.env` and change any details as required.
-3. Run `yarn install` in order to install dependencies.
-4. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
+4. Run `yarn install` in order to install dependencies.
+5. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
+
+*Note: You'll have to set `ENABLE_SW` to `true` in the `.env` file to enable the service worker, its just helpful to disable to disable it during development and is false by default*
 
 ## Deployment
 
