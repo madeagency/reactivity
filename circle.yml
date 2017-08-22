@@ -18,3 +18,14 @@ compile:
 test:
   override:
     - echo "No tests configured"
+deployment:
+  development:
+    branch: dev
+    commands:
+      - URL=$(now -t ${NOW_TOKEN})
+      - now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
+  production:
+    branch: production
+    commands:
+      - URL=$(now -t ${NOW_TOKEN})
+      - now -t ${NOW_TOKEN} alias set ${URL} reactivity.now.sh
