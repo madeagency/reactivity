@@ -5,7 +5,7 @@ const SelectField = ({ input, label, type, meta: { touched, error, warning }, op
   <div>
     <label htmlFor={input.name}>{label}</label>
     <div>
-      <select {...input} type={type}>
+      <select id={input.name} {...input} type={type}>
         <option />
         {options && options.map(({ title, value }) => (
           <option value={value} key={value}>{title}</option>
