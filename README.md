@@ -19,10 +19,10 @@ You will find that this boilerplate covers all the expected areas such as SEO, H
 Whats unique about this boilerplate however is:
 
 - Universal Rendering with Code Splitting - *(thanks to [react-universal-component](https://github.com/faceyspacey/react-universal-component))*
-- RXJS for action side effects.
+- RXJS for action side effects. - *(thanks to [react-redux-epic](https://github.com/BerkeleyTrue/react-redux-epic))*
 - PWA Ready.
 - No scaffolding tools.
-- No Automated service worker generation, you get to write your own.
+- No Automated service worker generation, you get to write your own. - *(thanks to [serviceworker-webpack-plugin](https://github.com/oliviertassinari/serviceworker-webpack-plugin))*
 
 ## Getting Started
 
@@ -77,9 +77,3 @@ We love open source software. See our [Github Profile](https://github.com/madeag
 We're always looking for talented people who love programming. [Get in touch] with us.
 
 [Get in touch]: https://www.madecode.co.za?utm_source=github
-
-## Acknowledgments
-
-* [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
-* [BerkeleyTrue](https://github.com/BerkeleyTrue)
-* [faceyspacey](https://github.com/faceyspacey)
