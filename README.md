@@ -18,7 +18,7 @@ You will find that this boilerplate covers all the expected areas such as SEO, H
 
 Whats unique about this boilerplate however is:
 
-- Universal Rendering with Code Splitting.
+- Universal Rendering with Code Splitting - *(thanks to [react-universal-component](https://github.com/faceyspacey/react-universal-component))*
 - RXJS for action side effects.
 - PWA Ready.
 - No scaffolding tools.
