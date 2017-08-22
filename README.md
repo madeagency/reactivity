@@ -49,10 +49,6 @@ You could also run `start:prod` after step one to immediately launch the app aft
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/reactivity/tags). 
-
 ## Authors
 
 * **Dawid** - *Initial work* - [dawidvdh](https://github.com/dawidvdh)
