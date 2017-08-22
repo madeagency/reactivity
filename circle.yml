@@ -23,7 +23,9 @@ deployment:
   development:
     branch: dev
     commands:
-      - now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
+      - |
+        URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+        now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
   production:
     branch: production
     commands:
