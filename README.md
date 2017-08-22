@@ -18,11 +18,11 @@ You will find that this boilerplate covers all the expected areas such as SEO, H
 
 Whats unique about this boilerplate however is:
 
-- Universal Rendering with Code Splitting.
-- RXJS for action side effects.
+- Universal Rendering with Code Splitting - *(thanks to [react-universal-component](https://github.com/faceyspacey/react-universal-component))*
+- RXJS for action side effects. - *(thanks to [react-redux-epic](https://github.com/BerkeleyTrue/react-redux-epic))*
 - PWA Ready.
 - No scaffolding tools.
-- No Automated service worker generation, you get to write your own.
+- No Automated service worker generation, you get to write your own. - *(thanks to [serviceworker-webpack-plugin](https://github.com/oliviertassinari/serviceworker-webpack-plugin))*
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 4. Run `yarn install` in order to install dependencies.
 5. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
 
-*Note: You'll have to set `ENABLE_SW` to `true` in the `.env` file to enable the service worker, its just helpful to disable to disable it during development and is false by default*
+*Note: You'll have to set `ENABLE_SW` to `true` in the `.env` file to enable the service worker, its just helpful to disable it during development and is false by default*
 
 ## Deployment
 
@@ -48,10 +48,6 @@ You could also run `start:prod` after step one to immediately launch the app aft
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/madeagency/reactivity/tags). 
 
 ## Authors
 
@@ -81,9 +77,3 @@ We love open source software. See our [Github Profile](https://github.com/madeag
 We're always looking for talented people who love programming. [Get in touch] with us.
 
 [Get in touch]: https://www.madecode.co.za?utm_source=github
-
-## Acknowledgments
-
-* [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
-* [BerkeleyTrue](https://github.com/BerkeleyTrue)
-* [faceyspacey](https://github.com/faceyspacey)
