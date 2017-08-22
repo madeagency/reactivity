@@ -12,6 +12,10 @@ Because that's what's missing in the React realm right?
 
 Well see we need a boilerplate for people who want to be able to tweak every atom of an application and a simple boilerplate that doesn't contain any magic or code generation that takes pages of documentation to learn how to override, it's a boilerplate for power users.
 
+#### View our [Example App Here](https://reactivity.now.sh)
+
+Deployed using [now](https://zeit.co/now) like so `now --public --dotenv=.env`
+
 ## Features
 
 You will find that this boilerplate covers all the expected areas such as SEO, Hot Reloading and all the other things typically covered in a boilerplate, check out our pull requests to see what's coming up.
@@ -34,7 +38,7 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 4. Run `yarn install` in order to install dependencies.
 5. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
 
-*Note: You'll have to set `ENABLE_SW` to `true` in the `.env` file to enable the service worker, its just helpful to disable it during development and is false by default*
+*Note: you may want to set `ENABLE_SW` to `false` in the `.env` file to disable the service worker during development*
 
 ## Deployment
 

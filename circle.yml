@@ -6,6 +6,7 @@ dependencies:
     - rm -rf node_modules
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn global add greenkeeper-lockfile@1
+    - yarn global add now
   override:
     - yarn install
 compile:
@@ -18,3 +19,14 @@ compile:
 test:
   override:
     - echo "No tests configured"
+deployment:
+  development:
+    branch: dev
+    commands:
+      - URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+      - now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
+  production:
+    branch: production
+    commands:
+      - URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+      - now -t ${NOW_TOKEN} alias set ${URL} reactivity.now.sh
