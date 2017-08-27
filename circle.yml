@@ -19,6 +19,7 @@ compile:
     - greenkeeper-lockfile-upload
 test:
   override:
+    - yarn lint
     - yarn test
     - yarn coveralls
 deployment:
