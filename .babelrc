@@ -30,7 +30,7 @@
       "plugins": ["react-hot-loader/babel"]
     },
     "test": {
-      "presets": ["env"]
+      "presets": ["env", "stage-2"]
     }
   }
 }
