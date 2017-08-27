@@ -1,11 +1,25 @@
 import React from 'react'
-import Link from 'react-router-dom/Link'
-import styles from './Menu.scss'
+import NavLink from 'react-router-dom/NavLink'
+import style from './Menu.scss'
 
 const Menu = () => (
-  <nav className={styles.nav}>
-    <Link to="/">Home!!!!</Link>
-    <Link to="/about">About!</Link>
+  <nav className={style.nav}>
+    <NavLink
+      to="/"
+      className={style.link}
+      activeClassName={style.activeLink}
+      exact
+    >
+      Home
+    </NavLink>
+    <NavLink
+      to="/examples"
+      className={style.link}
+      activeClassName={style.activeLink}
+      exact
+    >
+      Examples
+    </NavLink>
   </nav>
 )
 

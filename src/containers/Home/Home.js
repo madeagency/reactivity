@@ -1,53 +1,35 @@
-// @flow
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from 'react'
 import Helmet from 'react-helmet'
-import { fetchData } from 'reducers/neo'
+import Link from 'react-router-dom/Link'
 
-class Home extends Component {
-  static propTypes = {
-    neo: PropTypes.arrayOf(PropTypes.shape({})),
-    loaded: PropTypes.bool.isRequired,
-    fetchData: PropTypes.func.isRequired
-  }
+const Home = () => (
+  <div>
+    <Helmet
+      title="Home"
+      meta={[
+        { name: 'description', content: 'Welcome to Reactivity' }
+      ]}
+    />
+    <h1>What is it really?</h1>
+    <p>A <b>universally rendered PWA</b> with <b>code-splitting</b> that uses:</p>
+    <ul>
+      <li>React</li>
+      <li>React Router 4</li>
+      <li>Redux</li>
+      <li>Webpack</li>
+      <li>Express</li>
+      <li>Eslint</li>
+      <li>Redux Form</li>
+      <li>Style and Sass Loader</li>
+      <li>RXJS</li>
+      <li>Service Worker</li>
+    </ul>
 
-  static defaultProps = {
-    neo: []
-  }
+    <p>
+      Take a look at our <Link to="/examples">Examples Page</Link> to see parts of this in action.
+    </p>
+  </div>
+)
 
-  componentWillMount() {
-    if (!this.props.loaded) {
-      this.props.fetchData()
-    }
-  }
+export default Home
 
-  typicalSubmit = (values) => {
-    console.log(values)
-  }
-
-  render() {
-    const { neo } = this.props
-
-    return (
-      <div id="home">
-        <Helmet
-          title="Home"
-          meta={[
-            { name: 'description', content: 'My Home Page' }
-          ]}
-        />
-        <ul>
-          {neo && neo.map(object => (
-            <li key={object.neo_reference_id}>{object.name}</li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
-
-export default connect(state => ({
-  neo: state.neo.data,
-  loaded: state.neo.fetched
-}), { fetchData })(Home)
