@@ -45,7 +45,7 @@ class Examples extends Component {
 
         <p>
           We know our demo app is not particularly exciting,
-          but stay tuned as {'we\'re'} working on something a little more special
+          but stay tuned as we&apos;re working on something a little more special
         </p>
         <p>
           For the moment this should suffice as a demonstration of
@@ -82,11 +82,11 @@ class Examples extends Component {
           the data will be here waiting for you.
         </p>
 
-        <h3>Universal Code-splitting 🌍</h3>
+        <h3>Universal Code-splitting <span role="img" aria-label="earth">🌍</span></h3>
 
         <p>
           For this one your gonna need to open your network tab,
-          and you will be able to see which chunks are being sent. {'You\'re'}
+          and you will be able to see which chunks are being sent. You&apos;re
           currently viewing the <a
             href="https://github.com/madeagency/reactivity/blob/master/src/containers/Examples/index.js"
             target="_blank"
@@ -96,7 +96,7 @@ class Examples extends Component {
           </a>
         </p>
 
-        <h3>Progressive Web App Ready 🏝</h3>
+        <h3>Progressive Web App Ready <span role="img" aria-label="island">🏝</span></h3>
 
         <p>
           This Boilerplate currently passes all the PWA requirements of lighthouse
@@ -113,7 +113,7 @@ class Examples extends Component {
         <h2>Oh look a typical Form Example</h2>
         <p>
           Powered By redux Forms which integrates perfectly into our
-          Boilerplate. Check the console for values once {'you\'ve'} submitted the form.
+          Boilerplate. Check the console for values once you&apos;ve submitted the form.
         </p>
 
         <TypicalFrom onSubmit={this.typicalSubmit} />
