@@ -5,7 +5,7 @@ import TextField from '../TextField/TextField'
 import SelectField from '../SelectField/SelectField'
 import typicalValidation from './TypicalValidation'
 
-const TypicalForm = (props) => {
+export const Form = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props
 
   return (
@@ -42,7 +42,7 @@ const TypicalForm = (props) => {
   )
 }
 
-TypicalForm.propTypes = {
+Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -50,6 +50,6 @@ TypicalForm.propTypes = {
 }
 
 export default reduxForm({
-  form: 'typical', // a unique identifier for this form
+  form: 'typical',
   validate: typicalValidation
-})(TypicalForm)
+})(Form)

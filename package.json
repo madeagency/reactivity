@@ -33,6 +33,7 @@
     "jest": "^20.0.4",
     "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
+    "sinon": "^3.2.1",
     "stats-webpack-plugin": "^0.6.1",
     "url-loader": "^0.5.9",
     "watchman": "^0.1.8",
