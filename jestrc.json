@@ -18,7 +18,8 @@
   "moduleNameMapper": {
     "^components(.*)$": "<rootDir>/src/components$1",
     "^reducers(.*)$": "<rootDir>/src/redux/reducers$1",
-    "^.+\\.(css|scss)$": "identity-obj-proxy"
+    "^.+\\.(css|scss)$": "identity-obj-proxy",
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/fileTransformer.js"
   },
   "testRegex": "tests/.*\\.test\\.js$"
 }
