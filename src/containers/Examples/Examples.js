@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import TypicalFrom from 'components/TypicalForm/TypicalForm'
 import { fetchData } from 'reducers/neo'
 
-class Examples extends Component {
+export class Examples extends Component {
   static propTypes = {
     neo: PropTypes.arrayOf(PropTypes.shape({
       neo_reference_id: PropTypes.string,
