@@ -42,8 +42,6 @@ export default ({ clientStats }) => (req, res) => {
         />
       )
 
-      console.log(html)
-
       switch (reactRouterContext.status) {
         case 301:
         case 302:
@@ -54,14 +52,11 @@ export default ({ clientStats }) => (req, res) => {
           break
         case 404:
           res.writeHead(reactRouterContext.status)
-          // res.write(`<!doctype html>\n${html}`)
-          res.pipe(html)
-          res.end()
+          html.pipe(res)
           break
         default:
-          // res.write(`<!doctype html>\n${html}`)
-          res.pipe(html)
-          res.end()
+          res.write('<!doctype html>')
+          html.pipe(res)
       }
     })
 }
