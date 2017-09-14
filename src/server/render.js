@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
-import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic-16'
+import { renderToNodeStream } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
 import configureStore from '../redux/configureStore'
@@ -32,7 +32,7 @@ export default ({ clientStats }) => (req, res) => {
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
       const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
-      const html = renderToStaticMarkup(
+      const html = renderToNodeStream(
         <Html
           styles={stylesheets}
           cssHash={cssHashRaw}
@@ -41,6 +41,8 @@ export default ({ clientStats }) => (req, res) => {
           state={data}
         />
       )
+
+      console.log(html)
 
       switch (reactRouterContext.status) {
         case 301:
@@ -52,11 +54,13 @@ export default ({ clientStats }) => (req, res) => {
           break
         case 404:
           res.writeHead(reactRouterContext.status)
-          res.write(`<!doctype html>\n${html}`)
+          // res.write(`<!doctype html>\n${html}`)
+          res.pipe(html)
           res.end()
           break
         default:
-          res.write(`<!doctype html>\n${html}`)
+          // res.write(`<!doctype html>\n${html}`)
+          res.pipe(html)
           res.end()
       }
     })

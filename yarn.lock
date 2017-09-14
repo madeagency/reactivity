@@ -4531,6 +4531,19 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
+react-redux-epic-16@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-redux-epic-16/-/react-redux-epic-16-0.4.0.tgz#7887789f0c4c76e41e6e40b40e5e29645d9d75d5"
+  dependencies:
+    babel-runtime "^6.11.6"
+    debug "^3.0.1"
+    invariant "^2.2.1"
+    react "^16.0.0-rc.3"
+    react-dom "^16.0.0-rc.3"
+    redux "^3.6.0"
+    redux-observable "^0.16.0"
+    rxjs "^5.3.0"
+
 react-redux-epic@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-redux-epic/-/react-redux-epic-0.3.1.tgz#f9e559be41e4f7ac23c11d107e92ffa3d47b9868"
