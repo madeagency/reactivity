@@ -55,7 +55,7 @@
     "react-hot-loader": "next",
     "react-redux": "^5.0.6",
     "react-redux-epic": "^0.3.1",
-    "react-redux-epic-16": "^0.4.0",
+    "react-redux-epic-16": "^0.4.1",
     "react-router-dom": "^4.2.2",
     "react-universal-component": "^2.5.4",
     "redux": "^3.7.2",
