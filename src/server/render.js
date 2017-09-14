@@ -52,6 +52,7 @@ export default ({ clientStats }) => (req, res) => {
           break
         case 404:
           res.writeHead(reactRouterContext.status)
+          res.write('<!doctype html>')
           html.pipe(res)
           break
         default:
