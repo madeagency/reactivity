@@ -31,7 +31,7 @@
     "stats-webpack-plugin": "^0.6.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^2.8.2",
     "webpack-hot-middleware": "^2.19.1",
     "webpack-hot-server-middleware": "^0.1.0",
     "write-file-webpack-plugin": "^4.1.0"
