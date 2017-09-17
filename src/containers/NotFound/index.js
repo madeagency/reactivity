@@ -1,6 +1,17 @@
-import universal from 'react-universal-component'
-import Loading from 'components/Loading/Loading'
+import React from 'react'
+import Helmet from 'react-helmet'
 
-export default universal(() => import('./NotFound'), {
-  loading: Loading
-})
+const NotFound = () => (
+  <div>
+    <Helmet
+      title="Not Found"
+      meta={[
+        { name: 'description', content: 'Not Found' }
+      ]}
+    />
+    <h1>This Page is no longer with us.</h1>
+    <p>Its in a better place now...</p>
+  </div>
+)
+
+export default NotFound

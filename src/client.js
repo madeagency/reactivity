@@ -2,21 +2,19 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import AppContainer from 'react-hot-loader/lib/AppContainer'
-import BrowserRouter from 'react-router-dom/BrowserRouter'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime'
+import createHistory from 'history/createBrowserHistory'
 import configureStore from './redux/configureStore'
 import App from './containers/App/App'
 
-const supportsHistory = 'pushState' in window.history
-const { store } = configureStore(f => f, window.__data)
+const history = createHistory()
+const { store } = configureStore(f => f, window.__data, history)
 
 const renderApp = TheApp =>
   render(
     <AppContainer>
       <Provider store={store} key="provider">
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <TheApp />
-        </BrowserRouter>
+        <TheApp />
       </Provider>
     </AppContainer>,
     document.getElementById('root')

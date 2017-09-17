@@ -1,33 +1,46 @@
-import React from 'react'
-import Switch from 'react-router-dom/Switch'
-import Route from 'react-router-dom/Route'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import Menu from 'components/Menu/Menu'
+import universal from 'react-universal-component'
+import { connect } from 'react-redux'
 import Loading from 'components/Loading/Loading'
-import RedirectWithStatus from 'components/RouterStatus/RedirectWithStatus'
-import Home from '../Home'
-import Examples from '../Examples'
-import NotFound from '../NotFound'
+import NotFound from '../NotFound/NotFound'
 import Hero from '../Hero/Hero'
 import config from '../../config'
 import style from './App.scss'
 
-const App = () => (
-  <div>
-    <Helmet {...config.head} />
-    <Hero />
+const UniversalComponent = universal(props => import(`../${props.page}`), {
+  loading: Loading,
+  error: NotFound
+})
 
-    <Menu />
-    <div className={style.container}>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/examples" component={Examples} exact />
-        <RedirectWithStatus status={302} from="/home" to="/" />
-        <Route path="/shell" component={Loading} exact />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
-  </div>
-)
+class App extends Component {
+  beforeChange = () => {}
+  afterChange = () => {}
+  handleError = () => {}
 
-export default App
+  render() {
+    // const { index, done, loading } = this.state
+
+    console.log(this.props.location)
+
+    return (
+      <div>
+        <Helmet {...config.head} />
+        <Hero />
+
+        <div className={style.container}>
+          <UniversalComponent
+            page={'Home'}
+            onBefore={this.beforeChange}
+            onAfter={this.afterChange}
+            onError={this.handleError}
+          />
+        </div>
+      </div>
+    )
+  }
+}
+
+export default connect(state => ({
+  location: state.location
+}))(App)
