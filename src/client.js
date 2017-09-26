@@ -22,7 +22,7 @@ const renderApp = TheApp =>
     document.getElementById('root')
   )
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
+if (module.hot) {
   module.hot.accept('./containers/App/App.js', () => {
     const theApp = require('./containers/App/App').default
     renderApp(theApp)
