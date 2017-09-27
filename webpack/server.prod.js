@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer')
 const res = p => path.resolve(__dirname, p)
 
 const entry = res('../src/server/render.js')
-const output = res('../buildServer')
+const output = res('../build')
 
 module.exports = {
   name: 'server',
@@ -14,7 +14,7 @@ module.exports = {
   entry: [entry],
   output: {
     path: output,
-    filename: '[name].js',
+    filename: 'server.js',
     libraryTarget: 'commonjs2'
   },
   module: {

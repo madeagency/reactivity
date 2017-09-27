@@ -19,6 +19,5 @@ ratings:
 exclude_paths:
   - "webpack/*"
   - "node_modules/**/*"
-  - "buildClient/**/*"
-  - "buildServer/**/*"
+  - "build/**/*"
   - "bin/*"

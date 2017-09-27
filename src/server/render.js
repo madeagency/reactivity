@@ -45,17 +45,19 @@ export default ({ clientStats }) => (req, res) => {
       switch (reactRouterContext.status) {
         case 301:
         case 302:
-          res.writeHead(reactRouterContext.status, {
-            Location: reactRouterContext.url
-          })
+          res.status(reactRouterContext.status)
+          res.location(reactRouterContext.url)
           res.end()
           break
         case 404:
-          res.writeHead(reactRouterContext.status)
+          res.status(reactRouterContext.status)
+          res.type('html')
           res.write('<!doctype html>')
           html.pipe(res)
           break
         default:
+          res.status(200)
+          res.type('html')
           res.write('<!doctype html>')
           html.pipe(res)
       }
