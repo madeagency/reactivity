@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
-import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic-16'
+import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic'
 import { renderToNodeStream } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
