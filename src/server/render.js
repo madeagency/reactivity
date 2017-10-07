@@ -32,15 +32,13 @@ export default ({ clientStats }) => (req, res) => {
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
       const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
-      const html = renderToNodeStream(
-        <Html
-          styles={stylesheets}
-          cssHash={cssHashRaw}
-          js={scripts}
-          component={markup}
-          state={data}
-        />
-      )
+      const html = renderToNodeStream(<Html
+        styles={stylesheets}
+        cssHash={cssHashRaw}
+        js={scripts}
+        component={markup}
+        state={data}
+      />)
 
       switch (reactRouterContext.status) {
         case 301:

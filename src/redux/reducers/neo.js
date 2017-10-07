@@ -79,5 +79,4 @@ export const fetchNeoFeedEpic = action$ =>
       Observable.from(apiFetch(`/feed?start_date=${initialState.date}&end_date=${initialState.date}`))
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
-        .catch(error => Observable.of(getDataFailure(error)))
-    )
+        .catch(error => Observable.of(getDataFailure(error))))
