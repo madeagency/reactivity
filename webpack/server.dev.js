@@ -9,7 +9,7 @@ const res = p => path.resolve(__dirname, p)
 
 const modeModules = res('../node_modules')
 const entry = res('../src/server/render.js')
-const output = res('../buildServer')
+const output = res('../build')
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
@@ -34,7 +34,7 @@ module.exports = {
   externals,
   output: {
     path: output,
-    filename: '[name].js',
+    filename: 'server.js',
     libraryTarget: 'commonjs2',
     publicPath: '/'
   },
