@@ -19,7 +19,7 @@ compile:
     - greenkeeper-lockfile-upload
 test:
   override:
-    - flow:status
+    - yarn flow:status
 deployment:
   development:
     branch: dev
