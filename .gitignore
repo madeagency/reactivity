@@ -95,7 +95,6 @@ typings/
 .favicon
 dist
 ./index.html
-buildClient
-buildServer
+build
 
 .vscode
