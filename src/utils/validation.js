@@ -64,8 +64,8 @@ export function match(field:string) {
   }
 }
 
-export function createValidator(rules) {
-  return (data = {}) => {
+export function createValidator(rules:{}) {
+  return (data:{} = {}) => {
     const errors = {}
     Object.keys(rules).forEach((key) => {
       // concat enables both functions and arrays of functions
