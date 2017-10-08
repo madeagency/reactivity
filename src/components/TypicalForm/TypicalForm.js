@@ -6,7 +6,9 @@ import SelectField from '../SelectField/SelectField'
 import typicalValidation from './TypicalValidation'
 
 const TypicalForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const {
+    handleSubmit, pristine, reset, submitting
+  } = props
 
   return (
     <form onSubmit={handleSubmit} noValidate>

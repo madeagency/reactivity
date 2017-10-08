@@ -7,7 +7,7 @@
   },
   "rules": {
     "global-require": "off",
-    "comma-dangle": "off", // not sure why airbnb turned this on.
+    "comma-dangle": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
     "react/no-danger": "off",
@@ -25,6 +25,14 @@
         "printWidth": 80,
         "trailingComma": "none",
         "semi": false
+      }
+    ],
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
       }
     ]
   },

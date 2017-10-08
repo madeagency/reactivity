@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SelectField = ({ input, label, type, meta: { touched, error, warning }, options }) => (
+const SelectField = ({
+  input, label, type, meta: { touched, error, warning }, options
+}) => (
   <div>
-    <label htmlFor={input.name}>{label}</label>
-    <div>
+    <label htmlFor={input.name}>
+      {label}
       <select id={input.name} {...input} type={type}>
         <option />
         {options && options.map(({ title, value }) => (
@@ -12,7 +14,7 @@ const SelectField = ({ input, label, type, meta: { touched, error, warning }, op
         ))}
       </select>
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
+    </label>
   </div>
 )
 

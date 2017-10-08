@@ -10,15 +10,13 @@ const assetsToCache = [
 ].map(path => new URL(path, global.location).toString())
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    global.caches
-      .open(CACHE_NAME)
-      .then(cache => cache.addAll(assetsToCache))
-      .catch((error) => {
-        console.error(error)
-        throw error
-      })
-  )
+  event.waitUntil(global.caches
+    .open(CACHE_NAME)
+    .then(cache => cache.addAll(assetsToCache))
+    .catch((error) => {
+      console.error(error)
+      throw error
+    }))
 })
 
 self.addEventListener('activate', (event) => {

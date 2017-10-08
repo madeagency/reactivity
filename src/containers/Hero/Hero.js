@@ -11,7 +11,9 @@ const Hero = () => (
       <h1 className={style.Heading}>
         Reactivity
       </h1>
-      <del><i>n.</i> The quality of being reactive or the degree to which something is reactive.</del>
+      <del>
+        <i>n.</i> The quality of being reactive or the degree to which something is reactive.
+      </del>
       <h2><i>n.</i> Boilerplate for Power Users.</h2>
       <p>
         <a

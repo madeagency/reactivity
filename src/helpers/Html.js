@@ -4,7 +4,9 @@ import Helmet from 'react-helmet'
 import serialize from 'serialize-javascript'
 
 const Html = (props) => {
-  const { styles, cssHash, js, component, state } = props
+  const {
+    styles, cssHash, js, component, state
+  } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
 
