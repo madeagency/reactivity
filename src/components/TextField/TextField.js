@@ -1,7 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-const TextField = ({ input, label, type, meta: { touched, error, warning } }) => (
+import React from 'react'
+import type { FieldProps } from 'redux-form'
+
+type Props = {
+  label: string,
+  type: string
+} & FieldProps
+
+const TextField = ({ input, label, type, meta: { touched, error, warning } }:Props) => (
   <div>
     <label htmlFor={input.name}>{label}</label>
     <div>
@@ -10,16 +17,5 @@ const TextField = ({ input, label, type, meta: { touched, error, warning } }) =>
     </div>
   </div>
 )
-
-TextField.propTypes = {
-  input: PropTypes.shape({}).isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.string,
-    warning: PropTypes.bool
-  }).isRequired
-}
 
 export default TextField

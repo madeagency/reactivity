@@ -1,7 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-const SelectField = ({ input, label, type, meta: { touched, error, warning }, options }) => (
+import React from 'react'
+import type { FieldProps } from 'redux-form'
+import { SelectOptions } from '../../types'
+
+type Props = {
+  label: string,
+  type: string,
+  options: Array<SelectOptions>
+} & FieldProps
+
+const SelectField = ({ input, label, type, meta: { touched, error, warning }, options }:Props) => (
   <div>
     <label htmlFor={input.name}>{label}</label>
     <div>
@@ -15,20 +24,5 @@ const SelectField = ({ input, label, type, meta: { touched, error, warning }, op
     </div>
   </div>
 )
-
-SelectField.propTypes = {
-  input: PropTypes.shape({}).isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
-  })).isRequired,
-  meta: PropTypes.shape({
-    touched: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-    warning: PropTypes.bool
-  }).isRequired
-}
 
 export default SelectField
