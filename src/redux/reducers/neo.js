@@ -1,15 +1,15 @@
-import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/operator/mergeMap'
-import 'rxjs/add/observable/of'
-import 'rxjs/add/observable/from'
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/takeUntil'
-import 'rxjs/add/operator/catch'
-import { apiFetch } from '../../helpers/Api'
+import { Observable } from "rxjs/Observable"
+import "rxjs/add/operator/mergeMap"
+import "rxjs/add/observable/of"
+import "rxjs/add/observable/from"
+import "rxjs/add/operator/map"
+import "rxjs/add/operator/takeUntil"
+import "rxjs/add/operator/catch"
+import { apiFetch } from "../../helpers/Api"
 
-export const FETCHING_DATA = 'nasa/neo/FETCHING_DATA'
-export const FETCHING_DATA_SUCCESS = 'nasa/neo/FETCHING_DATA_SUCCESS'
-export const FETCHING_DATA_FAILURE = 'nasa/neo/FETCHING_DATA_FAILURE'
+export const FETCHING_DATA = "nasa/neo/FETCHING_DATA"
+export const FETCHING_DATA_SUCCESS = "nasa/neo/FETCHING_DATA_SUCCESS"
+export const FETCHING_DATA_FAILURE = "nasa/neo/FETCHING_DATA_FAILURE"
 
 const initialState = {
   date: new Date().toISOString().slice(0, 10),
@@ -70,13 +70,18 @@ export function getDataFailure(error) {
 }
 
 export const fetchNeoFeedEpic = action$ =>
-  action$.ofType(FETCHING_DATA)
+  action$
+    .ofType(FETCHING_DATA)
     .map(action => ({
       startDate: action.payload.startDate,
       endDate: action.payload.endDate
     }))
     .mergeMap(() =>
-      Observable.from(apiFetch(`/feed?start_date=${initialState.date}&end_date=${initialState.date}`))
+      Observable.from(
+        apiFetch(
+          `/feed?start_date=${initialState.date}&end_date=${initialState.date}`
+        )
+      )
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
         .catch(error => Observable.of(getDataFailure(error)))

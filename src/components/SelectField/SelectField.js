@@ -1,18 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-const SelectField = ({ input, label, type, meta: { touched, error, warning }, options }) => (
+const SelectField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error, warning },
+  options
+}) => (
   <div>
-    <label htmlFor={input.name}>{label}</label>
-    <div>
+    <label htmlFor={input.name}>
+      {label}
       <select id={input.name} {...input} type={type}>
         <option />
-        {options && options.map(({ title, value }) => (
-          <option value={value} key={value}>{title}</option>
-        ))}
+        {options &&
+          options.map(({ title, value }) => (
+            <option value={value} key={value}>
+              {title}
+            </option>
+          ))}
       </select>
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
+      {touched &&
+        ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
+    </label>
   </div>
 )
 
@@ -20,10 +31,12 @@ SelectField.propTypes = {
   input: PropTypes.shape({}).isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
-  })).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired
+    })
+  ).isRequired,
   meta: PropTypes.shape({
     touched: PropTypes.bool.isRequired,
     error: PropTypes.string,
