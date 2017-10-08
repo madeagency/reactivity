@@ -9,8 +9,8 @@ type Props = {
   type: 'star' | 'watch' | 'fork' | 'follow',
   width: number,
   height: number,
-  count?: string,
-  large?: string
+  count?: boolean,
+  large?: boolean
 };
 
 const GithubButton = (props: Props) => {
