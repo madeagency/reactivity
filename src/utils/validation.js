@@ -53,8 +53,8 @@ export function oneOf(enumeration:Array<string>) {
   }
 }
 
-export function match(field) {
-  return (value, data) => {
+export function match(field:string) {
+  return (value:string|number, data:{}) => {
     if (data) {
       if (value !== data[field]) {
         return 'Do not match'
