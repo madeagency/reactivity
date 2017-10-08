@@ -1,14 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 const TextField = ({
-  input, label, type, meta: { touched, error, warning }
+  input,
+  label,
+  type,
+  meta: { touched, error, warning }
 }) => (
   <div>
     <label htmlFor={input.name}>
       {label}
       <input id={input.name} {...input} placeholder={label} type={type} />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      {touched &&
+        ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
     </label>
   </div>
 )

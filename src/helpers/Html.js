@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import serialize from 'serialize-javascript'
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import serialize from "serialize-javascript"
 
-const Html = (props) => {
-  const {
-    styles, cssHash, js, component, state
-  } = props
+const Html = props => {
+  const { styles, cssHash, js, component, state } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
 
@@ -17,23 +15,23 @@ const Html = (props) => {
         {head.meta.toComponent()}
         {head.link.toComponent()}
         {styles.map(name => (
-          <link
-            rel="stylesheet"
-            href={`/${name}`}
-            key={name}
-          />
+          <link rel="stylesheet" href={`/${name}`} key={name} />
         ))}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: component }} />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(state)};` }}
+          dangerouslySetInnerHTML={{
+            __html: `window.__data=${serialize(state)};`
+          }}
           charSet="UTF-8"
         />
         <script
           type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: `window.__CSS_CHUNKS__=${serialize(cssHash)};` }}
+          dangerouslySetInnerHTML={{
+            __html: `window.__CSS_CHUNKS__=${serialize(cssHash)};`
+          }}
           charSet="UTF-8"
         />
         {js.map(name => (

@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import Helmet from 'react-helmet'
-import TypicalFrom from 'components/TypicalForm/TypicalForm'
-import { fetchData } from 'reducers/neo'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import Helmet from "react-helmet"
+import TypicalFrom from "components/TypicalForm/TypicalForm"
+import { fetchData } from "reducers/neo"
 
 class Examples extends Component {
   static propTypes = {
-    neo: PropTypes.arrayOf(PropTypes.shape({
-      neo_reference_id: PropTypes.string,
-      name: PropTypes.string
-    })),
+    neo: PropTypes.arrayOf(
+      PropTypes.shape({
+        neo_reference_id: PropTypes.string,
+        name: PropTypes.string
+      })
+    ),
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     fetchData: PropTypes.func.isRequired
@@ -26,7 +28,7 @@ class Examples extends Component {
     }
   }
 
-  typicalSubmit = (values) => {
+  typicalSubmit = values => {
     console.log(values)
   }
 
@@ -35,33 +37,44 @@ class Examples extends Component {
 
     return (
       <div>
-        <Helmet title="Examples" meta={[{ name: 'description', content: 'Reactivity Examples' }]} />
+        <Helmet
+          title="Examples"
+          meta={[{ name: "description", content: "Reactivity Examples" }]}
+        />
         <h1>What can it do?</h1>
 
         <p>
-          We know our demo app is not particularly exciting, but stay tuned as we&apos;re working on
-          something a little more special
+          We know our demo app is not particularly exciting, but stay tuned as
+          we&apos;re working on something a little more special
         </p>
         <p>
-          For the moment this should suffice as a demonstration of what <b>Reactivity</b> can do:
+          For the moment this should suffice as a demonstration of what{" "}
+          <b>Reactivity</b> can do:
         </p>
 
-        <h3>Here&apos;s some Data {loading ? 'Loading' : 'Loaded'} from NASA 🛰:</h3>
+        <h3>
+          Here&apos;s some Data {loading ? "Loading" : "Loaded"} from NASA 🛰:
+        </h3>
 
         {loading && <p>loading..</p>}
         {loaded && (
-          <ul>{neo && neo.map(object => <li key={object.neo_reference_id}>{object.name}</li>)}</ul>
+          <ul>
+            {neo &&
+              neo.map(object => (
+                <li key={object.neo_reference_id}>{object.name}</li>
+              ))}
+          </ul>
         )}
 
         <p>
-          We use <b>RXJS</b> and the concept of{' '}
+          We use <b>RXJS</b> and the concept of{" "}
           <a
             href="https://redux-observable.js.org/docs/basics/Epics.html"
             target="_blank"
             rel="noopener noreferrer"
           >
             Epics
-          </a>{' '}
+          </a>{" "}
           for our asynchronous actions. Check
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/redux/reducers/neo.js"
@@ -69,24 +82,26 @@ class Examples extends Component {
             rel="noopener noreferrer"
           >
             this file
-          </a>{' '}
+          </a>{" "}
           which is responsible for fetching the above data.
         </p>
         <p>
-          Both client and server make calls to load data from separate API server. If you were to
-          disable javascript or refresh the page, the data will be here waiting for you.
+          Both client and server make calls to load data from separate API
+          server. If you were to disable javascript or refresh the page, the
+          data will be here waiting for you.
         </p>
 
         <h3>
-          Universal Code-splitting{' '}
+          Universal Code-splitting{" "}
           <span role="img" aria-label="earth">
             🌍
           </span>
         </h3>
 
         <p>
-          For this one your gonna need to open your network tab, and you will be able to see which
-          chunks are being sent. You&apos;re currently viewing the{' '}
+          For this one your gonna need to open your network tab, and you will be
+          able to see which chunks are being sent. You&apos;re currently viewing
+          the{" "}
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/containers/Examples/index.js"
             target="_blank"
@@ -97,29 +112,30 @@ class Examples extends Component {
         </p>
 
         <h3>
-          Progressive Web App Ready{' '}
+          Progressive Web App Ready{" "}
           <span role="img" aria-label="island">
             🏝
           </span>
         </h3>
 
         <p>
-          This Boilerplate currently passes all the PWA requirements of lighthouse and you can{' '}
-          {'fully '}
+          This Boilerplate currently passes all the PWA requirements of
+          lighthouse and you can {"fully "}
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/sw.js"
             target="_blank"
             rel="noopener noreferrer"
           >
             customize the service worker
-          </a>{' '}
+          </a>{" "}
           to suite the needs of your App.
         </p>
 
         <h2>Oh look a typical Form Example</h2>
         <p>
-          Powered By redux Forms which integrates perfectly into our Boilerplate. Check the console
-          for values once you&apos;ve submitted the form.
+          Powered By redux Forms which integrates perfectly into our
+          Boilerplate. Check the console for values once you&apos;ve submitted
+          the form.
         </p>
 
         <TypicalFrom onSubmit={this.typicalSubmit} />
@@ -132,7 +148,7 @@ export default connect(
   state => ({
     neo: state.neo.data,
     loaded: state.neo.fetched,
-    loading: state.neo.fetching,
+    loading: state.neo.fetching
   }),
   { fetchData }
 )(Examples)

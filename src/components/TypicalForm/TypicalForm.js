@@ -1,14 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
-import TextField from '../TextField/TextField'
-import SelectField from '../SelectField/SelectField'
-import typicalValidation from './TypicalValidation'
+import React from "react"
+import PropTypes from "prop-types"
+import { Field, reduxForm } from "redux-form"
+import TextField from "../TextField/TextField"
+import SelectField from "../SelectField/SelectField"
+import typicalValidation from "./TypicalValidation"
 
-const TypicalForm = (props) => {
-  const {
-    handleSubmit, pristine, reset, submitting
-  } = props
+const TypicalForm = props => {
+  const { handleSubmit, pristine, reset, submitting } = props
 
   return (
     <form onSubmit={handleSubmit} noValidate>
@@ -32,14 +30,18 @@ const TypicalForm = (props) => {
         type="select"
         label="Favorite Color"
         options={[
-          { title: 'red', value: 'ff0000' },
-          { title: 'blue', value: '00ff00' },
-          { title: 'orange', value: '0000ff' }
+          { title: "red", value: "ff0000" },
+          { title: "blue", value: "00ff00" },
+          { title: "orange", value: "0000ff" }
         ]}
       />
 
-      <button type="submit" disabled={pristine || submitting}>Submit</button>
-      <button type="button" disabled={pristine || submitting} onClick={reset}>Reset</button>
+      <button type="submit" disabled={pristine || submitting}>
+        Submit
+      </button>
+      <button type="button" disabled={pristine || submitting} onClick={reset}>
+        Reset
+      </button>
     </form>
   )
 }
@@ -52,6 +54,6 @@ TypicalForm.propTypes = {
 }
 
 export default reduxForm({
-  form: 'typical', // a unique identifier for this form
+  form: "typical", // a unique identifier for this form
   validate: typicalValidation
 })(TypicalForm)
