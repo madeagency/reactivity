@@ -1,6 +1,11 @@
 {
-  "extends": "eslint-config-airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "env": {
+    "es6": true,
     "browser": true,
     "node": true
   },
@@ -28,8 +33,16 @@
   "parser": "babel-eslint",
   "plugins": [
     "react",
-    "import"
+    "import",
+    "prettier"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "settings": {
     "import/resolver": {
       "webpack": {
