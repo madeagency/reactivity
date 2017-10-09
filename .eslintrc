@@ -1,5 +1,5 @@
 {
-  "extends": "eslint-config-airbnb",
+  "extends": ["eslint-config-airbnb", "plugin:flowtype/recommended"],
   "env": {
     "browser": true,
     "node": true
@@ -21,7 +21,7 @@
     "react/default-props-match-prop-types": "off" // https://github.com/yannickcr/eslint-plugin-react/issues/1468
   },
   "parser": "babel-eslint",
-  "plugins": ["react", "import"],
+  "plugins": ["flowtype", "react", "import"],
   "settings": {
     "import/resolver": {
       "webpack": {
@@ -29,6 +29,9 @@
       },
       "node": {
         "paths": ["node_modules", "src", "components", "reducers"]
+      },
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
       }
     }
   }
