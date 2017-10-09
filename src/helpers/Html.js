@@ -1,9 +1,19 @@
+// @flow
+
 import React from "react"
-import PropTypes from "prop-types"
+import type { Node } from "react"
 import Helmet from "react-helmet"
 import serialize from "serialize-javascript"
 
-const Html = props => {
+type Props = {
+  styles: Array<string>,
+  cssHash: {},
+  js: Array<string>,
+  component: Node,
+  state: {}
+}
+
+const Html = (props: Props) => {
   const { styles, cssHash, js, component, state } = props
   const head = Helmet.renderStatic()
   const htmlAttrs = head.htmlAttributes.toComponent()
@@ -45,18 +55,6 @@ const Html = props => {
       </body>
     </html>
   )
-}
-
-Html.propTypes = {
-  styles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  cssHash: PropTypes.shape({}).isRequired,
-  js: PropTypes.arrayOf(PropTypes.string).isRequired,
-  component: PropTypes.node,
-  state: PropTypes.shape({}).isRequired
-}
-
-Html.defaultProps = {
-  component: null
 }
 
 export default Html

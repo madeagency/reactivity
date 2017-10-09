@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react"
 import GithubButton from "components/GithubButton/GithubButton"
 import style from "./Hero.scss"

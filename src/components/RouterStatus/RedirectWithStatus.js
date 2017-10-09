@@ -1,9 +1,16 @@
+// @flow
+
 import React from "react"
-import PropTypes from "prop-types"
 import Route from "react-router-dom/Route"
 import Redirect from "react-router-dom/Redirect"
 
-const RedirectWithStatus = props => (
+type Props = {
+  from: string,
+  to: string,
+  status: number
+}
+
+const RedirectWithStatus = (props: Props) => (
   <Route
     render={({ staticContext }) => {
       if (staticContext) {
@@ -13,11 +20,5 @@ const RedirectWithStatus = props => (
     }}
   />
 )
-
-RedirectWithStatus.propTypes = {
-  from: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  status: PropTypes.number.isRequired
-}
 
 export default RedirectWithStatus

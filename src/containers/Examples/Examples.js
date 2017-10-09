@@ -1,23 +1,20 @@
+// @flow
+
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import Helmet from "react-helmet"
 import TypicalFrom from "components/TypicalForm/TypicalForm"
 import { fetchData } from "reducers/neo"
+import type { Neo } from "../../types"
 
-class Examples extends Component {
-  static propTypes = {
-    neo: PropTypes.arrayOf(
-      PropTypes.shape({
-        neo_reference_id: PropTypes.string,
-        name: PropTypes.string
-      })
-    ),
-    loaded: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-    fetchData: PropTypes.func.isRequired
-  }
+type Props = {
+  neo: Array<Neo>,
+  loaded: boolean,
+  loading: boolean,
+  fetchData: () => mixed
+}
 
+class Examples extends Component<Props> {
   static defaultProps = {
     neo: []
   }
@@ -28,7 +25,7 @@ class Examples extends Component {
     }
   }
 
-  typicalSubmit = values => {
+  typicalSubmit = (values: Object) => {
     console.log(values)
   }
 

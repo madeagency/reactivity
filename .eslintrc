@@ -1,5 +1,11 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/flowtype"
+  ],
   "env": {
     "es6": true,
     "browser": true,
@@ -13,6 +19,7 @@
     "react/no-danger": "off",
     "no-bitwise": "off",
     "semi": [2, "never"],
+    "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
     "react/jsx-filename-extension": [
       2,
       {
@@ -37,7 +44,7 @@
     ]
   },
   "parser": "babel-eslint",
-  "plugins": ["react", "import", "prettier"],
+  "plugins": ["flowtype", "react", "import", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
@@ -52,6 +59,9 @@
       },
       "node": {
         "paths": ["node_modules", "src", "components", "reducers"]
+      },
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
       }
     }
   }

@@ -20,6 +20,7 @@ compile:
 test:
   override:
     - yarn lint
+    - yarn flow:status
 deployment:
   development:
     branch: dev

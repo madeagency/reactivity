@@ -1,3 +1,5 @@
+// @flow
+
 import memoize from "lru-memoize"
 import { createValidator, required, email } from "../../utils/validation"
 

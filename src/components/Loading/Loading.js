@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react"
 
 const Loading = () => <h4>Loading!</h4>
