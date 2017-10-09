@@ -2,12 +2,11 @@
 
 import React from 'react'
 import type { FieldProps } from 'redux-form'
-import type { SelectOption } from '../../types'
 
 type Props = {
   label: string,
   type: string,
-  options: Array<SelectOption>
+  options: Array<{ value: string, title: string }>
 } & FieldProps
 
 const SelectField = ({
