@@ -1,8 +1,8 @@
 // @flow
 
-import React from "react"
-import NavLink from "react-router-dom/NavLink"
-import style from "./Menu.scss"
+import React from 'react'
+import NavLink from 'react-router-dom/NavLink'
+import style from './Menu.scss'
 
 const Menu = () => (
   <nav className={style.nav}>

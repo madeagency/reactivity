@@ -1,10 +1,10 @@
 // @flow
 
-import React from "react"
-import GithubButton from "components/GithubButton/GithubButton"
-import style from "./Hero.scss"
-import logo from "./logo.svg"
-import github from "./github.svg"
+import React from 'react'
+import GithubButton from 'components/GithubButton/GithubButton'
+import style from './Hero.scss'
+import logo from './logo.svg'
+import github from './github.svg'
 
 const Hero = () => (
   <div className={style.Hero}>

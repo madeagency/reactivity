@@ -1,11 +1,11 @@
 // @flow
 
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import Helmet from "react-helmet"
-import TypicalFrom from "components/TypicalForm/TypicalForm"
-import { fetchData } from "reducers/neo"
-import type { Neo } from "../../types"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
+import TypicalFrom from 'components/TypicalForm/TypicalForm'
+import { fetchData } from 'reducers/neo'
+import type { Neo } from '../../types'
 
 type Props = {
   neo: Array<Neo>,
@@ -36,7 +36,7 @@ class Examples extends Component<Props> {
       <div>
         <Helmet
           title="Examples"
-          meta={[{ name: "description", content: "Reactivity Examples" }]}
+          meta={[{ name: 'description', content: 'Reactivity Examples' }]}
         />
         <h1>What can it do?</h1>
 
@@ -45,12 +45,12 @@ class Examples extends Component<Props> {
           we&apos;re working on something a little more special
         </p>
         <p>
-          For the moment this should suffice as a demonstration of what{" "}
+          For the moment this should suffice as a demonstration of what{' '}
           <b>Reactivity</b> can do:
         </p>
 
         <h3>
-          Here&apos;s some Data {loading ? "Loading" : "Loaded"} from NASA 🛰:
+          Here&apos;s some Data {loading ? 'Loading' : 'Loaded'} from NASA 🛰:
         </h3>
 
         {loading && <p>loading..</p>}
@@ -64,14 +64,14 @@ class Examples extends Component<Props> {
         )}
 
         <p>
-          We use <b>RXJS</b> and the concept of{" "}
+          We use <b>RXJS</b> and the concept of{' '}
           <a
             href="https://redux-observable.js.org/docs/basics/Epics.html"
             target="_blank"
             rel="noopener noreferrer"
           >
             Epics
-          </a>{" "}
+          </a>{' '}
           for our asynchronous actions. Check
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/redux/reducers/neo.js"
@@ -79,7 +79,7 @@ class Examples extends Component<Props> {
             rel="noopener noreferrer"
           >
             this file
-          </a>{" "}
+          </a>{' '}
           which is responsible for fetching the above data.
         </p>
         <p>
@@ -89,7 +89,7 @@ class Examples extends Component<Props> {
         </p>
 
         <h3>
-          Universal Code-splitting{" "}
+          Universal Code-splitting{' '}
           <span role="img" aria-label="earth">
             🌍
           </span>
@@ -98,7 +98,7 @@ class Examples extends Component<Props> {
         <p>
           For this one your gonna need to open your network tab, and you will be
           able to see which chunks are being sent. You&apos;re currently viewing
-          the{" "}
+          the{' '}
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/containers/Examples/index.js"
             target="_blank"
@@ -109,7 +109,7 @@ class Examples extends Component<Props> {
         </p>
 
         <h3>
-          Progressive Web App Ready{" "}
+          Progressive Web App Ready{' '}
           <span role="img" aria-label="island">
             🏝
           </span>
@@ -117,14 +117,14 @@ class Examples extends Component<Props> {
 
         <p>
           This Boilerplate currently passes all the PWA requirements of
-          lighthouse and you can {"fully "}
+          lighthouse and you can {'fully '}
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/sw.js"
             target="_blank"
             rel="noopener noreferrer"
           >
             customize the service worker
-          </a>{" "}
+          </a>{' '}
           to suite the needs of your App.
         </p>
 
@@ -140,12 +140,13 @@ class Examples extends Component<Props> {
     )
   }
 }
-
 export default connect(
   state => ({
     neo: state.neo.data,
     loaded: state.neo.fetched,
     loading: state.neo.fetching
   }),
-  { fetchData }
+  {
+    fetchData
+  }
 )(Examples)

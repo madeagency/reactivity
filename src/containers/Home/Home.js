@@ -1,14 +1,14 @@
 // @flow
 
-import React from "react"
-import Helmet from "react-helmet"
-import Link from "react-router-dom/Link"
+import React from 'react'
+import Helmet from 'react-helmet'
+import Link from 'react-router-dom/Link'
 
 const Home = () => (
   <div>
     <Helmet
       title="Home"
-      meta={[{ name: "description", content: "Welcome to Reactivity" }]}
+      meta={[{ name: 'description', content: 'Welcome to Reactivity' }]}
     />
     <h1>What is it really?</h1>
     <p>

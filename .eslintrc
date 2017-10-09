@@ -31,7 +31,9 @@
       {
         "printWidth": 80,
         "trailingComma": "none",
-        "semi": false
+        "singleQuote": true,
+        "semi": false,
+        "parser": "flow"
       }
     ],
     "no-restricted-globals": ["error", "event", "fdescribe"],

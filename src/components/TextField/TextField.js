@@ -1,7 +1,7 @@
 // @flow
 
-import React from "react"
-import type { FieldProps } from "redux-form"
+import React from 'react'
+import type { FieldProps } from 'redux-form'
 
 type Props = {
   label: string,

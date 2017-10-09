@@ -1,8 +1,8 @@
 // @flow
 
-import React from "react"
-import Route from "react-router-dom/Route"
-import Redirect from "react-router-dom/Redirect"
+import React from 'react'
+import Route from 'react-router-dom/Route'
+import Redirect from 'react-router-dom/Redirect'
 
 type Props = {
   from: string,

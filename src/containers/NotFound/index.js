@@ -1,6 +1,6 @@
-import universal from "react-universal-component"
-import Loading from "components/Loading/Loading"
+import universal from 'react-universal-component'
+import Loading from 'components/Loading/Loading'
 
-export default universal(() => import("./NotFound"), {
+export default universal(() => import('./NotFound'), {
   loading: Loading
 })

@@ -1,16 +1,16 @@
-import React from "react"
-import { Provider } from "react-redux"
-import { StaticRouter } from "react-router-dom"
+import React from 'react'
+import { Provider } from 'react-redux'
+import { StaticRouter } from 'react-router-dom'
 import {
   renderToString as renderToStringEpic,
   wrapRootEpic
-} from "react-redux-epic"
-import { renderToNodeStream } from "react-dom/server"
-import { flushChunkNames } from "react-universal-component/server"
-import flushChunks from "webpack-flush-chunks"
-import configureStore from "../redux/configureStore"
-import App from "../containers/App/App"
-import Html from "../helpers/Html"
+} from 'react-redux-epic'
+import { renderToNodeStream } from 'react-dom/server'
+import { flushChunkNames } from 'react-universal-component/server'
+import flushChunks from 'webpack-flush-chunks'
+import configureStore from '../redux/configureStore'
+import App from '../containers/App/App'
+import Html from '../helpers/Html'
 
 export default ({ clientStats }) => (req, res) => {
   const { wrappedEpic, store } = configureStore(wrapRootEpic)
@@ -53,14 +53,14 @@ export default ({ clientStats }) => (req, res) => {
           break
         case 404:
           res.status(reactRouterContext.status)
-          res.type("html")
-          res.write("<!doctype html>")
+          res.type('html')
+          res.write('<!doctype html>')
           html.pipe(res)
           break
         default:
           res.status(200)
-          res.type("html")
-          res.write("<!doctype html>")
+          res.type('html')
+          res.write('<!doctype html>')
           html.pipe(res)
       }
     })

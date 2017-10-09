@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from "redux"
-import { createEpicMiddleware } from "redux-observable"
-import app, { rootEpic } from "./reducers"
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
+import app, { rootEpic } from './reducers'
 
 export default function configureStore(wrapEpic = f => f, data) {
   const wrappedEpic = wrapEpic(rootEpic)
@@ -17,8 +17,8 @@ export default function configureStore(wrapEpic = f => f, data) {
   }
 
   if (module.hot) {
-    module.hot.accept("./reducers", () => {
-      store.replaceReducer(require("./reducers").default)
+    module.hot.accept('./reducers', () => {
+      store.replaceReducer(require('./reducers').default)
     })
   }
 

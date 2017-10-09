@@ -1,8 +1,8 @@
 // @flow
 
-import React from "react"
-import type { Node } from "react"
-import Route from "react-router-dom/Route"
+import React from 'react'
+import type { Node } from 'react'
+import Route from 'react-router-dom/Route'
 
 type Props = {
   code: number,

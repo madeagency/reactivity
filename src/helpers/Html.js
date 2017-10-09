@@ -1,9 +1,9 @@
 // @flow
 
-import React from "react"
-import type { Node } from "react"
-import Helmet from "react-helmet"
-import serialize from "serialize-javascript"
+import React from 'react'
+import type { Node } from 'react'
+import Helmet from 'react-helmet'
+import serialize from 'serialize-javascript'
 
 type Props = {
   styles: Array<string>,
