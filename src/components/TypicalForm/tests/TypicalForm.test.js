@@ -16,13 +16,16 @@ const defaultProps = (response = Promise.resolve()) => ({
   onSave: sinon.stub().returns(response)
 })
 
-const renderComponent = (props = {}) => shallow(
-  <Form {...props} />
-)
+const renderComponent = (props = {}) => shallow(<Form {...props} />)
 
 describe('<TypicalForm />', () => {
   it('should disable submit while submitting', () => {
-    const renderedComponent = renderComponent({ ...defaultProps(), submitting: true })
-    expect(renderedComponent.find('button[type="submit"]').prop('disabled')).toBe(true)
+    const renderedComponent = renderComponent({
+      ...defaultProps(),
+      submitting: true
+    })
+    expect(
+      renderedComponent.find('button[type="submit"]').prop('disabled')
+    ).toBe(true)
   })
 })

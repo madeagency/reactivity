@@ -1,48 +1,70 @@
 {
-  "extends": "eslint-config-airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/flowtype"
+  ],
   "env": {
+    "es6": true,
     "browser": true,
     "node": true,
     "jest": true
   },
   "rules": {
-    "global-require":"off",
-    "comma-dangle": "off", // not sure why airbnb turned this on.
+    "global-require": "off",
+    "comma-dangle": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
     "react/no-danger": "off",
-    "no-bitwise":"off",
-    "semi": [
-      2,
-      "never"
-    ],
+    "no-bitwise": "off",
+    "semi": [2, "never"],
+    "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [
-          ".jsx",
-          ".js"
-        ]
+        "extensions": [".jsx", ".js"]
+      }
+    ],
+    "prettier/prettier": [
+      2,
+      {
+        "printWidth": 80,
+        "trailingComma": "none",
+        "singleQuote": true,
+        "semi": false,
+        "parser": "flow"
+      }
+    ],
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
       }
     ]
   },
   "parser": "babel-eslint",
-  "plugins": [
-    "react",
-    "import"
-  ],
+  "plugins": ["flowtype", "react", "import", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "settings": {
     "import/resolver": {
       "webpack": {
         "config": "./webpack/client.prod.js"
       },
       "node": {
-        "paths": [
-          "node_modules",
-          "src",
-          "components",
-          "reducers"
-        ]
+        "paths": ["node_modules", "src", "components", "reducers"]
+      },
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
       }
     }
   }

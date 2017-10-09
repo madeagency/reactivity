@@ -11,9 +11,7 @@ const defaultProps = {
   meta: { touched: false, error: '', warning: '' }
 }
 
-const renderComponent = (props = {}) => shallow(
-  <TextField {...props} />
-)
+const renderComponent = (props = {}) => shallow(<TextField {...props} />)
 
 describe('<TextField />', () => {
   it('should render an <input> tag if no route is specified', () => {

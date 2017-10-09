@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer')
 const res = p => path.resolve(__dirname, p)
 
 const entry = res('../src/server/render.js')
-const output = res('../buildServer')
+const output = res('../build')
 
 module.exports = {
   name: 'server',
@@ -14,7 +14,7 @@ module.exports = {
   entry: [entry],
   output: {
     path: output,
-    filename: '[name].js',
+    filename: 'server.js',
     libraryTarget: 'commonjs2'
   },
   module: {
@@ -27,27 +27,30 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'css-loader/locals',
-          options: {
-            modules: true,
-            localIdentName: '[name]__[local]--[hash:base64:5]'
+        use: [
+          {
+            loader: 'css-loader/locals',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            }
+          },
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [autoprefixer({ browsers: 'last 2 versions' })]
+            }
           }
-        },
-        'sass-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: () => [
-              autoprefixer({ browsers: 'last 2 versions' })
-            ]
-          }
-        }]
-      }, {
+        ]
+      },
+      {
         test: /\.(jpg|png|gif|svg|ico)$/,
-        use: [{
-          loader: 'url-loader'
-        }]
+        use: [
+          {
+            loader: 'url-loader'
+          }
+        ]
       }
     ]
   },

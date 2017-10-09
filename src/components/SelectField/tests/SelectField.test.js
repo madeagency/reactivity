@@ -16,9 +16,7 @@ const defaultProps = {
   ]
 }
 
-const renderComponent = (props = {}) => shallow(
-  <SelectField {...props} />
-)
+const renderComponent = (props = {}) => shallow(<SelectField {...props} />)
 
 describe('<SelectField />', () => {
   it('should contain a <select> tag', () => {
@@ -28,7 +26,9 @@ describe('<SelectField />', () => {
 
   it('should have one more option then supplied in the props', () => {
     const renderedComponent = renderComponent(defaultProps)
-    expect(renderedComponent.find('option').length).toEqual(defaultProps.options.length + 1)
+    expect(renderedComponent.find('option').length).toEqual(
+      defaultProps.options.length + 1
+    )
   })
 
   it('should have a label', () => {

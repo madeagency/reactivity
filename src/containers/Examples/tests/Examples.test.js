@@ -10,9 +10,7 @@ const defaultProps = {
   fetchData: sinon.spy()
 }
 
-const renderComponent = (props = {}) => shallow(
-  <Examples {...props} />
-)
+const renderComponent = (props = {}) => shallow(<Examples {...props} />)
 
 describe('<Examples />', () => {
   it('should call fetchData on mount', () => {
@@ -31,13 +29,16 @@ describe('<Examples />', () => {
     const renderedComponent = renderComponent({
       ...defaultProps,
       loaded: true,
-      neo: [{
-        neo_reference_id: 'ref_1',
-        name: 'Neo 1'
-      }, {
-        neo_reference_id: 'ref_2',
-        name: 'Neo 2'
-      }]
+      neo: [
+        {
+          neo_reference_id: 'ref_1',
+          name: 'Neo 1'
+        },
+        {
+          neo_reference_id: 'ref_2',
+          name: 'Neo 2'
+        }
+      ]
     })
 
     expect(renderedComponent.find('ul').children().length).toBe(2)

@@ -1,7 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-const GithubButton = (props) => {
+import React from 'react'
+
+type Props = {
+  title: string,
+  user: string,
+  repo: string,
+  type: 'star' | 'watch' | 'fork' | 'follow',
+  width: number,
+  height: number,
+  count?: boolean,
+  large?: boolean
+}
+
+const GithubButton = (props: Props) => {
   const { title, user, repo, type, width, height, count, large } = props
   let src = `https://ghbtns.com/github-btn.html?user=${user}&repo=${repo}&type=${type}`
   if (count) src += '&count=true'
@@ -24,17 +36,6 @@ const GithubButton = (props) => {
 GithubButton.defaultProps = {
   count: false,
   large: false
-}
-
-GithubButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  repo: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['star', 'watch', 'fork', 'follow']).isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  count: PropTypes.bool,
-  large: PropTypes.bool
 }
 
 export default GithubButton

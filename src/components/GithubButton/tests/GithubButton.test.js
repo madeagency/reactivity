@@ -13,11 +13,10 @@ const defaultProps = {
   large: false
 }
 
-const expectedSrc = 'https://ghbtns.com/github-btn.html?user=madeagency&repo=reactivity&type=star'
+const expectedSrc =
+  'https://ghbtns.com/github-btn.html?user=madeagency&repo=reactivity&type=star'
 
-const renderComponent = (props = {}) => shallow(
-  <GithubButton {...props} />
-)
+const renderComponent = (props = {}) => shallow(<GithubButton {...props} />)
 
 describe('<GithubButton />', () => {
   it('should render an <iframe>', () => {

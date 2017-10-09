@@ -70,13 +70,18 @@ export function getDataFailure(error) {
 }
 
 export const fetchNeoFeedEpic = action$ =>
-  action$.ofType(FETCHING_DATA)
+  action$
+    .ofType(FETCHING_DATA)
     .map(action => ({
       startDate: action.payload.startDate,
       endDate: action.payload.endDate
     }))
     .mergeMap(() =>
-      Observable.from(apiFetch(`/feed?start_date=${initialState.date}&end_date=${initialState.date}`))
+      Observable.from(
+        apiFetch(
+          `/feed?start_date=${initialState.date}&end_date=${initialState.date}`
+        )
+      )
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
         .catch(error => Observable.of(getDataFailure(error)))

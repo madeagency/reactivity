@@ -2,9 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Home from '../Home'
 
-const renderComponent = () => shallow(
-  <Home />
-)
+const renderComponent = () => shallow(<Home />)
 
 describe('<Home />', () => {
   it('should render Heading', () => {

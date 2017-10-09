@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import GithubButton from 'components/GithubButton/GithubButton'
 import style from './Hero.scss'
@@ -8,13 +10,14 @@ const Hero = () => (
   <div className={style.Hero}>
     <div className={style.Header}>
       <img src={logo} className={style.Logo} alt="logo" />
-      <h1 className={style.Heading}>
-        Reactivity
-      </h1>
+      <h1 className={style.Heading}>Reactivity</h1>
       <del>
-        <i>n.</i> The quality of being reactive or the degree to which something is reactive.
+        <i>n.</i> The quality of being reactive or the degree to which something
+        is reactive.
       </del>
-      <h2><i>n.</i> Boilerplate for Power Users.</h2>
+      <h2>
+        <i>n.</i> Boilerplate for Power Users.
+      </h2>
       <p>
         <a
           href="https://github.com/madeagency/reactivity"
@@ -22,7 +25,8 @@ const Hero = () => (
           target="_blank"
           className={style.githubLink}
         >
-          <img src={github} className={style.github} alt="github" /> View on Github
+          <img src={github} className={style.github} alt="github" /> View on
+          Github
         </a>
       </p>
       <GithubButton

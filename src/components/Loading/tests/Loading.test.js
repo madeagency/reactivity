@@ -2,9 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Loading from '../Loading'
 
-const renderComponent = () => shallow(
-  <Loading />
-)
+const renderComponent = () => shallow(<Loading />)
 
 describe('<Loading />', () => {
   it('should render an <div>', () => {

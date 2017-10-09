@@ -1,8 +1,11 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
-import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic'
-import { renderToStaticMarkup } from 'react-dom/server'
+import {
+  renderToString as renderToStringEpic,
+  wrapRootEpic
+} from 'react-redux-epic'
+import { renderToNodeStream } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
 import configureStore from '../redux/configureStore'
@@ -15,10 +18,7 @@ export default ({ clientStats }) => (req, res) => {
 
   const component = (
     <Provider store={store} key="provider">
-      <StaticRouter
-        location={req.url}
-        context={reactRouterContext}
-      >
+      <StaticRouter location={req.url} context={reactRouterContext}>
         <App />
       </StaticRouter>
     </Provider>
@@ -31,8 +31,10 @@ export default ({ clientStats }) => (req, res) => {
     }))
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
-      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
-      const html = renderToStaticMarkup(
+      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, {
+        chunkNames
+      })
+      const html = renderToNodeStream(
         <Html
           styles={stylesheets}
           cssHash={cssHashRaw}
@@ -45,19 +47,21 @@ export default ({ clientStats }) => (req, res) => {
       switch (reactRouterContext.status) {
         case 301:
         case 302:
-          res.writeHead(reactRouterContext.status, {
-            Location: reactRouterContext.url
-          })
+          res.status(reactRouterContext.status)
+          res.location(reactRouterContext.url)
           res.end()
           break
         case 404:
-          res.writeHead(reactRouterContext.status)
-          res.write(`<!doctype html>\n${html}`)
-          res.end()
+          res.status(reactRouterContext.status)
+          res.type('html')
+          res.write('<!doctype html>')
+          html.pipe(res)
           break
         default:
-          res.write(`<!doctype html>\n${html}`)
-          res.end()
+          res.status(200)
+          res.type('html')
+          res.write('<!doctype html>')
+          html.pipe(res)
       }
     })
 }
