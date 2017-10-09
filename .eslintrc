@@ -5,43 +5,30 @@
     "node": true
   },
   "rules": {
-    "global-require":"off",
+    "global-require": "off",
     "comma-dangle": "off", // not sure why airbnb turned this on.
     "no-console": "off",
     "no-underscore-dangle": "off",
     "react/no-danger": "off",
-    "no-bitwise":"off",
-    "semi": [
-      2,
-      "never"
-    ],
+    "no-bitwise": "off",
+    "semi": [2, "never"],
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [
-          ".jsx",
-          ".js"
-        ]
+        "extensions": [".jsx", ".js"]
       }
-    ]
+    ],
+    "react/default-props-match-prop-types": "off" // https://github.com/yannickcr/eslint-plugin-react/issues/1468
   },
   "parser": "babel-eslint",
-  "plugins": [
-    "react",
-    "import"
-  ],
+  "plugins": ["react", "import"],
   "settings": {
     "import/resolver": {
       "webpack": {
         "config": "./webpack/client.prod.js"
       },
       "node": {
-        "paths": [
-          "node_modules",
-          "src",
-          "components",
-          "reducers"
-        ]
+        "paths": ["node_modules", "src", "components", "reducers"]
       }
     }
   }
