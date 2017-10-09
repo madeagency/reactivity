@@ -8,6 +8,7 @@
 [include]
 
 [libs]
+./flow/hotModule.js.flow
 
 [lints]
 
