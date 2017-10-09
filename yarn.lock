@@ -501,6 +501,10 @@ babel-loader@^7.1.2:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
 
+babel-macros@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/babel-macros/-/babel-macros-1.0.2.tgz#04475889990243cc58a0afb5ea3308ec6b89e797"
+
 babel-messages@7.0.0-beta.0:
   version "7.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/babel-messages/-/babel-messages-7.0.0-beta.0.tgz#6df01296e49fc8fbd0637394326a167f36da817b"
@@ -516,6 +520,18 @@ babel-plugin-check-es2015-constants@^6.22.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.22.0.tgz#35157b101426fd2ffd3da3f75c7d1e91835bbf8a"
   dependencies:
     babel-runtime "^6.22.0"
+
+babel-plugin-emotion@^8.0.4:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-8.0.4.tgz#e7935423a44a4182137f0e63b89c7bdf0ac80e39"
+  dependencies:
+    babel-generator "^6.26.0"
+    babel-macros "^1.0.2"
+    babel-plugin-syntax-jsx "^6.18.0"
+    convert-source-map "^1.5.0"
+    emotion-utils "^8.0.2-7"
+    source-map "^0.5.7"
+    touch "^1.0.0"
 
 babel-plugin-istanbul@^4.0.0:
   version "4.1.5"
@@ -557,7 +573,7 @@ babel-plugin-syntax-flow@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-flow/-/babel-plugin-syntax-flow-6.18.0.tgz#4c3ab20a2af26aa20cd25995c398c4eb70310c8d"
 
-babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.8.0:
+babel-plugin-syntax-jsx@^6.18.0, babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.8.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
 
@@ -1915,6 +1931,18 @@ emoji-regex@^6.1.0:
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
+
+emotion-utils@^8.0.2-7:
+  version "8.0.2-7"
+  resolved "https://registry.yarnpkg.com/emotion-utils/-/emotion-utils-8.0.2-7.tgz#83f55c6d1ace6b47d02454755bfba97938812d6a"
+
+emotion@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/emotion/-/emotion-8.0.5.tgz#bf7ab53554b95da88151bb5dc50a3b5795d0aa02"
+  dependencies:
+    babel-plugin-emotion "^8.0.4"
+    emotion-utils "^8.0.2-7"
+    stylis-plugin-emotion "^8.0.5"
 
 encodeurl@~1.0.1:
   version "1.0.1"
@@ -3896,6 +3924,12 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
+nopt@~1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
+  dependencies:
+    abbrev "1"
+
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -4675,6 +4709,13 @@ react-dom@^16.0.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-emotion@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/react-emotion/-/react-emotion-8.0.5.tgz#a86cd56995d7806691112f62102f0eeee23cf32b"
+  dependencies:
+    babel-plugin-emotion "^8.0.4"
+    emotion-utils "^8.0.2-7"
 
 react-helmet@^5.2.0:
   version "5.2.0"
@@ -5528,6 +5569,10 @@ style-loader@^0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+stylis-plugin-emotion@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/stylis-plugin-emotion/-/stylis-plugin-emotion-8.0.5.tgz#81c1700c5002e41c26620d1e78855516d564938a"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -5655,6 +5700,12 @@ to-fast-properties@^1.0.3:
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
+
+touch@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/touch/-/touch-1.0.0.tgz#449cbe2dbae5a8c8038e30d71fa0ff464947c4de"
+  dependencies:
+    nopt "~1.0.10"
 
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.3"

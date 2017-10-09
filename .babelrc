@@ -13,14 +13,10 @@
     "stage-2",
     "flow"
   ],
-  "plugins": [
-    "universal-import"
-  ],
+  "plugins": ["emotion", "universal-import"],
   "env": {
     "production": {
-      "only": [
-        "src"
-      ],
+      "only": ["src"],
       "plugins": [
         "transform-react-constant-elements",
         "transform-react-inline-elements"

@@ -4,15 +4,28 @@ import React from 'react'
 import Switch from 'react-router-dom/Switch'
 import Route from 'react-router-dom/Route'
 import Helmet from 'react-helmet'
+import { injectGlobal } from 'react-emotion'
 import Menu from 'components/Menu/Menu'
 import Loading from 'components/Loading/Loading'
 import RedirectWithStatus from 'components/RouterStatus/RedirectWithStatus'
+import Container from './Container'
 import Home from '../Home'
 import Examples from '../Examples'
 import NotFound from '../NotFound'
 import Hero from '../Hero/Hero'
 import config from '../../config'
-import style from './App.scss'
+
+injectGlobal(`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  a {
+    color: darken(#61DAFB, 40);
+  }
+`)
 
 const App = () => (
   <div>
@@ -20,7 +33,7 @@ const App = () => (
     <Hero />
 
     <Menu />
-    <div className={style.container}>
+    <Container>
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/examples" component={Examples} exact />
@@ -28,7 +41,7 @@ const App = () => (
         <Route path="/shell" component={Loading} exact />
         <Route component={NotFound} />
       </Switch>
-    </div>
+    </Container>
   </div>
 )
 
