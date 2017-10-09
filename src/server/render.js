@@ -1,7 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
-import { renderToString as renderToStringEpic, wrapRootEpic } from 'react-redux-epic'
+import {
+  renderToString as renderToStringEpic,
+  wrapRootEpic
+} from 'react-redux-epic'
 import { renderToNodeStream } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
@@ -15,10 +18,7 @@ export default ({ clientStats }) => (req, res) => {
 
   const component = (
     <Provider store={store} key="provider">
-      <StaticRouter
-        location={req.url}
-        context={reactRouterContext}
-      >
+      <StaticRouter location={req.url} context={reactRouterContext}>
         <App />
       </StaticRouter>
     </Provider>
@@ -31,7 +31,9 @@ export default ({ clientStats }) => (req, res) => {
     }))
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
-      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, { chunkNames })
+      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, {
+        chunkNames
+      })
       const html = renderToNodeStream(
         <Html
           styles={stylesheets}

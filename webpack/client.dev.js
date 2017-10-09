@@ -32,29 +32,31 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ExtractCssChunks.extract({
-          use: [{
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+          use: [
+            {
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            },
+            'sass-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [autoprefixer({ browsers: 'last 2 versions' })]
+              }
             }
-          },
-          'sass-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                autoprefixer({ browsers: 'last 2 versions' })
-              ]
-            }
-          }]
+          ]
         })
       },
       {
         test: /\.(jpg|png|gif|svg|ico)$/,
-        use: [{
-          loader: 'url-loader'
-        }]
+        use: [
+          {
+            loader: 'url-loader'
+          }
+        ]
       }
     ]
   },

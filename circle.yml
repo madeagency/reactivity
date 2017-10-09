@@ -19,7 +19,8 @@ compile:
     - greenkeeper-lockfile-upload
 test:
   override:
-    - echo "No tests configured"
+    - yarn lint
+    - yarn flow:status
 deployment:
   development:
     branch: dev

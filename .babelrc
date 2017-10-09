@@ -10,7 +10,8 @@
       }
     ],
     "react",
-    "stage-2"
+    "stage-2",
+    "flow"
   ],
   "plugins": [
     "universal-import"
@@ -21,7 +22,6 @@
         "src"
       ],
       "plugins": [
-        "transform-react-remove-prop-types",
         "transform-react-constant-elements",
         "transform-react-inline-elements"
       ]
