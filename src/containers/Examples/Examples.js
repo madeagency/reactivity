@@ -21,7 +21,8 @@ class Examples extends Component<Props> {
 
   componentWillMount() {
     if (!this.props.loaded) {
-      this.props.fetchData()
+      const date = new Date().toISOString().slice(0, 10)
+      this.props.fetchData(date, date)
     }
   }
 
@@ -142,7 +143,7 @@ class Examples extends Component<Props> {
 }
 export default connect(
   state => ({
-    neo: state.neo.data,
+    neo: state.neo.data[state.neo.startDate],
     loaded: state.neo.fetched,
     loading: state.neo.fetching
   }),
