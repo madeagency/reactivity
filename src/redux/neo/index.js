@@ -7,8 +7,22 @@ import {
   getDataFailure,
   fetchNeoFeedEpic
 } from './actions'
-import * as types from './types'
+import {
+  FETCHING_DATA,
+  FETCHING_DATA_FAILURE,
+  FETCHING_DATA_SUCCESS
+} from './types'
 
-export { fetchData, getDataSuccess, getDataFailure, fetchNeoFeedEpic, types }
+export type { Neo } from './types'
+
+export {
+  fetchData,
+  getDataSuccess,
+  getDataFailure,
+  fetchNeoFeedEpic,
+  FETCHING_DATA,
+  FETCHING_DATA_FAILURE,
+  FETCHING_DATA_SUCCESS
+}
 
 export default reducer
