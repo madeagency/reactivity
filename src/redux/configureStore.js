@@ -5,7 +5,7 @@ import { createEpicMiddleware } from 'redux-observable'
 import app, { rootEpic } from './reducers'
 
 export default function configureStore(
-  wrapEpic: () => mixed = f => f,
+  wrapEpic: Function => Function = f => f,
   data: {}
 ) {
   const wrappedEpic = wrapEpic(rootEpic)

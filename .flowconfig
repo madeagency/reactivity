@@ -6,6 +6,7 @@
 .*/build/.*
 
 [include]
+./flow-typed/
 
 [libs]
 

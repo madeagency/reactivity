@@ -7,11 +7,7 @@ import {
 } from './types'
 
 import type { Neo } from './types'
-import type {
-  fetchDataAction,
-  getDataSuccessAction,
-  getDataFailureAction
-} from './actions'
+import type { Actions } from './actions'
 
 type State = {
   +startDate: string,
@@ -21,8 +17,6 @@ type State = {
   +fetching: boolean,
   +error: boolean
 }
-
-type Action = fetchDataAction | getDataSuccessAction | getDataFailureAction
 
 const initialState: State = {
   startDate: new Date().toISOString().slice(0, 10),
@@ -35,7 +29,7 @@ const initialState: State = {
 
 export default function neo(
   state: State = initialState,
-  action: Action
+  action: Actions
 ): State {
   switch (action.type) {
     case FETCHING_DATA:

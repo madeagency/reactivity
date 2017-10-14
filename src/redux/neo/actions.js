@@ -7,6 +7,7 @@ import 'rxjs/add/observable/from'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/takeUntil'
 import 'rxjs/add/operator/catch'
+import type { ActionsObservable } from 'redux-observable'
 import { apiFetch } from '../../helpers/Api'
 
 import {
@@ -16,20 +17,25 @@ import {
 } from './types'
 import type { Neo } from './types'
 
-export type fetchDataAction = {
+type fetchDataAction = {
   type: typeof FETCHING_DATA,
   payload: { startDate: string, endDate: string }
 }
 
-export type getDataSuccessAction = {
+type getDataSuccessAction = {
   type: typeof FETCHING_DATA_SUCCESS,
   payload: { [key: string]: Array<Neo> }
 }
 
-export type getDataFailureAction = {
+type getDataFailureAction = {
   type: typeof FETCHING_DATA_FAILURE,
   payload: string
 }
+
+export type Actions =
+  | fetchDataAction
+  | getDataSuccessAction
+  | getDataFailureAction
 
 export function fetchData(startDate: string, endDate: string): fetchDataAction {
   return {
@@ -57,7 +63,7 @@ export function getDataFailure(error: string): getDataFailureAction {
   }
 }
 
-export const fetchNeoFeedEpic = action$ =>
+export const fetchNeoFeedEpic = (action$: ActionsObservable<Actions>) =>
   action$
     .ofType(FETCHING_DATA)
     .map(action => ({
@@ -70,5 +76,5 @@ export const fetchNeoFeedEpic = action$ =>
       )
         .map(result => getDataSuccess(result))
         .takeUntil(action$.ofType(FETCHING_DATA))
-        .catch(error => Observable.of(getDataFailure(error)))
+        .catch((error: string) => Observable.of(getDataFailure(error)))
     )
