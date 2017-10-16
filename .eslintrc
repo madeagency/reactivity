@@ -23,7 +23,12 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["webpack/**", "bin/*.dev.js"]
+        "devDependencies": [
+          "webpack/**",
+          "bin/*.dev.js",
+          "src/setupTest.js",
+          "src/**/*.test.js"
+        ]
       }
     ],
     "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
