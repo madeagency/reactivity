@@ -20,6 +20,12 @@
     "react/no-danger": "off",
     "no-bitwise": "off",
     "semi": [2, "never"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["webpack/**", "bin/*.dev.js"]
+      }
+    ],
     "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
     "react/jsx-filename-extension": [
       2,
