@@ -19,6 +19,12 @@
     "react/no-danger": "off",
     "no-bitwise": "off",
     "semi": [2, "never"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["webpack/**", "bin/*.dev.js"]
+      }
+    ],
     "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
     "react/jsx-filename-extension": [
       2,
@@ -26,16 +32,7 @@
         "extensions": [".jsx", ".js"]
       }
     ],
-    "prettier/prettier": [
-      2,
-      {
-        "printWidth": 80,
-        "trailingComma": "none",
-        "singleQuote": true,
-        "semi": false,
-        "parser": "flow"
-      }
-    ],
+    "prettier/prettier": 2,
     "no-restricted-globals": ["error", "event", "fdescribe"],
     "jsx-a11y/anchor-is-valid": [
       "error",
