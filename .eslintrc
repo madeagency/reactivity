@@ -32,16 +32,7 @@
         "extensions": [".jsx", ".js"]
       }
     ],
-    "prettier/prettier": [
-      2,
-      {
-        "printWidth": 80,
-        "trailingComma": "none",
-        "singleQuote": true,
-        "semi": false,
-        "parser": "flow"
-      }
-    ],
+    "prettier/prettier": 2,
     "no-restricted-globals": ["error", "event", "fdescribe"],
     "jsx-a11y/anchor-is-valid": [
       "error",
