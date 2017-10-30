@@ -53,7 +53,6 @@ export default function neo(
         error: true
       }
     default:
-      ;(action: empty) // eslint-disable-line
       return state
   }
 }
