@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import TypicalFrom from 'components/TypicalForm/TypicalForm'
 import { fetchData } from 'reducers/neo'
-import type { Neo } from '../../types'
+import type { Neo } from 'reducers/neo'
 
 type Props = {
   neo: Array<Neo>,
   loaded: boolean,
   loading: boolean,
-  fetchData: () => mixed
+  fetchData: (newDate: string, oldDate: string) => mixed
 }
 
 class Examples extends Component<Props> {
@@ -21,7 +21,8 @@ class Examples extends Component<Props> {
 
   componentWillMount() {
     if (!this.props.loaded) {
-      this.props.fetchData()
+      const date = new Date().toISOString().slice(0, 10)
+      this.props.fetchData(date, date)
     }
   }
 
@@ -142,7 +143,7 @@ class Examples extends Component<Props> {
 }
 export default connect(
   state => ({
-    neo: state.neo.data,
+    neo: state.neo.data[state.neo.startDate],
     loaded: state.neo.fetched,
     loading: state.neo.fetching
   }),

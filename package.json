@@ -35,7 +35,6 @@
     "file-loader": "^1.1.5",
     "flow-bin": "^0.57.3",
     "node-sass": "^4.5.3",
-    "postcss-loader": "^2.0.6",
     "prettier": "^1.7.4",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
@@ -51,10 +50,13 @@
   "dependencies": {
     "compression": "^1.7.1",
     "dotenv": "^4.0.0",
-    "express": "^4.16.1",
+    "dotenv-webpack": "^1.5.4",
+    "express": "^4.16.2",
     "http-proxy": "^1.16.2",
     "isomorphic-fetch": "^2.2.1",
     "lru-memoize": "^1.0.2",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
@@ -69,7 +71,9 @@
     "rxjs": "^5.5.2",
     "serialize-javascript": "^1.4.0",
     "serviceworker-webpack-plugin": "^0.2.3",
-    "webpack-flush-chunks": "^1.1.23",
+    "style-loader": "^0.19.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-flush-chunks": "^1.2.0",
     "zlib": "^1.0.5"
   },
   "scripts": {

@@ -1,8 +1,13 @@
+// @flow
+
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 import app, { rootEpic } from './reducers'
 
-export default function configureStore(wrapEpic = f => f, data) {
+export default function configureStore(
+  wrapEpic: Function => Function = f => f,
+  data: {}
+) {
   const wrappedEpic = wrapEpic(rootEpic)
   const epicMiddleware = createEpicMiddleware(wrappedEpic)
   const middleware = applyMiddleware(epicMiddleware)

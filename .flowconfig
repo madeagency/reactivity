@@ -6,6 +6,7 @@
 .*/build/.*
 
 [include]
+./flow-typed/
 
 [libs]
 
@@ -14,7 +15,7 @@
 [options]
 module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/flow/CSSModule.js.flow'
 module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
-module.name_mapper='^reducers' ->'<PROJECT_ROOT>/src/redux/reducers'
+module.name_mapper='^reducers' ->'<PROJECT_ROOT>/src/redux'
 
 [version]
 0.57.3
