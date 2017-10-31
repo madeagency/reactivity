@@ -21,3 +21,4 @@ exclude_paths:
   - "node_modules/**/*"
   - "build/**/*"
   - "bin/*"
+  - "flow-typed/**/*"
