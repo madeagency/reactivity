@@ -24,16 +24,17 @@
 }
 
 .props {
-  color:#999;
+  color: #999;
   font-size: 12px;
 }
 
 .link {
-  color: #DDDDDD;
+  color: #ddd;
   text-decoration: none;
   border-bottom: 1px solid gray;
+
   &:hover {
-    color: #61DAFB;
+    color: #61dafb;
   }
 }
 
@@ -41,7 +42,7 @@
   composes: link;
   display: inline-block;
   font-size: 20px;
-  color: #DDDDDD;
+  color: #ddd;
 }
 
 .github {
@@ -50,6 +51,11 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
