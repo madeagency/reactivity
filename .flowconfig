@@ -3,6 +3,7 @@
 .*/node_modules/react-universal-component/.*
 .*/node_modules/serviceworker-webpack-plugin/.*
 .*/node_modules/webpack-flush-chunks/.*
+.*/node_modules/stylelint/.*
 .*/build/.*
 
 [include]
