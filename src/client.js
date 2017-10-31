@@ -12,7 +12,7 @@ const { store } = configureStore(f => f, window.__data)
 
 const renderApp = TheApp =>
   hydrate(
-    <AppContainer>
+    <AppContainer warnings={false}>
       <Provider store={store} key="provider">
         <BrowserRouter forceRefresh={!supportsHistory}>
           <TheApp />
