@@ -71,7 +71,7 @@
     "react-universal-component": "^2.5.5",
     "redux": "^3.7.2",
     "redux-form": "^7.1.2",
-    "redux-observable": "^0.16.0",
+    "redux-observable": "^0.17.0",
     "rxjs": "^5.5.2",
     "serialize-javascript": "^1.4.0",
     "serviceworker-webpack-plugin": "^0.2.3",
