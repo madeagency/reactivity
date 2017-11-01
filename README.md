@@ -38,7 +38,10 @@ If you haven't yet start by installing [yarn](https://yarnpkg.com/en/).
 4. Run `yarn install` in order to install dependencies.
 5. Run `yarn dev` for development mode or `yarn prod` for production mode and you will see the app running at `http://localhost:[PORT_SPECIFIED_IN_.ENV]`.
 
-*Note: you may want to set `ENABLE_SW` to `false` in the `.env` file to disable the service worker during development*
+## Development suggestions
+
+1. set `ENABLE_SW` to `false` to disable the service worker during development.
+2. set `NODE_ENV` to `development` to enable hot reloading.
 
 ## Deployment
 

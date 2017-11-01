@@ -22,6 +22,7 @@
     "babel-watch": "^2.0.7",
     "css-loader": "^0.28.7",
     "dotenv-webpack": "^1.5.4",
+    "empty": "^0.10.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.6.0",
