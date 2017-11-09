@@ -5751,9 +5751,9 @@ webpack-hot-middleware@^2.19.1:
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
 
-webpack-hot-server-middleware@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/webpack-hot-server-middleware/-/webpack-hot-server-middleware-0.2.0.tgz#898f2ac7edf9d9a4ac5162b89698948bc9bb8ee6"
+webpack-hot-server-middleware@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/webpack-hot-server-middleware/-/webpack-hot-server-middleware-0.3.0.tgz#47f54884f73181ce4a207f3f7bcc929374083d26"
   dependencies:
     debug "^2.2.0"
     require-from-string "^1.2.1"
