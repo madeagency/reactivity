@@ -15,14 +15,14 @@ type Props = {
 
 const GithubButton = (props: Props) => {
   const { title, user, repo, type, width, height, count, large } = props
-  let src = `https://ghbtns.com/github-btn.html?user=${user}&repo=${repo}&type=${type}`
-  if (count) src += '&count=true'
-  if (large) src += '&size=large'
+  let options = `?user=${user}&repo=${repo}&type=${type}`
+  if (count) options += '&count=true'
+  if (large) options += '&size=large'
 
   return (
     <iframe
       title={title}
-      src={src}
+      src={`https://ghbtns.com/github-btn.html${options}`}
       frameBorder="0"
       allowTransparency="true"
       scrolling="0"
