@@ -15,7 +15,12 @@ type Props = {
 
 const GithubButton = (props: Props) => {
   const { title, user, repo, type, width, height, count, large } = props
-  let src = `https://ghbtns.com/github-btn.html?user=${user}&repo=${repo}&type=${type}`
+  let src = `
+  https://ghbtns.com/github-btn.html?
+  user=${user}
+  &repo=${repo}
+  &type=${type}
+  `
   if (count) src += '&count=true'
   if (large) src += '&size=large'
 
