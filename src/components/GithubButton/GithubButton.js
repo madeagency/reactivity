@@ -24,7 +24,7 @@ const GithubButton = (props: Props) => {
       title={title}
       src={`https://ghbtns.com/github-btn.html${options}`}
       frameBorder="0"
-      allowTransparency="true"
+      allowtransparency="true" // eslint-disable-line react/no-unknown-property
       scrolling="0"
       width={width}
       height={height}
