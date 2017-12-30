@@ -10,7 +10,7 @@ const Home = () => (
       title="Home"
       meta={[{ name: 'description', content: 'Welcome to Reactivity' }]}
     />
-    <h1>What is it really?!!!</h1>
+    <h1>What is it really?</h1>
     <p>
       A <b>universally rendered PWA</b> with <b>code-splitting</b> that uses:
     </p>
