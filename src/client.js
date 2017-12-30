@@ -1,7 +1,7 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
-import AppContainer from 'react-hot-loader/lib/AppContainer'
+import { AppContainer } from 'react-hot-loader'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import configureStore from './redux/configureStore'
@@ -12,7 +12,7 @@ const { store } = configureStore(f => f, window.__data)
 
 const renderApp = TheApp =>
   hydrate(
-    <AppContainer warnings={false}>
+    <AppContainer>
       <Provider store={store} key="provider">
         <BrowserRouter forceRefresh={!supportsHistory}>
           <TheApp />
