@@ -73,7 +73,7 @@ class Examples extends Component<Props> {
           >
             Epics
           </a>{' '}
-          for our asynchronous actions. Check
+          for our asynchronous actions. Check{' '}
           <a
             href="https://github.com/madeagency/reactivity/blob/master/src/redux/reducers/neo.js"
             target="_blank"
