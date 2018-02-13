@@ -79,13 +79,13 @@ class Examples extends Component<Props> {
             target="_blank"
             rel="noopener noreferrer"
           >
-            this file
+            this file 
           </a>{' '}
           which is responsible for fetching the above data.
         </p>
         <p>
           Both client and server make calls to load data from separate API
-          server. If you were to disable javascript or refresh the page, the
+          server. If you were to disable JavaScript or refresh the page, the
           data will be here waiting for you.
         </p>
 
