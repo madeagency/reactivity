@@ -85,7 +85,7 @@ class Examples extends Component<Props> {
         </p>
         <p>
           Both client and server make calls to load data from separate API
-          server. If you were to disable javascript or refresh the page, the
+          server. If you were to disable JavaScript or refresh the page, the
           data will be here waiting for you.
         </p>
 
