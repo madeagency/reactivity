@@ -79,7 +79,7 @@ class Examples extends Component<Props> {
             target="_blank"
             rel="noopener noreferrer"
           >
-            this file 
+            this file
           </a>{' '}
           which is responsible for fetching the above data.
         </p>
