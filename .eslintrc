@@ -25,7 +25,6 @@
         "devDependencies": ["webpack/**", "bin/*.dev.js"]
       }
     ],
-    "react/default-props-match-prop-types": "off", // https://github.com/yannickcr/eslint-plugin-react/issues/1468
     "react/jsx-filename-extension": [
       2,
       {
