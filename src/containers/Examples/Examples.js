@@ -1,11 +1,17 @@
 // @flow
 
 import React, { Component } from 'react'
+import { css } from 'emotion'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import TypicalFrom from 'components/TypicalForm/TypicalForm'
 import { fetchData } from 'reducers/neo'
 import type { Neo } from 'reducers/neo'
+
+const test = css`
+  background-color: hotpink;
+  text-align: center;
+`
 
 type Props = {
   neo: Array<Neo>,
@@ -34,7 +40,7 @@ class Examples extends Component<Props> {
     const { neo, loading, loaded } = this.props
 
     return (
-      <div>
+      <div className={test}>
         <Helmet
           title="Examples"
           meta={[{ name: 'description', content: 'Reactivity Examples' }]}

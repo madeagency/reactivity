@@ -7,6 +7,7 @@ import {
 } from 'react-redux-epic'
 import { renderToNodeStream } from 'react-dom/server'
 import { flushChunkNames } from 'react-universal-component/server'
+import { renderStylesToNodeStream } from 'emotion-server'
 import flushChunks from 'webpack-flush-chunks'
 import configureStore from '../redux/configureStore'
 import App from '../containers/App/App'
@@ -31,18 +32,13 @@ export default ({ clientStats }) => (req, res) => {
     }))
     .subscribe(({ markup, data }) => {
       const chunkNames = flushChunkNames()
-      const { scripts, stylesheets, cssHashRaw } = flushChunks(clientStats, {
+      const { scripts } = flushChunks(clientStats, {
         chunkNames
       })
+
       const html = renderToNodeStream(
-        <Html
-          styles={stylesheets}
-          cssHash={cssHashRaw}
-          js={scripts}
-          component={markup}
-          state={data}
-        />
-      )
+        <Html js={scripts} component={markup} state={data} />
+      ).pipe(renderStylesToNodeStream())
 
       switch (reactRouterContext.status) {
         case 301:

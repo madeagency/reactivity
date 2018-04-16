@@ -1,14 +1,20 @@
 // @flow
 
 import React from 'react'
+import { css } from 'emotion'
 import GithubButton from 'components/GithubButton/GithubButton'
 import style from './Hero.scss'
 import logo from './logo.svg'
 import github from './github.svg'
 
+const test = css`
+  background-color: hotpink;
+  text-align: center;
+`
+
 const Hero = () => (
-  <div className={style.Hero}>
-    <div className={style.Header}>
+  <div className={test}>
+    <div className={test}>
       <img src={logo} className={style.Logo} alt="logo" />
       <h1 className={style.Heading}>Reactivity</h1>
       <del>
