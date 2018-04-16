@@ -1,9 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
-const autoprefixer = require('autoprefixer')
 const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
@@ -30,27 +28,6 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.scss$/,
-        use: ExtractCssChunks.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
-            },
-            'sass-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [autoprefixer({ browsers: 'last 2 versions' })]
-              }
-            }
-          ]
-        })
-      },
-      {
         test: /\.(jpg|png|gif|svg|ico)$/,
         use: [
           {
@@ -69,7 +46,6 @@ module.exports = {
   },
   plugins: [
     new WriteFilePlugin(),
-    new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].js',

@@ -23,11 +23,12 @@
       ],
       "plugins": [
         "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "transform-react-inline-elements",
+        ["emotion", { "hoist": true }]
       ]
     },
     "development": {
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": ["react-hot-loader/babel", ["emotion", { "sourceMap": true, "autoLabel": true }]]
     }
   }
 }
