@@ -73,7 +73,7 @@
     "redux-observable": "^0.18.0",
     "rxjs": "^5.5.10",
     "serialize-javascript": "^1.5.0",
-    "serviceworker-webpack-plugin": "^0.2.3",
+    "serviceworker-webpack-plugin": "^1.0.0-alpha02",
     "webpack-flush-chunks": "^2.0.0",
     "zlib": "^1.0.5"
   },

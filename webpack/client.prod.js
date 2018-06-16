@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const autoprefixer = require('autoprefixer')
-// const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
+const ServiceWorkerPlugin = require('serviceworker-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
@@ -73,10 +73,10 @@ module.exports = {
       systemvars: true,
       safe: false
     }),
-    // new ServiceWorkerPlugin({
-    //   entry: path.join(__dirname, '..', 'src/sw.js'),
-    //   excludes: ['*hot-update*', '**/*.map', '**/stats.json']
-    // }),
+    new ServiceWorkerPlugin({
+      entry: path.join(__dirname, '..', 'src/sw.js'),
+      excludes: ['*hot-update*', '**/*.map', '**/stats.json']
+    }),
     new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
   ]
 }
