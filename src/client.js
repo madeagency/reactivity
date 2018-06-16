@@ -3,7 +3,7 @@ import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
-import runtime from 'serviceworker-webpack-plugin/lib/runtime'
+// import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import configureStore from './redux/configureStore'
 import App from './containers/App/App'
 
@@ -29,8 +29,8 @@ if (module.hot) {
   })
 }
 
-if ('serviceWorker' in navigator && process.env.ENABLE_SW === 'true') {
-  runtime.register()
-}
+// if ('serviceWorker' in navigator && process.env.ENABLE_SW === 'true') {
+//   runtime.register()
+// }
 
 renderApp(App)

@@ -5,7 +5,9 @@ const zlib = require('zlib')
 const { app } = require('../src/server')
 const clientConfig = require('../webpack/client.prod')
 
-const { output: { publicPath } } = clientConfig
+const {
+  output: { publicPath }
+} = clientConfig
 const outputPath = clientConfig.output.path
 
 const clientStats = require('../build/stats.json')
