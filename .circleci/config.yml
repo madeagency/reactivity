@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update npm and install lock
-          command: 'sudo npm install -g npm@latest greenkeeper-lockfile@1'
+          name: install lock
+          command: 'sudo npm install -g greenkeeper-lockfile@1'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
