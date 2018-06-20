@@ -10,7 +10,7 @@ const {
 } = clientConfig
 const outputPath = clientConfig.output.path
 
-const clientStats = require('../build/stats.json')
+const clientStats = require('../build/stats.json') // eslint-disable-line
 const serverRender = require('../build/server.js').default
 
 app.use(publicPath, express.static(outputPath))

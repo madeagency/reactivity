@@ -90,6 +90,7 @@
     "eslint": "eslint -c .eslintrc src",
     "stylelint": "stylelint \"src/**/*.scss\" --config .stylelintrc",
     "lint": "npm run eslint && npm run stylelint",
+    "test": "npm run lint",
     "flow:start": "flow start",
     "flow:stop": "flow stop",
     "flow:status": "flow status",

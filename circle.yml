@@ -1,38 +1,115 @@
-machine:
-  node:
-    version: v8.2.1
-dependencies:
-  pre:
-    - rm -rf node_modules
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn global add greenkeeper-lockfile@1
-    - yarn global add now
-    - yarn global add now-purge
-  override:
-    - yarn install
-compile:
-  pre:
-    - greenkeeper-lockfile-update
-  override:
-    - yarn build
-  post:
-    - greenkeeper-lockfile-upload
-test:
-  override:
-    - yarn lint
-    - yarn flow:status
-deployment:
-  development:
-    branch: dev
-    commands:
-      - |
-        URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
-        now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
-      - now-purge -t ${NOW_TOKEN} -n reactivity
-  production:
-    branch: master
-    commands:
-      - |
-        URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
-        now -t ${NOW_TOKEN} alias set ${URL} reactivity.now.sh
-      - now-purge -t ${NOW_TOKEN} -n reactivity
+version: 2
+jobs:
+  build:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - run:
+          name: Install Lock file
+          command: 'sudo npm install -g greenkeeper-lockfile@1'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Update Lock file
+          command: greenkeeper-lockfile-update
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Upload Lock file
+          command: greenkeeper-lockfile-upload
+  test:
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: npm test
+
+  deployDev:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+        - name: Install now
+        - command: npm install -g now
+      - run:
+        - name: Install now-purge
+        - command: npm install -g now-purge
+      - run:
+          name: Deploy Development
+          command: |
+            URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+            now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
+      - run:
+          name: Purge Now.sh
+          command: now-purge -t ${NOW_TOKEN} -n reactivity
+
+  deployProd:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+        - name: Install now
+        - command: npm install -g now
+      - run:
+        - name: Install now-purge
+        - command: npm install -g now-purge
+      - run:
+          name: Deploy Production
+          command: |
+            URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+            now -t ${NOW_TOKEN} alias set ${URL} reactivity.now.sh
+      - run:
+          name: Purge Now.sh
+          command: now-purge -t ${NOW_TOKEN} -n reactivity
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+
+  deploy_dev:
+    jobs:
+      - build
+      - test
+      - deployDev:
+        requires:
+          - build
+          - test
+        filters:
+            branches:
+              only: dev
+
+  deploy_prod:
+    jobs:
+      - build
+      - test
+      - deployPeod:
+        requires:
+          - build
+          - test
+        filters:
+            branches:
+              only: master
