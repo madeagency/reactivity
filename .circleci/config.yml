@@ -39,7 +39,7 @@ jobs:
           name: Test
           command: npm test
 
-  deployDev:
+  deploy_dev:
     working_directory: ~/reactivity
     docker:
       - image: circleci/node:8.2.1
@@ -60,7 +60,7 @@ jobs:
           name: Purge Now.sh
           command: now-purge -t ${NOW_TOKEN} -n reactivity
 
-  deployProd:
+  deploy_prod:
     working_directory: ~/reactivity
     docker:
       - image: circleci/node:8.2.1
@@ -90,26 +90,26 @@ workflows:
           requires:
             - build
 
-  deploy_dev:
-    jobs:
-      - build
-      - test
-      - deployDev:
-        requires:
-          - build
-          - test
-        filters:
-            branches:
-              only: dev
+  # deploy_development:
+  #   jobs:
+  #     - build
+  #     - test
+  #     - deploy_dev:
+  #       requires:
+  #         - build
+  #         - test
+  #       filters:
+  #           branches:
+  #             only: dev
 
-  deploy_prod:
-    jobs:
-      - build
-      - test
-      - deployPeod:
-        requires:
-          - build
-          - test
-        filters:
-            branches:
-              only: master
+  # deploy_production:
+  #   jobs:
+  #     - build
+  #     - test
+  #     - deploy_prod:
+  #       requires:
+  #         - build
+  #         - test
+  #       filters:
+  #           branches:
+  #             only: master
