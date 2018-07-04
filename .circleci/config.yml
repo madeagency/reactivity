@@ -1,0 +1,104 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+          name: install lock
+          command: 'sudo npm install -g greenkeeper-lockfile@1'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Update Lock file
+          command: greenkeeper-lockfile-update
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Lint
+          command: npm test
+      - run:
+          name: Upload Lock file
+          command: greenkeeper-lockfile-upload
+
+  deploy_dev:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+        - name: Install now
+        - command: npm install -g now
+      - run:
+        - name: Install now-purge
+        - command: npm install -g now-purge
+      - run:
+          name: Deploy Development
+          command: |
+            URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+            now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
+      - run:
+          name: Purge Now.sh
+          command: now-purge -t ${NOW_TOKEN} -n reactivity
+
+  deploy_prod:
+    working_directory: ~/reactivity
+    docker:
+      - image: circleci/node:8.2.1
+    steps:
+      - checkout
+      - run:
+        - name: Install now
+        - command: npm install -g now
+      - run:
+        - name: Install now-purge
+        - command: npm install -g now-purge
+      - run:
+          name: Deploy Production
+          command: |
+            URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+            now -t ${NOW_TOKEN} alias set ${URL} reactivity.now.sh
+      - run:
+          name: Purge Now.sh
+          command: now-purge -t ${NOW_TOKEN} -n reactivity
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+
+  # deploy_development:
+  #   jobs:
+  #     - build
+  #     - test
+  #     - deploy_dev:
+  #       requires:
+  #         - build
+  #         - test
+  #       filters:
+  #           branches:
+  #             only: dev
+
+  # deploy_production:
+  #   jobs:
+  #     - build
+  #     - test
+  #     - deploy_prod:
+  #       requires:
+  #         - build
+  #         - test
+  #       filters:
+  #           branches:
+  #             only: master

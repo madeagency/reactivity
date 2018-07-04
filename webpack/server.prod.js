@@ -62,6 +62,8 @@ module.exports = {
     extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
@@ -70,6 +72,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.SERVER': JSON.stringify(true)
-    })
+    }),
+    new webpack.HashedModuleIdsPlugin()
   ]
 }
