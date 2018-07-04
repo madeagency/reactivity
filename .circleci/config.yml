@@ -81,11 +81,9 @@ workflows:
   deploy_development:
     jobs:
       - build
-      - test
       - deploy_dev:
           requires:
             - build
-            - test
           filters:
               branches:
                 only: dev
@@ -93,11 +91,9 @@ workflows:
   deploy_production:
     jobs:
       - build
-      - test
       - deploy_prod:
           requires:
             - build
-            - test
           filters:
               branches:
                 only: master
