@@ -8,7 +8,7 @@ import { fetchData } from 'reducers/neo'
 import type { Neo } from 'reducers/neo'
 
 type Props = {
-  neo: Array<Neo>,
+  neo?: Array<Neo>,
   loaded: boolean,
   loading: boolean,
   fetchData: (newDate: string, oldDate: string) => mixed
