@@ -39,10 +39,10 @@ jobs:
       - checkout
       - run:
           name: Install now
-          command: npm install -g now
+          command: sudo npm install -g now
       - run:
           name: Install now-purge
-          command: npm install -g now-purge
+          command: sudo npm install -g now-purge
       - run:
           name: Deploy Development
           command: URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
@@ -59,10 +59,10 @@ jobs:
       - checkout
       - run:
           name: Install now
-          command: npm install -g now
+          command: sudo npm install -g now
       - run:
           name: Install now-purge
-          command: npm install -g now-purge
+          command: sudo npm install -g now-purge
       - run:
           name: Deploy Production
           command: |
