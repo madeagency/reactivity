@@ -38,15 +38,14 @@ jobs:
     steps:
       - checkout
       - run:
-        - name: Install now
-        - command: npm install -g now
+          name: Install now
+          command: npm install -g now
       - run:
-        - name: Install now-purge
-        - command: npm install -g now-purge
+          name: Install now-purge
+          command: npm install -g now-purge
       - run:
           name: Deploy Development
-          command: |
-            URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
+          command: URL=$(now -t ${NOW_TOKEN} --public --dotenv=.sample.env)
             now -t ${NOW_TOKEN} alias set ${URL} reactivity-dev.now.sh
       - run:
           name: Purge Now.sh
@@ -59,11 +58,11 @@ jobs:
     steps:
       - checkout
       - run:
-        - name: Install now
-        - command: npm install -g now
+          name: Install now
+          command: npm install -g now
       - run:
-        - name: Install now-purge
-        - command: npm install -g now-purge
+          name: Install now-purge
+          command: npm install -g now-purge
       - run:
           name: Deploy Production
           command: |
@@ -79,26 +78,22 @@ workflows:
     jobs:
       - build
 
-  # deploy_development:
-  #   jobs:
-  #     - build
-  #     - test
-  #     - deploy_dev:
-  #       requires:
-  #         - build
-  #         - test
-  #       filters:
-  #           branches:
-  #             only: dev
+  deploy_development:
+    jobs:
+      - build
+      - deploy_dev:
+          requires:
+            - build
+          filters:
+              branches:
+                only: dev
 
-  # deploy_production:
-  #   jobs:
-  #     - build
-  #     - test
-  #     - deploy_prod:
-  #       requires:
-  #         - build
-  #         - test
-  #       filters:
-  #           branches:
-  #             only: master
+  deploy_production:
+    jobs:
+      - build
+      - deploy_prod:
+          requires:
+            - build
+          filters:
+              branches:
+                only: master

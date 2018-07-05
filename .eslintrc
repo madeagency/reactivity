@@ -19,6 +19,8 @@
     "react/no-danger": "off",
     "no-bitwise": "off",
     "semi": [2, "never"],
+    "react/destructuring-assignment": "warn",
+    "jsx-a11y/label-has-for": "warn",
     "import/no-extraneous-dependencies": [
       "error",
       {
