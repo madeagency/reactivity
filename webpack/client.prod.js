@@ -10,6 +10,7 @@ module.exports = {
   name: 'client',
   target: 'web',
   devtool: 'hidden-source-map',
+  mode: 'production',
   entry: [path.resolve(__dirname, '../src/client.js')],
   output: {
     filename: '[name].[chunkhash].js',

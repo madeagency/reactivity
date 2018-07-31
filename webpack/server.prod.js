@@ -11,6 +11,7 @@ module.exports = {
   name: 'server',
   target: 'node',
   devtool: 'source-map',
+  mode: 'production',
   entry: [entry],
   output: {
     path: output,
