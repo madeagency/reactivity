@@ -15,7 +15,7 @@ const serverRender = require('../build/server.js').default
 
 app.use(publicPath, express.static(outputPath))
 app.use(
-  compression({ flush: zlib.Z_PARTIAL_FLUSH }),
+  compression({ flush: zlib.constants.Z_PARTIAL_FLUSH }),
   serverRender({ clientStats })
 )
 
