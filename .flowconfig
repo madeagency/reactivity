@@ -18,4 +18,4 @@ module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
 module.name_mapper='^reducers' ->'<PROJECT_ROOT>/src/redux'
 
 [version]
-^0.80.0
+^0.82.0
