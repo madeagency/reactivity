@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -10,17 +11,22 @@ import App from './containers/App/App'
 const supportsHistory = 'pushState' in window.history
 const { store } = configureStore(f => f, window.__data)
 
-const renderApp = TheApp =>
-  hydrate(
-    <AppContainer warnings={false}>
-      <Provider store={store} key="provider">
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <TheApp />
-        </BrowserRouter>
-      </Provider>
-    </AppContainer>,
-    document.getElementById('root')
+const renderApp = TheApp => {
+  const root = document.getElementById('root')
+  return (
+    root &&
+    hydrate(
+      <AppContainer warnings={false}>
+        <Provider store={store} key="provider">
+          <BrowserRouter forceRefresh={!supportsHistory}>
+            <TheApp />
+          </BrowserRouter>
+        </Provider>
+      </AppContainer>,
+      root
+    )
   )
+}
 
 if (module.hot) {
   module.hot.accept('./containers/App/App.js', () => {

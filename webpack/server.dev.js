@@ -15,9 +15,16 @@ const output = res('../build')
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
 // `require-universal-module` so that they know they are running
 // within Webpack and can properly make connections to client modules:
+// Also, see https://github.com/ReactTraining/react-router/issues/6201#issuecomment-403291934
+// for why path-to-regexp is included in this.
 const externalModules = fs
   .readdirSync(nodeModules)
-  .filter(x => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x))
+  .filter(
+    x =>
+      !/\.bin|react-universal-component|webpack-flush-chunks|path-to-regexp/.test(
+        x
+      )
+  )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}` // eslint-disable-line
     return externals
