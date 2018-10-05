@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import TypicalFrom from 'components/TypicalForm/TypicalForm'
-import { fetchData } from 'reducers/neo'
+import { fetchData as fetchDataAction } from 'reducers/neo'
 import type { Neo } from 'reducers/neo'
 
 type Props = {
@@ -19,10 +19,20 @@ class Examples extends Component<Props> {
     neo: []
   }
 
-  componentWillMount() {
-    if (!this.props.loaded) {
+  constructor(props: Props) {
+    const { loaded, fetchData } = props
+    super()
+    if (!loaded) {
       const date = new Date().toISOString().slice(0, 10)
-      this.props.fetchData(date, date)
+      fetchData(date, date)
+    }
+  }
+
+  componentDidMount() {
+    const { loaded, fetchData } = this.props
+    if (!loaded) {
+      const date = new Date().toISOString().slice(0, 10)
+      fetchData(date, date)
     }
   }
 
@@ -148,6 +158,6 @@ export default connect(
     loading: state.neo.fetching
   }),
   {
-    fetchData
+    fetchData: fetchDataAction
   }
 )(Examples)
