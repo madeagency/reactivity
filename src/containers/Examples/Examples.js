@@ -14,6 +14,7 @@ type Props = {
   fetchData: (newDate: string, oldDate: string) => mixed
 }
 
+const getShortDate = () => new Date().toISOString().slice(0, 10)
 class Examples extends Component<Props> {
   static defaultProps = {
     neo: []
@@ -21,9 +22,9 @@ class Examples extends Component<Props> {
 
   constructor(props: Props) {
     const { loaded, fetchData } = props
-    super()
+    super(props)
     if (!loaded) {
-      const date = new Date().toISOString().slice(0, 10)
+      const date = getShortDate()
       fetchData(date, date)
     }
   }
@@ -31,7 +32,7 @@ class Examples extends Component<Props> {
   componentDidMount() {
     const { loaded, fetchData } = this.props
     if (!loaded) {
-      const date = new Date().toISOString().slice(0, 10)
+      const date = getShortDate()
       fetchData(date, date)
     }
   }
