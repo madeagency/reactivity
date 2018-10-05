@@ -15,26 +15,30 @@ type Props = {
 }
 
 const getShortDate = () => new Date().toISOString().slice(0, 10)
+const fetchTodaysData = (
+  loaded,
+  fetchAction,
+  from = getShortDate(),
+  to = from
+) => {
+  if (!loaded) {
+    fetchAction(from, to)
+  }
+}
+
 class Examples extends Component<Props> {
   static defaultProps = {
     neo: []
   }
 
   constructor(props: Props) {
-    const { loaded, fetchData } = props
     super(props)
-    if (!loaded) {
-      const date = getShortDate()
-      fetchData(date, date)
-    }
+    fetchTodaysData(props.loaded, props.fetchData)
   }
 
   componentDidMount() {
     const { loaded, fetchData } = this.props
-    if (!loaded) {
-      const date = getShortDate()
-      fetchData(date, date)
-    }
+    fetchTodaysData(loaded, fetchData)
   }
 
   typicalSubmit = (values: Object) => {
