@@ -28,7 +28,7 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-universal-import": "^3.0.1",
     "babel-watch": "^2.0.7",
-    "css-loader": "^1.0.0",
+    "css-loader": "^2.1.0",
     "dotenv-webpack": "^1.5.7",
     "empty": "^0.10.1",
     "eslint": "^5.5.0",
