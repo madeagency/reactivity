@@ -66,7 +66,7 @@
     "express": "^4.16.3",
     "http-proxy": "^1.17.0",
     "isomorphic-fetch": "^2.2.1",
-    "lru-memoize": "^1.0.2",
+    "lru-memoize": "1.0.2",
     "postcss-loader": "^3.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
