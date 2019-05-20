@@ -71,7 +71,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
-    "react-hot-loader": "^4.3.5",
+    "react-hot-loader": "^4.8.7",
     "react-redux": "^5.0.7",
     "react-redux-epic": "^1.1.0",
     "react-router-dom": "^4.3.1",
