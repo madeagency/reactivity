@@ -45,7 +45,7 @@
     "flow-bin": "^0.80.0",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.7.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "stylelint": "^9.5.0",
