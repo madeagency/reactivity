@@ -29,7 +29,7 @@
     "babel-plugin-universal-import": "^3.0.1",
     "babel-watch": "^2.0.7",
     "css-loader": "^1.0.0",
-    "dotenv-webpack": "^1.5.7",
+    "dotenv-webpack": "^1.8.0",
     "empty": "^0.10.1",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
