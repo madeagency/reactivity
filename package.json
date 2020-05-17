@@ -64,7 +64,7 @@
     "compression": "^1.7.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "^1.18.1",
     "isomorphic-fetch": "^2.2.1",
     "lru-memoize": "^1.0.2",
     "postcss-loader": "^3.0.0",
